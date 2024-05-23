@@ -7,7 +7,7 @@
     nixosConfigurations.tohru = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./hosts/tohru/configuration.nix
       ];
     };
   };
