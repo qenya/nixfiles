@@ -38,19 +38,20 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
-      tor-browser-bundle-bin
+      bitwarden
       firefox
-      tree
+      tor-browser-bundle-bin
     ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    bitwarden
+    colmena
     git
+    npins
     plocate
+    tree
     wget
   ];
 
