@@ -1,0 +1,23 @@
+{
+  "pins": {
+    "home-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "home-manager"
+      },
+      "branch": "release-23.11",
+      "revision": "2c78a57c544dd19b07442350727ced097e1aa6e6",
+      "url": "https://github.com/nix-community/home-manager/archive/2c78a57c544dd19b07442350727ced097e1aa6e6.tar.gz",
+      "hash": "1zb4qsyn7l1zdiv1kjx07jvgnakpsifc62fxcim50w3ni27cwxk3"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixos-23.11",
+      "url": "https://releases.nixos.org/nixos/23.11/nixos-23.11.7313.9d29cd266ceb/nixexprs.tar.xz",
+      "hash": "0phfgypnshhlh6ri54yp2f9qabq0hlq06jn46zv692jy6axss4kx"
+    }
+  },
+  "version": 3
+}
