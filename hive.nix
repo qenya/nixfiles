@@ -5,7 +5,10 @@ in {
   };
 
   defaults = { pkgs, ... }: {
-    imports = [ ./pinning.nix ];
+    imports = [
+      ./pinning.nix
+      (import "${sources.home-manager}/nixos")
+    ];
     deployment.replaceUnknownProfiles = false;
   };
 
