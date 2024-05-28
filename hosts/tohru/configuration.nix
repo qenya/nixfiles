@@ -2,8 +2,9 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+      ./home.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -33,25 +34,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.bluebird = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    packages = with pkgs; [
-      bitwarden
-      firefox
-      tor-browser-bundle-bin
-    ];
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     colmena
     git
     npins
-    plocate
-    tree
     wget
   ];
 
