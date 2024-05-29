@@ -1,12 +1,8 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
 
@@ -99,16 +95,12 @@
       proxy_cookie_path / "/; secure; HttpOnly; SameSite=strict";
     '';
 
-    virtualHosts = let
-      base = {
+    virtualHosts = {
+      "git.katherina.rocks" = {
         forceSSL = true;
         enableACME = true;
+        locations."/".proxyPass = "http://[::1]:3000/";
       };
-      proxy = port: {
-        locations."/".proxyPass = "http://[::1]:${toString(port)}/";
-      };
-    in {
-      "git.katherina.rocks" = base // proxy 3000;
     };
   };
   security.acme = {
@@ -139,12 +131,7 @@
     };
   };
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 
 }
 
