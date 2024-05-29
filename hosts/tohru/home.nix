@@ -14,10 +14,13 @@
   };
 
   home-manager.users.bluebird = { pkgs, ... }: {
-    home.packages = [
-      pkgs.fortune
-      pkgs.htop
-      pkgs.tree
+    home.packages = with pkgs; [
+      fortune
+      htop
+      tree
+
+      nil
+      nixpkgs-fmt
     ];    
 
     programs.git = {
@@ -26,11 +29,23 @@
       userEmail = "git@katherina.rocks";
     };
 
-    programs.vscode = {
+    programs.vscode = let
+      system = builtins.currentSystem;
+      sources = import ../../npins;
+      extensions = (import sources.nix-vscode-extensions).extensions.${system};
+    in {
       enable = true;
       package = pkgs.vscodium;
-      extensions = with pkgs.vscode-extensions; [
-      ];
+      extensions = (with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+      ]) ++ (with extensions.open-vsx; [
+        robbowen.synthwave-vscode
+      ]);
+      userSettings = {
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "workbench.colorTheme" = "SynthWave '84";
+      };
     };
 
     home.stateVersion = "23.11";

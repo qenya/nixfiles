@@ -12,6 +12,18 @@
       "url": "https://github.com/nix-community/home-manager/archive/2c78a57c544dd19b07442350727ced097e1aa6e6.tar.gz",
       "hash": "1zb4qsyn7l1zdiv1kjx07jvgnakpsifc62fxcim50w3ni27cwxk3"
     },
+    "nix-vscode-extensions": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions"
+      },
+      "branch": "master",
+      "revision": "1f5f225e7ceee57404f6e409200cc9eea25090be",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/1f5f225e7ceee57404f6e409200cc9eea25090be.tar.gz",
+      "hash": "1s24w7fwfgd1v3s9zlj9cmwhbfc90av8c44kg9dchvj0yh6fg5sx"
+    },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-23.11",
