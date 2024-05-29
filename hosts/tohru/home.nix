@@ -42,6 +42,7 @@
         robbowen.synthwave-vscode
       ]);
       userSettings = {
+        "git.autofetch" = true;
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
         "workbench.colorTheme" = "SynthWave '84";
