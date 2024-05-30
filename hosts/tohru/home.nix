@@ -37,13 +37,18 @@
       in
       {
         enable = true;
+        enableExtensionUpdateCheck = false;
+        enableUpdateCheck = false;
         package = pkgs.vscodium;
         extensions = (with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+          ms-python.python
         ]) ++ (with extensions.open-vsx; [
           robbowen.synthwave-vscode
         ]);
+        mutableExtensionsDir = false;
         userSettings = {
+          "extensions.autoUpdate" = false;
           "git.autofetch" = true;
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
