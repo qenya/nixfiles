@@ -4,7 +4,7 @@
   users.users.bluebird = {
     isNormalUser = true;
     description = "Bluebird";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "dialout" ];
     packages = with pkgs; [
       # TODO: move these to home-manager
       bitwarden
@@ -22,6 +22,8 @@
       nil
       nixpkgs-fmt
     ];
+
+    programs.chromium.enable = true;
 
     programs.git = {
       enable = true;
