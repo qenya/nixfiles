@@ -4,7 +4,11 @@
   users.users.bluebird = {
     isNormalUser = true;
     description = "Bluebird";
-    extraGroups = [ "wheel" "networkmanager" "dialout" ];
+    extraGroups = [
+      "wheel" # sudo
+      "networkmanager" # UI wifi configuration
+      "dialout" # access to serial ports
+    ];
     packages = with pkgs; [
       # TODO: move these to home-manager
       bitwarden
