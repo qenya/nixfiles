@@ -27,6 +27,11 @@
       nixpkgs-fmt
     ];
 
+    dconf = {
+      enable = true;
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    };
+
     programs.chromium.enable = true;
 
     programs.git = {
