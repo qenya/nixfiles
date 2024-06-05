@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./home.nix
+      ../../services/steam.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -19,19 +20,12 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
   services.xserver.xkb.layout = "gb";
 
   services.printing.enable = true;
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
 
   hardware.enableAllFirmware = true;
   services.fwupd.enable = true;
