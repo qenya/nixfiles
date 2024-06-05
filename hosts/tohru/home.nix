@@ -5,6 +5,7 @@
     imports = [
       ../../home/btop.nix
       ../../home/cli.nix
+      ../../home/firefox.nix
       ../../home/gnome
       ../../home/vscode.nix
     ];
@@ -13,9 +14,7 @@
       bitwarden
       tor-browser-bundle-bin
     ];
-
     programs.chromium.enable = true;
-    programs.firefox.enable = true;
 
     home.stateVersion = "23.11";
   };
