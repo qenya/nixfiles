@@ -11,14 +11,9 @@ in {
       wget
     ];
 
-    # Make <nixpkgs> point systemwide to the pinned nixpkgs above
-    # https://jade.fyi/blog/pinning-nixos-with-npins/
-    nix.settings.experimental-features = "nix-command flakes";
-    nixpkgs.flake.source = sources.nixpkgs;
-    nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
-
     imports = [
       (import "${sources.home-manager}/nixos")
+      ./pinning.nix
       ./users/qenya.nix
     ];
   };
