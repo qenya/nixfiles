@@ -2,14 +2,11 @@ let sources = import ./npins;
 in {
   meta.nixpkgs = sources.nixpkgs;
 
-  defaults = { name, pkgs, ... }: {
+  defaults = { name, nodes, ... }: {
     deployment.replaceUnknownProfiles = false;
     networking.hostName = name;
 
-    environment.systemPackages = with pkgs; [
-      git
-      wget
-    ];
+    nixpkgs.config.allowUnfree = true;
 
     imports = [
       (import "${sources.home-manager}/nixos")
@@ -18,24 +15,23 @@ in {
     ];
   };
 
-  tohru = {
-    deployment = {
-      allowLocalDeployment = true;
-      targetHost = null;
-    };
-
+  tohru = { name, nodes, ... }: {
     networking.hostId = "31da19c1";
     time.timeZone = "Europe/London";
 
-    imports = [ ./hosts/tohru/configuration.nix ];
+    imports = [
+      ./colmena/local.nix
+      ./hosts/tohru/configuration.nix
+    ];
   };
 
-  yevaud = { name, ... }: {
-    deployment.targetHost = "${name}.birdsong.network";
-
+  yevaud = { name, nodes, ... }: {
     networking.hostId = "09673d65";
     time.timeZone = "Etc/UTC";
-
-    imports = [ ./hosts/yevaud/configuration.nix ];
+    
+    imports = [
+      ./colmena/remote.nix
+      ./hosts/yevaud/configuration.nix
+    ];
   };
 }

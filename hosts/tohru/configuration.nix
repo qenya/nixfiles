@@ -27,18 +27,12 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    colmena
-    npins
-  ];
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
   services.fwupd.enable = true;
   services.fstrim.enable = true;
