@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../users/qenya.nix
       ./home.nix
     ];
 

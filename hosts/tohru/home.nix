@@ -1,22 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  users.users.qenya = {
-    isNormalUser = true;
-    home = "/home/qenya";
-    extraGroups = [
-      "wheel" # sudo
-      "networkmanager" # UI wifi configuration
-      "dialout" # access to serial ports
-    ];
-    packages = with pkgs; [
-      # TODO: move these to home-manager
-      bitwarden
-      firefox
-      tor-browser-bundle-bin
-    ];
-  };
-
   home-manager.users.qenya = { pkgs, ... }: {
     home.homeDirectory = config.users.users.qenya.home;
 
@@ -24,6 +8,9 @@
       fortune
       htop
       tree
+
+      bitwarden
+      tor-browser-bundle-bin
 
       nil
       nixpkgs-fmt
@@ -52,6 +39,7 @@
     home.file.".background-image".source = ./background-image.jpg;
 
     programs.chromium.enable = true;
+    programs.firefox.enable = true;
 
     programs.git = {
       enable = true;

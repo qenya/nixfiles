@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../users/qenya.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -13,14 +14,6 @@
   networking.hostId = "09673d65";
 
   time.timeZone = "Etc/UTC";
-
-  users.users.qenya = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru"
-    ];
-  };
 
   services.openssh = {
     enable = true;
