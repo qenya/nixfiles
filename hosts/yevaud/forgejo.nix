@@ -10,11 +10,15 @@
   # TODO: interface customisation
 
   services.nginx.virtualHosts = {
-    # TODO: move to new domain
-    "git.katherina.rocks" = {
+    "git.qenya.tel" = {
       forceSSL = true;
       enableACME = true;
       locations."/".proxyPass = "http://[::1]:3000/";
+    };
+    "git.katherina.rocks" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/".return = "301 https://git.qenya.tel$request_uri";
     };
   };
 
@@ -22,7 +26,7 @@
     enable = true;
     stateDir = "/data/forgejo";
     settings = {
-      DEFAULT.APP_NAME = "git.katherina.rocks";
+      DEFAULT.APP_NAME = "git.qenya.tel";
       cache = {
         ADAPTER = "twoqueue";
         HOST = ''{"size": 100, "recent_ratio": 0.25, "ghost_ratio": 0.5}'';
@@ -33,9 +37,9 @@
       };
       security.LOGIN_REMEMBER_DAYS = 365;
       server = {
-        DOMAIN = "git.katherina.rocks";
+        DOMAIN = "git.qenya.tel";
         HTTP_PORT = 3000;
-        ROOT_URL = "https://git.katherina.rocks/";
+        ROOT_URL = "https://git.qenya.tel/";
       };
       service.DISABLE_REGISTRATION = true;
     };
