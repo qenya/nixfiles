@@ -4,18 +4,12 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../users/qenya.nix
       ../../services/nginx.nix
       ../../services/openssh.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "yevaud";
-  networking.hostId = "09673d65";
-
-  time.timeZone = "Etc/UTC";
 
   services.nginx.virtualHosts = {
     "git.katherina.rocks" = {

@@ -4,7 +4,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../users/qenya.nix
       ./home.nix
     ];
 
@@ -12,11 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
 
-  networking.hostName = "tohru";
-  networking.hostId = "31da19c1";
   networking.networkmanager.enable = true;
-
-  time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
@@ -34,9 +29,7 @@
 
   environment.systemPackages = with pkgs; [
     colmena
-    git
     npins
-    wget
   ];
 
   programs.steam = {
