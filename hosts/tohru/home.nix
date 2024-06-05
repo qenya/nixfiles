@@ -3,15 +3,13 @@
 {
   home-manager.users.qenya = { pkgs, ... }: {
     imports = [
+      ../../home/btop.nix
+      ../../home/cli.nix
       ../../home/gnome
       ../../home/vscode.nix
     ];
 
     home.packages = with pkgs; [
-      fortune
-      htop
-      tree
-
       bitwarden
       tor-browser-bundle-bin
     ];

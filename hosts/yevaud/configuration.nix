@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./home.nix
       ../../services/nginx.nix
       ../../services/openssh.nix
     ];
