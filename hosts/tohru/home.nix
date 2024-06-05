@@ -3,7 +3,6 @@
 {
   home-manager.users.qenya = { pkgs, ... }: {
     imports = [
-      ../../home/btop.nix
       ../../home/cli.nix
       ../../home/firefox.nix
       ../../home/gnome

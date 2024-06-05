@@ -9,4 +9,6 @@
     cowsay
     lolcat
   ];
+
+  programs.btop.enable = true;
 }
