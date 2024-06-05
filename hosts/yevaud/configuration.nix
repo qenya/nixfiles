@@ -30,6 +30,11 @@
     };
   };
 
+  # Allow remote root login only from home network
+  # TODO: Find a less hacky way of doing remote deployment
+  users.users.root.openssh.authorizedKeys.keys = config.users.users.bluebird.openssh.authorizedKeys.keys;
+  services.openssh.extraConfig = "Match Address 45.14.17.200\n    PermitRootLogin prohibit-password";
+
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
