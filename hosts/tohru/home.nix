@@ -7,8 +7,6 @@
       ../../home/vscode.nix
     ];
 
-    home.homeDirectory = config.users.users.qenya.home;
-
     home.packages = with pkgs; [
       fortune
       htop
@@ -20,12 +18,6 @@
 
     programs.chromium.enable = true;
     programs.firefox.enable = true;
-
-    programs.git = {
-      enable = true;
-      userName = "Katherina Walshe-Grey";
-      userEmail = "git@katherina.rocks";
-    };
 
     home.stateVersion = "23.11";
   };

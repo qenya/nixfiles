@@ -13,4 +13,16 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru"
     ];
   };
+
+  home-manager.users.qenya = { config, lib, pkgs, osConfig, ... }: {
+    home.homeDirectory = osConfig.users.users.qenya.home;
+
+    programs.git = {
+      enable = true;
+      userName = "Katherina Walshe-Grey";
+      userEmail = "git@katherina.rocks"; # TODO: update email
+    };
+
+    home.stateVersion = "23.11";
+  };
 }
