@@ -1,10 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  users.users.bluebird = {
+  users.users.qenya = {
     isNormalUser = true;
-    home = "/home/bluebird";
-    description = "Bluebird";
+    home = "/home/qenya";
     extraGroups = [
       "wheel" # sudo
       "networkmanager" # UI wifi configuration
@@ -18,8 +17,8 @@
     ];
   };
 
-  home-manager.users.bluebird = { pkgs, ... }: {
-    home.homeDirectory = config.users.users.bluebird.home;
+  home-manager.users.qenya = { pkgs, ... }: {
+    home.homeDirectory = config.users.users.qenya.home;
 
     home.packages = with pkgs; [
       fortune
@@ -37,7 +36,7 @@
           backgroundOptions = {
             color-shading-type = "solid";
             picture-options = "zoom";
-            picture-uri = "${config.users.users.bluebird.home}/.background-image";
+            picture-uri = "${config.users.users.qenya.home}/.background-image";
             primary-color = "#3a4ba0";
             secondary-color = "#2f302f";
           };
