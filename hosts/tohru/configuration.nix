@@ -5,7 +5,7 @@
     [
       ./hardware-configuration.nix
       ./home.nix
-      ../../services/steam.nix
+      ../../common/steam.nix
     ];
 
   boot.loader.systemd-boot.enable = true;

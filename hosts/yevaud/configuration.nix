@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ./home.nix
-    ../../services/openssh.nix
     ./forgejo.nix
   ];
 

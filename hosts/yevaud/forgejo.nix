@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../services/nginx.nix
+    ../../common/nginx.nix
   ];
 
   # TODO: ssh access

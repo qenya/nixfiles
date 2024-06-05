@@ -7,6 +7,6 @@
   };
 
   imports = [
-    ../services/openssh.nix
+    ../common/openssh.nix
   ];
 }
