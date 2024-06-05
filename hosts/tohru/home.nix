@@ -6,6 +6,7 @@
       ../../home/cli.nix
       ../../home/firefox.nix
       ../../home/gnome
+      ../../home/libreoffice.nix
       ../../home/vscode.nix
     ];
 
