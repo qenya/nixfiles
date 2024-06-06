@@ -5,7 +5,6 @@
     ../../common/nginx.nix
   ];
 
-  # TODO: ssh access
   # TODO: email out
   # TODO: interface customisation
 
