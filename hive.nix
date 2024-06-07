@@ -11,6 +11,7 @@ in {
     imports = [
       (import "${sources.home-manager}/nixos")
       ./pinning.nix
+      ./common/utilities.nix
       ./users/qenya.nix
     ];
   };
