@@ -22,6 +22,8 @@
       userSettings = {
         "extensions.autoUpdate" = false;
         "git.autofetch" = true;
+        "git.confirmSync" = false;
+        "git.enableSmartCommit" = true;
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
         "nix.serverSettings".nil = {
