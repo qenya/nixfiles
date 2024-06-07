@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./home.nix
+      ../../common/fonts.nix
       ../../common/steam.nix
     ];
 
