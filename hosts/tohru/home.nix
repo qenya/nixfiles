@@ -12,6 +12,8 @@
 
     home.packages = with pkgs; [
       bitwarden
+      foliate
+      keepassxc
       tor-browser-bundle-bin
     ];
     programs.chromium.enable = true;
