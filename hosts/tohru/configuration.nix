@@ -27,6 +27,9 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # USB drives
+  boot.supportedFilesystems = [ "ntfs" ];
+
   hardware.enableAllFirmware = true;
   services.fwupd.enable = true;
   services.fstrim.enable = true;
