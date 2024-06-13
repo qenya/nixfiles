@@ -8,4 +8,6 @@
     parted
     wget
   ];
+
+  environment.wordlist.enable = true;
 }
