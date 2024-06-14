@@ -6,7 +6,7 @@
       ./hardware-configuration.nix
       ./home.nix
       ../../common/fonts.nix
-      ../../common/steam.nix
+      ../../common/gaming.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
