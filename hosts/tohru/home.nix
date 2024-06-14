@@ -14,6 +14,7 @@
       bitwarden
       foliate
       keepassxc
+      thunderbird
       tor-browser-bundle-bin
     ];
     programs.chromium.enable = true;
