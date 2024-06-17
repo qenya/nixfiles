@@ -2,6 +2,8 @@
 
 My NixOS configuration files.
 
+The canonical location for this repository is https://git.qenya.tel/qenya/nixfiles. If you're viewing it elsewhere, it is a mirror and may not be up-to-date.
+
 ## Machines
 
 * `tohru`: Dell Latitude 5300, personal laptop
