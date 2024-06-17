@@ -4,6 +4,7 @@
   home-manager.users.qenya = { pkgs, ... }: {
     imports = [
       ../../home/cli.nix
+      ../../home/tmux.nix
     ];
 
     home.stateVersion = "23.11";
