@@ -10,6 +10,7 @@ in {
 
     imports = [
       (import "${sources.home-manager}/nixos")
+      (import "${sources.agenix}/modules/age.nix")
       ./pinning.nix
       ./common/utilities.nix
       ./users/qenya.nix
@@ -29,7 +30,7 @@ in {
   yevaud = { name, nodes, ... }: {
     networking.hostId = "09673d65";
     time.timeZone = "Etc/UTC";
-    
+
     imports = [
       ./colmena/remote.nix
       ./hosts/yevaud/configuration.nix
