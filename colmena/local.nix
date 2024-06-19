@@ -8,10 +8,6 @@ in {
     tags = [ "local" ];
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    agenix = (import "${sources.agenix}" { inherit pkgs; }).agenix;
-  };
-
   environment.systemPackages = with pkgs; [
     agenix
     colmena

@@ -6,7 +6,18 @@ in {
     deployment.replaceUnknownProfiles = false;
     networking.hostName = name;
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+      allowUnfree = true;
+      packageOverrides = pkgs: {
+        agenix = (import sources.agenix { inherit pkgs; }).agenix;
+        vscode-extensions = (import sources.nix-vscode-extensions).extensions.x86_64-linux; # TODO: This should check the host architecture
+      };
+    };
+
+    home-manager = {
+      useUserPackages = true;
+      useGlobalPkgs = true;
+    };
 
     imports = [
       (import "${sources.home-manager}/nixos")
