@@ -7,6 +7,7 @@
       ./home.nix
       ../../common/fonts.nix
       ../../common/steam.nix
+      ./syncthing.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
