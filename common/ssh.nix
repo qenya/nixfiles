@@ -10,6 +10,4 @@
   };
 
   services.fail2ban.enable = true;
-
-  networking.firewall.allowedTCPPorts = [ 22 ];
 }

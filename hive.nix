@@ -23,6 +23,7 @@ in {
       (import "${sources.home-manager}/nixos")
       (import "${sources.agenix}/modules/age.nix")
       ./pinning.nix
+      ./common/ssh.nix
       ./common/sudo.nix
       ./common/utilities.nix
       ./users/qenya.nix
