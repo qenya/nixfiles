@@ -8,9 +8,4 @@
   };
 
   services.joycond.enable = true;
-
-  # Currently broken: 
-  # environment.systemPackages = with pkgs; [
-  #   itch
-  # ];
 }
