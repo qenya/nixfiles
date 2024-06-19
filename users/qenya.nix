@@ -20,7 +20,7 @@
     programs.git = {
       enable = true;
       userName = "Katherina Walshe-Grey";
-      userEmail = "git@katherina.rocks"; # TODO: update email
+      userEmail = "git@qenya.tel";
     };
 
     home.stateVersion = "23.11";
