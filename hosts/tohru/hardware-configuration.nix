@@ -28,6 +28,16 @@
       fsType = "zfs";
     };
 
+  fileSystems."/config" =
+    { device = "rpool/config";
+      fsType = "zfs";
+    };
+
+  fileSystems."/data" =
+    { device = "rpool/data";
+      fsType = "zfs";
+    };
+
   fileSystems."/home" =
     { device = "rpool/home";
       fsType = "zfs";
@@ -39,18 +49,13 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/data" =
-    { device = "rpool/data";
-      fsType = "zfs";
-    };
-
   fileSystems."/data/steam" =
     { device = "rpool/data/steam";
       fsType = "zfs";
     };
 
-  fileSystems."/config" =
-    { device = "rpool/config";
+  fileSystems."/data/syncthing" =
+    { device = "rpool/data/syncthing";
       fsType = "zfs";
     };
 
