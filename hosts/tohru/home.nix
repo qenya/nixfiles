@@ -16,6 +16,8 @@
       keepassxc
       thunderbird
       tor-browser-bundle-bin
+
+      nur.repos.qenya.digitalalovestory-bin
     ];
     programs.chromium.enable = true;
 
