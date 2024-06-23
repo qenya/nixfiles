@@ -44,6 +44,18 @@
       "name": "nixos-24.05",
       "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.1503.752c634c09ce/nixexprs.tar.xz",
       "hash": "0rl95c97s2ad1sg7h8dxdsiarmacbi38gwmcy9a9a4blsaa43ahm"
+    },
+    "nur": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "NUR"
+      },
+      "branch": "master",
+      "revision": "255122407be8684afd4627ff97331491e127f15a",
+      "url": "https://github.com/nix-community/NUR/archive/255122407be8684afd4627ff97331491e127f15a.tar.gz",
+      "hash": "1xl0hwsjhn9px8fjq332ri6g6hz7hclgzlc0wpxivbdcj0ydllwj"
     }
   },
   "version": 3
