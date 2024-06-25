@@ -17,7 +17,7 @@
       thunderbird
       tor-browser-bundle-bin
 
-      nur.repos.qenya.digitalalovestory-bin
+      nur.repos.qenya.digital-a-love-story
     ];
     programs.chromium.enable = true;
 
