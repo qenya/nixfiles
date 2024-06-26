@@ -12,8 +12,11 @@
 
     home.packages = with pkgs; [
       bitwarden
+      discord
       foliate
+      gimp-with-plugins
       keepassxc
+      openttd
       thunderbird
       tor-browser-bundle-bin
 
