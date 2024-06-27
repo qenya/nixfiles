@@ -24,6 +24,7 @@
         diagnostics.ignored = [ "unused_binding" "unused_with" ];
         formatting.command = [ "nixpkgs-fmt" ];
       };
+      "terminal.integrated.allowChords" = false;
       "workbench.colorTheme" = "SynthWave '84";
     };
   };
