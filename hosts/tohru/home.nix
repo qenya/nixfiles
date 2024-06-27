@@ -10,7 +10,7 @@
       ../../home/vscode.nix
     ];
 
-    home.packages = with pkgs; [
+    home.packages = (with pkgs; [
       bitwarden
       discord
       foliate
@@ -19,9 +19,10 @@
       openttd
       thunderbird
       tor-browser-bundle-bin
-
-      nur.repos.qenya.digital-a-love-story
-    ];
+    ]) ++ (with pkgs.nur.repos.qenya; [
+      digital-a-love-story
+      dont-take-it-personally-babe
+    ]);
     programs.chromium.enable = true;
 
     home.stateVersion = "23.11";
