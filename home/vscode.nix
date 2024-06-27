@@ -6,11 +6,11 @@
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     package = pkgs.vscodium;
-    extensions = (with pkgs.vscode-extensions; [
+    extensions = with pkgs.vscode-extensions; [
       open-vsx.jnoortheen.nix-ide
       open-vsx.ms-python.python
       open-vsx.robbowen.synthwave-vscode
-    ]);
+    ];
     mutableExtensionsDir = false;
     userSettings = {
       "extensions.autoUpdate" = false;
