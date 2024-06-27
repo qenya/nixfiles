@@ -17,6 +17,7 @@
       "git.autofetch" = true;
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
+      "git.inputValidation" = true;
       "javascript.updateImportsOnFileMove.enabled" = "always";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
