@@ -18,6 +18,7 @@
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
       "git.inputValidation" = true;
+      "git.inputValidationSubjectLength" = null;
       "javascript.updateImportsOnFileMove.enabled" = "always";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
