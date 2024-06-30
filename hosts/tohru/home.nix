@@ -5,6 +5,7 @@
     imports = [
       ../../home/cli.nix
       ../../home/firefox.nix
+      ../../home/git.nix
       ../../home/gnome
       ../../home/libreoffice.nix
       ../../home/vscode.nix
