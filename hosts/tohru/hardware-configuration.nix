@@ -33,20 +33,19 @@
       fsType = "zfs";
     };
 
-  fileSystems."/data" =
-    { device = "rpool/data";
-      fsType = "zfs";
-    };
-
   fileSystems."/home" =
     { device = "rpool/home";
       fsType = "zfs";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7DD4-487E";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+  fileSystems."/data" =
+    { device = "rpool/data";
+      fsType = "zfs";
+    };
+
+  fileSystems."/data/syncthing" =
+    { device = "rpool/data/syncthing";
+      fsType = "zfs";
     };
 
   fileSystems."/data/steam" =
@@ -54,9 +53,10 @@
       fsType = "zfs";
     };
 
-  fileSystems."/data/syncthing" =
-    { device = "rpool/data/syncthing";
-      fsType = "zfs";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7DD4-487E";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
