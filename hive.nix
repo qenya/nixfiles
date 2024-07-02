@@ -50,4 +50,14 @@ in {
       ./hosts/yevaud/configuration.nix
     ];
   };
+
+  orm = { name, nodes, ... }: {
+    networking.hostId = "00000000";
+    time.timeZone = "Etc/UTC";
+
+    imports = [
+      ./colmena/remote.nix
+      ./hosts/orm/configuration.nix
+    ];
+  };
 }
