@@ -12,6 +12,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru"
     ];
+    uid = 1001;
   };
 
   home-manager.users.qenya = { config, lib, pkgs, osConfig, ... }: {
