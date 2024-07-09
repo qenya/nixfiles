@@ -2,8 +2,6 @@
 
 {
   services.nginx = {
-    enable = true;
-
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
@@ -28,6 +26,4 @@
     acceptTerms = true;
     defaults.email = "accounts@katherina.rocks"; # TODO: replace with more appropriate email
   };
-
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
