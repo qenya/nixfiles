@@ -9,5 +9,8 @@
     qenya = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru"
     ];
+    richard = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHAuYWPfYVKdjBY/gBMt2n11Seb+hMqjui1PQ6C4ph8i richard@tress"
+    ];
   };
 }

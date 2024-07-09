@@ -28,7 +28,7 @@ in {
       ./common/ssh.nix
       ./common/sudo.nix
       ./common/utilities.nix
-      ./common/users/qenya.nix
+      ./common/users
     ];
   };
 
