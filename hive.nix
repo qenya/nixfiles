@@ -23,6 +23,9 @@ in {
     imports = [
       (import "${sources.home-manager}/nixos")
       (import "${sources.agenix}/modules/age.nix")
+      # TODO: npins requires manual intervention to upgrade lix and lix-module (add the tarball URL to sources.json)
+      # See: https://github.com/andir/npins/issues/47
+      (import "${sources.lix-module}/module.nix" { lix = sources.lix; })
       ./pinning.nix
       ./common/nginx.nix
       ./common/ssh.nix

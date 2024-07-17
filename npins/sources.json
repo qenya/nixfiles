@@ -27,6 +27,34 @@
       "url": "https://github.com/nix-community/home-manager/archive/391ca6e950c2525b4f853cbe29922452c14eda82.tar.gz",
       "hash": "17cb6y4dymp351mj89y1bmxvqzw8m9h89nqd3qrwg6qjdm9sgkxa"
     },
+    "lix": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://git.lix.systems/lix-project/lix.git"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "2.90.0",
+      "revision": "2a4376be20d70feaa2b0e640c5041fb66ddc67ed",
+      "url": "https://git.lix.systems/lix-project/lix/archive/2.90.0.tar.gz",
+      "hash": "1iyylsiv1n6mf6rbi4k4fm5nv24a940cwfz92gk9fx6axh2kxjbz"
+    },
+    "lix-module": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://git.lix.systems/lix-project/nixos-module.git"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "2.90.0",
+      "revision": "5c48c833c15bb80d127a398a8c2484d42fdd8257",
+      "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz",
+      "hash": "1lb0xljlbhcjd1y79sspfrd15jar7q10sqkwzmqnzkk0cdqbchy8"
+    },
     "nix-vscode-extensions": {
       "type": "Git",
       "repository": {
