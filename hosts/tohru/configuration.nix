@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./home.nix
+      ../../services/evolution.nix
       ../../services/fonts.nix
       ../../services/steam.nix
       ./syncthing.nix
