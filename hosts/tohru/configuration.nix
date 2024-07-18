@@ -5,8 +5,8 @@
     [
       ./hardware-configuration.nix
       ./home.nix
-      ../../common/fonts.nix
-      ../../common/steam.nix
+      ../../services/fonts.nix
+      ../../services/steam.nix
       ./syncthing.nix
     ];
 
