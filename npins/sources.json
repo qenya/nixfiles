@@ -23,9 +23,9 @@
         "repo": "home-manager"
       },
       "branch": "release-24.05",
-      "revision": "391ca6e950c2525b4f853cbe29922452c14eda82",
-      "url": "https://github.com/nix-community/home-manager/archive/391ca6e950c2525b4f853cbe29922452c14eda82.tar.gz",
-      "hash": "17cb6y4dymp351mj89y1bmxvqzw8m9h89nqd3qrwg6qjdm9sgkxa"
+      "revision": "e1391fb22e18a36f57e6999c7a9f966dc80ac073",
+      "url": "https://github.com/nix-community/home-manager/archive/e1391fb22e18a36f57e6999c7a9f966dc80ac073.tar.gz",
+      "hash": "0c83di08nhkzq0cwc3v7aax3x8y5m7qahyzxppinzwxi3r8fnjq3"
     },
     "nix-vscode-extensions": {
       "type": "Git",
@@ -35,15 +35,15 @@
         "repo": "nix-vscode-extensions"
       },
       "branch": "master",
-      "revision": "3be7b0b799d739c3e15f3fd0a909d682c173962f",
-      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/3be7b0b799d739c3e15f3fd0a909d682c173962f.tar.gz",
-      "hash": "00z3lqlpfabdp6sg8d6z2vlyvnig89brkhwgri5waznrw3ksna2y"
+      "revision": "829828eddd52363236a53d55c40e1d4aa7af5a56",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/829828eddd52363236a53d55c40e1d4aa7af5a56.tar.gz",
+      "hash": "0ahiqmj36ib0fc98isgpqs9adafdgfvll60ccmryx6d6ziga0w5d"
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-24.05",
-      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.2355.d032c1a6dfad/nixexprs.tar.xz",
-      "hash": "1fynyfjsmrxs383mygzlbkb3yhzmlnnpf8x84mikaiqc3ngszsv8"
+      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.2933.c716603a63ac/nixexprs.tar.xz",
+      "hash": "0gy2wvfwwi2jss5prhxq5c1rw321mi82c0mnki5m404j2zzzas6f"
     },
     "nur": {
       "type": "Git",
@@ -53,9 +53,9 @@
         "repo": "NUR"
       },
       "branch": "master",
-      "revision": "6206fd683edcb79c4a0592cf25e610449ed0d82d",
-      "url": "https://github.com/nix-community/NUR/archive/6206fd683edcb79c4a0592cf25e610449ed0d82d.tar.gz",
-      "hash": "108k8qshygkcdc1y5k9dfyw24jizcp1jvhkz8a7pzf57frkhzrdx"
+      "revision": "6e46867fdecc920a1de55dc1e553a16f54e2d2ee",
+      "url": "https://github.com/nix-community/NUR/archive/6e46867fdecc920a1de55dc1e553a16f54e2d2ee.tar.gz",
+      "hash": "0vwl9svpc51x2byzn844z7q9v4hsa3hhqi8m40fj401hqdivrg3n"
     }
   },
   "version": 3
