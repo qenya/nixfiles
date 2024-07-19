@@ -1,13 +1,22 @@
 { config, lib, pkgs, ... }:
 
 {
-  # CLI utilities I get frustrated if I'm missing
   environment.systemPackages = with pkgs; [
     git
-    inetutils
     lshw
     parted
     wget
+
+    # network troubleshooting
+    inetutils
+    lsof
+    tcpdump
+    netcat # <3
+
+    # used for nix config
+    npins
+    colmena
+    agenix
   ];
 
   environment.wordlist.enable = true;

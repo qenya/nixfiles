@@ -7,10 +7,4 @@ in {
     targetHost = null;
     tags = [ "local" ];
   };
-
-  environment.systemPackages = with pkgs; [
-    agenix
-    colmena
-    npins
-  ];
 }
