@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./home.nix
+    ./wireguard.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

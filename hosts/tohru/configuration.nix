@@ -9,6 +9,7 @@
       ../../services/fonts.nix
       ../../services/steam.nix
       ./syncthing.nix
+      ./wireguard.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
