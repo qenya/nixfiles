@@ -29,7 +29,6 @@
       nur.repos.qenya.digital-a-love-story
       nur.repos.qenya.dont-take-it-personally-babe
     ]);
-    programs.chromium.enable = true;
 
     home.stateVersion = "23.11";
   };
