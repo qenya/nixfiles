@@ -15,6 +15,7 @@
       discord
       foliate
       gimp-with-plugins
+      jellyfin-media-player
       keepassxc
       thunderbird
       tor-browser-bundle-bin
