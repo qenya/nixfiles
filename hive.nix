@@ -25,6 +25,7 @@ in {
       (import "${sources.agenix}/modules/age.nix")
       ./pinning.nix
       ./common
+      ./services
     ];
   };
 
