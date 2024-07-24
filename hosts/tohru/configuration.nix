@@ -5,7 +5,6 @@
     [
       ./hardware-configuration.nix
       ./home.nix
-      ../../services/evolution.nix
       ../../services/fonts.nix
       ../../services/steam.nix
       ./syncthing.nix
@@ -15,6 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
+
+  programs.evolution.enable = true;
+  qenya.services.fonts.enable = true;
+  qenya.services.steam.enable = true;
 
   networking.networkmanager.enable = true;
 
