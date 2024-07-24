@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
+with lib;
 let
   cfg = config.qenya.services.forgejo;
-  inherit (lib) mkIf mkEnableOption mkOption types;
 in
 {
   options.qenya.services.forgejo = {

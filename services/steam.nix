@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
+with lib;
 let
   cfg = config.qenya.services.steam;
-  inherit (lib) mkIf mkEnableOption;
 in
 {
   options.qenya.services.steam = {
