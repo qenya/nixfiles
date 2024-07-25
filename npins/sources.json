@@ -35,15 +35,15 @@
         "repo": "nix-vscode-extensions"
       },
       "branch": "master",
-      "revision": "829828eddd52363236a53d55c40e1d4aa7af5a56",
-      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/829828eddd52363236a53d55c40e1d4aa7af5a56.tar.gz",
-      "hash": "0ahiqmj36ib0fc98isgpqs9adafdgfvll60ccmryx6d6ziga0w5d"
+      "revision": "500be2a1404429cfccdb4bf71e515cc38f206a25",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/500be2a1404429cfccdb4bf71e515cc38f206a25.tar.gz",
+      "hash": "0w01kcnjpwb9zfsw066lnq0l84w28nbryfrdbddnl768l30rbz63"
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-24.05",
-      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.2933.c716603a63ac/nixexprs.tar.xz",
-      "hash": "0gy2wvfwwi2jss5prhxq5c1rw321mi82c0mnki5m404j2zzzas6f"
+      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.3214.575f3027caa1/nixexprs.tar.xz",
+      "hash": "0w5kza4qrnlhsp1ls385zmf6cbkfwcxiriz69bi29zjhn2rl9gh5"
     },
     "nur": {
       "type": "Git",
@@ -53,9 +53,9 @@
         "repo": "NUR"
       },
       "branch": "master",
-      "revision": "6e46867fdecc920a1de55dc1e553a16f54e2d2ee",
-      "url": "https://github.com/nix-community/NUR/archive/6e46867fdecc920a1de55dc1e553a16f54e2d2ee.tar.gz",
-      "hash": "0vwl9svpc51x2byzn844z7q9v4hsa3hhqi8m40fj401hqdivrg3n"
+      "revision": "1002ee1f90ca51d8891642094d3a1e840d82b616",
+      "url": "https://github.com/nix-community/NUR/archive/1002ee1f90ca51d8891642094d3a1e840d82b616.tar.gz",
+      "hash": "1b1b4mdhdznbz6rz2hvwfg79x7s6ln44gpn968gyl5kc02wmaia3"
     }
   },
   "version": 3
