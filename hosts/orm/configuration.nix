@@ -11,7 +11,7 @@
 
   age.secrets.wireguard-peer-orm.file = ../../secrets/wireguard-peer-orm.age;
 
-  birdsong.peer = {
+  birdsong.peering = {
     enable = true;
     privateKeyFile = config.age.secrets.wireguard-peer-orm.path;
   };

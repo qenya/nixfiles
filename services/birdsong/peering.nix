@@ -2,13 +2,13 @@
 
 with lib;
 let
-  cfg = config.birdsong.peer;
+  cfg = config.birdsong.peering;
   hostName = if null != cfg.hostName then cfg.hostName else config.networking.hostName;
   hosts = config.birdsong.hosts;
   host = hosts.${hostName};
 in
 {
-  options.birdsong.peer = {
+  options.birdsong.peering = {
     enable = mkEnableOption "WireGuard peering with the birdsong network";
     hostName = mkOption {
       default = null;
@@ -53,11 +53,11 @@ in
     assertions = [
       {
         assertion = cfg ? privateKeyFile;
-        message = "birdsong.peer.privateKeyFile must be set";
+        message = "birdsong.peering.privateKeyFile must be set";
       }
       {
         assertion = hostName != null;
-        message = "birdsong.peer.hostName or networking.hostName must be set";
+        message = "birdsong.peering.hostName or networking.hostName must be set";
       }
     ];
 

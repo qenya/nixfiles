@@ -11,7 +11,7 @@
 
   age.secrets.wireguard-peer-yevaud.file = ../../secrets/wireguard-peer-yevaud.age;
 
-  birdsong.peer = {
+  birdsong.peering = {
     enable = true;
     privateKeyFile = config.age.secrets.wireguard-peer-yevaud.path;
   };

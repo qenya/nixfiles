@@ -1,6 +1,6 @@
 {
   imports = [
-    ./peer.nix
     ./hosts.nix
+    ./peering.nix
   ];
 }
