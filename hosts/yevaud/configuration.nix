@@ -9,6 +9,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  age.secrets.wireguard-peer-yevaud.file = ../../secrets/wireguard-peer-yevaud.age;
+
+  birdsong.peer = {
+    enable = true;
+    privateKeyFile = config.age.secrets.wireguard-peer-yevaud.path;
+  };
+
   qenya.services.forgejo = {
     enable = true;
     domain = "git.qenya.tel";
