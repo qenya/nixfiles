@@ -22,9 +22,9 @@
         "url": "https://git.qenya.tel/qenya/birdsong.git"
       },
       "branch": "main",
-      "revision": "ad6a7c93431fbb371d434f4951a034e8897c4d08",
+      "revision": "752faa333d5686b5457e6c956d015bd6ec4e3eca",
       "url": null,
-      "hash": "13d7g24p3pfdrdm2rnv22vd7qhxh4nawjy3z4y3cq6g3pn2avcg7"
+      "hash": "1zl4zwkqapwmghbmzcpfzm4sfmmfxvp8j5bk241zmkvi8frlx1jf"
     },
     "home-manager": {
       "type": "Git",
@@ -53,8 +53,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-24.05",
-      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.3214.575f3027caa1/nixexprs.tar.xz",
-      "hash": "0w5kza4qrnlhsp1ls385zmf6cbkfwcxiriz69bi29zjhn2rl9gh5"
+      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.3268.d0907b75146a/nixexprs.tar.xz",
+      "hash": "1j40g3ms1pqldmx9pfhw4mslhxnrnklj0phwhzgk5g3m5hczb1j6"
     },
     "nur": {
       "type": "Git",
@@ -64,9 +64,9 @@
         "repo": "NUR"
       },
       "branch": "master",
-      "revision": "163ce69fca09c026a5963a4a44f7cf0b83178ee3",
-      "url": "https://github.com/nix-community/NUR/archive/163ce69fca09c026a5963a4a44f7cf0b83178ee3.tar.gz",
-      "hash": "1nnis8gjilg2l0hr6vcmsxlfkb6gbip5iry3065ilj5dkxcjn0j8"
+      "revision": "f769fc25d19d5521a997686ffd66c08a3d23334f",
+      "url": "https://github.com/nix-community/NUR/archive/f769fc25d19d5521a997686ffd66c08a3d23334f.tar.gz",
+      "hash": "1jrllqirq1jig9v7f7r9h5jmywcia7h7qdfn58z8gq24vbp8j0h4"
     }
   },
   "version": 3
