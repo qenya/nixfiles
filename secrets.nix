@@ -5,8 +5,8 @@ let
 
   secrets = with keys; {
     wireguard-hub = [ machines.orm ];
-    wireguard-peer-orm = [ machines.orm ];
     wireguard-peer-tohru = [ machines.tohru ];
+    wireguard-peer-yevaud = [ machines.yevaud ];
   };
 in
 builtins.listToAttrs (
