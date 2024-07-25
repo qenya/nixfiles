@@ -4,7 +4,7 @@ let
   commonKeys = keys.users.qenya;
 
   secrets = with keys; {
-    wireguard-hub = [ machines.orm ];
+    wireguard-peer-orm = [ machines.orm ];
     wireguard-peer-tohru = [ machines.tohru ];
     wireguard-peer-yevaud = [ machines.yevaud ];
   };

@@ -8,12 +8,19 @@
       ../../services/fonts.nix
       ../../services/steam.nix
       ./syncthing.nix
-      ./wireguard.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
+
+  age.secrets.wireguard-peer-tohru.file = ../../secrets/wireguard-peer-tohru.age;
+
+  birdsong.peer = {
+    enable = true;
+    privateKeyFile = config.age.secrets.wireguard-peer-tohru.path;
+    persistentKeepalive = 23;
+  };
 
   programs.evolution.enable = true;
   qenya.services.fonts.enable = true;
