@@ -23,6 +23,7 @@ in {
     imports = [
       (import "${sources.home-manager}/nixos")
       (import "${sources.agenix}/modules/age.nix")
+      (import sources.birdsong)
       ./pinning.nix
       ./common
       ./services

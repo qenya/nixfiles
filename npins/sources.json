@@ -15,6 +15,17 @@
       "url": "https://api.github.com/repos/ryantm/agenix/tarball/0.15.0",
       "hash": "01dhrghwa7zw93cybvx4gnrskqk97b004nfxgsys0736823956la"
     },
+    "birdsong": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://git.qenya.tel/qenya/birdsong.git"
+      },
+      "branch": "main",
+      "revision": "04e5519bf363388debfafc31285851c7816d087a",
+      "url": null,
+      "hash": "04xzplpbqy5lsild4amy58x0d9dbvf988d3r65grg41vy08d3ym4"
+    },
     "home-manager": {
       "type": "Git",
       "repository": {
