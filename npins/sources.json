@@ -22,9 +22,9 @@
         "url": "https://git.qenya.tel/qenya/birdsong.git"
       },
       "branch": "main",
-      "revision": "04e5519bf363388debfafc31285851c7816d087a",
+      "revision": "ad6a7c93431fbb371d434f4951a034e8897c4d08",
       "url": null,
-      "hash": "04xzplpbqy5lsild4amy58x0d9dbvf988d3r65grg41vy08d3ym4"
+      "hash": "13d7g24p3pfdrdm2rnv22vd7qhxh4nawjy3z4y3cq6g3pn2avcg7"
     },
     "home-manager": {
       "type": "Git",
@@ -64,9 +64,9 @@
         "repo": "NUR"
       },
       "branch": "master",
-      "revision": "1002ee1f90ca51d8891642094d3a1e840d82b616",
-      "url": "https://github.com/nix-community/NUR/archive/1002ee1f90ca51d8891642094d3a1e840d82b616.tar.gz",
-      "hash": "1b1b4mdhdznbz6rz2hvwfg79x7s6ln44gpn968gyl5kc02wmaia3"
+      "revision": "163ce69fca09c026a5963a4a44f7cf0b83178ee3",
+      "url": "https://github.com/nix-community/NUR/archive/163ce69fca09c026a5963a4a44f7cf0b83178ee3.tar.gz",
+      "hash": "1nnis8gjilg2l0hr6vcmsxlfkb6gbip5iry3065ilj5dkxcjn0j8"
     }
   },
   "version": 3
