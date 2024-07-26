@@ -30,6 +30,11 @@
         enableACME = true;
         locations."/".return = "301 https://git.qenya.tel$request_uri";
       };
+      "birdsong.network" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".return = "301 https://git.qenya.tel/qenya/birdsong/";
+      };
     };
   };
 
