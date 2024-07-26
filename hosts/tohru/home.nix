@@ -8,6 +8,7 @@
       ../../home/git.nix
       ../../home/gnome
       ../../home/vscode.nix
+      ../../home/zsh.nix
     ];
 
     home.packages = (with pkgs; [

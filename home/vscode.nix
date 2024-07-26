@@ -36,6 +36,7 @@
         formatting.command = [ "nixpkgs-fmt" ];
       };
       "terminal.integrated.allowChords" = false;
+      "terminal.integrated.defaultProfile.linux" = "zsh";
       "workbench.colorTheme" = "SynthWave '84";
     };
   };
