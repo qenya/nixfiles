@@ -10,6 +10,7 @@
 
     shellAliases = {
       ll = "ls -l";
+      nix-shell = ''nix-shell --command "zsh"''; # TODO: tweak theme to display something when inside nix-shell
     };
 
     history = {
