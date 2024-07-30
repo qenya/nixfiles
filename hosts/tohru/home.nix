@@ -2,7 +2,7 @@
 
 {
   home-manager.users.qenya = { pkgs, ... }: {
-    qenya.dconf.enable = true;
+    dconf.enable = true;
 
     programs = {
       firefox.enable = true; # TODO: config is not yet nix-ified

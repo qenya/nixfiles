@@ -4,23 +4,12 @@
 
 # home-manager, in its infinite wisdom, sets `dconf.enable` to true by default.
 # This is a problem because we don't want it to attempt to apply our settings on
-# a system that doesn't actually have GNOME installed.
+# a system that doesn't actually have GNOME installed. So, we override the
+# default to false.
 
-# To work around it, we create our own option `qenya.dconf.enable`, which
-# defaults to false, and pass it to `dconf.enable`.
-
-let
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.qenya.dconf;
-in
-{
-  options.qenya.dconf = {
-    enable = mkEnableOption "dconf";
-  };
-
-  config = {
-    dconf.enable = config.qenya.dconf.enable;
-  };
+let inherit (lib) mkDefault;
+in {
+  dconf.enable = mkDefault false;
 
   imports = [
     # TODO: nix-ify other parts of GNOME config
