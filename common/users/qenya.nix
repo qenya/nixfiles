@@ -1,8 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let keys = import ../../keys.nix;
-in
-{
+in {
   users.users.qenya = {
     isNormalUser = true;
     home = "/home/qenya";
@@ -19,12 +18,8 @@ in
   home-manager.users.qenya = { config, lib, pkgs, osConfig, ... }: {
     home.homeDirectory = osConfig.users.users.qenya.home;
 
-    programs.git = {
-      enable = true;
-      userName = "Katherina Walshe-Grey";
-      userEmail = "git@qenya.tel";
-    };
-
-    home.stateVersion = "23.11";
+    imports = [
+      ../../home
+    ];
   };
 }

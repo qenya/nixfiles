@@ -2,14 +2,12 @@
 
 {
   home-manager.users.qenya = { pkgs, ... }: {
-    imports = [
-      ../../home/cli.nix
-      ../../home/firefox.nix
-      ../../home/git.nix
-      ../../home/gnome
-      ../../home/vscode.nix
-      ../../home/zsh.nix
-    ];
+    qenya.dconf.enable = true;
+
+    programs = {
+      firefox.enable = true; # TODO: config is not yet nix-ified
+      vscode.enable = true;
+    };
 
     home.packages = (with pkgs; [
       bitwarden
@@ -31,7 +29,5 @@
       nur.repos.qenya.digital-a-love-story
       nur.repos.qenya.dont-take-it-personally-babe
     ]);
-
-    home.stateVersion = "23.11";
   };
 }

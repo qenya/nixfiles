@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
-{
+let inherit (lib) mkIf;
+in {
   dconf = {
-    enable = true;
     settings =
       let
         backgroundOptions = {
@@ -21,5 +21,7 @@
         "org/gnome/desktop/interface".color-scheme = "prefer-dark";
       };
   };
-  home.file.".background-image".source = ./background-image.jpg;
+  home.file.".background-image" = mkIf config.dconf.enable {
+    source = ./background-image.jpg;
+  };
 }

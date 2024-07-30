@@ -2,7 +2,6 @@
 
 {
   dconf = {
-    enable = true;
     settings = {
       "org/gnome/desktop/wm/keybindings" = {
         # These are largely useless on most normal systems
