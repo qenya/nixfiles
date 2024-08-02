@@ -9,9 +9,9 @@ in {
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       open-vsx.golang.go
+      open-vsx.jdinhlife.gruvbox
       open-vsx.jnoortheen.nix-ide
       open-vsx.ms-python.python
-      open-vsx.robbowen.synthwave-vscode
     ];
     mutableExtensionsDir = false;
     userSettings = {
@@ -38,7 +38,7 @@ in {
       };
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
-      "workbench.colorTheme" = "SynthWave '84";
+      "workbench.colorTheme" = "Gruvbox Dark Hard";
     };
   };
 
