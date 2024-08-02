@@ -16,7 +16,6 @@
       gimp-with-plugins
       jellyfin-media-player
       keepassxc
-      thunderbird
       tor-browser-bundle-bin
 
       # libreoffice
@@ -26,6 +25,7 @@
 
       # games
       openttd
+      prismlauncher
       nur.repos.qenya.digital-a-love-story
       nur.repos.qenya.dont-take-it-personally-babe
     ]);
