@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+  inherit (lib) mkIf;
+in {
   programs.vscode = {
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
@@ -41,9 +43,9 @@
   };
 
   # Language servers etc
-  home.packages = with pkgs; [
+  home.packages = mkIf config.programs.vscode.enable (with pkgs; [
     gopls
     nil
     nixpkgs-fmt
-  ];
+  ]);
 }
