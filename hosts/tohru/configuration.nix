@@ -1,14 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./home.nix
-      ../../services/fonts.nix
-      ../../services/steam.nix
-      ./syncthing.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./syncthing.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,6 +21,12 @@
   programs.evolution.enable = true;
   qenya.services.fonts.enable = true;
   qenya.services.steam.enable = true;
+
+  home-manager.users.qenya = { pkgs, ... }: {
+    imports = [
+      ./home.nix
+    ];
+  };
 
   networking.networkmanager.enable = true;
 
