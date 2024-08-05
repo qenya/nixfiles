@@ -35,7 +35,7 @@ in {
     time.timeZone = "Europe/London";
 
     imports = [
-      ./colmena/local.nix
+      ./deployment/local.nix
       ./hosts/tohru/configuration.nix
     ];
   };
@@ -45,7 +45,7 @@ in {
     time.timeZone = "Etc/UTC";
 
     imports = [
-      ./colmena/remote.nix
+      ./deployment/remote.nix
       ./hosts/yevaud/configuration.nix
     ];
   };
@@ -55,7 +55,7 @@ in {
     time.timeZone = "Etc/UTC";
 
     imports = [
-      ./colmena/remote.nix
+      ./deployment/remote.nix
       ./hosts/orm/configuration.nix
     ];
   };
