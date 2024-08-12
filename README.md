@@ -6,14 +6,15 @@ The canonical location for this repository is https://git.qenya.tel/qenya/nixfil
 
 ## Machines
 
-### In this config
+### Managed
 * `tohru`: Dell Latitude 5300, personal laptop
-* `yevaud`: Oracle Cloud free AMD VM, hosts a Forgejo instance
-* `orm`: Oracle Cloud free AMD VM, WireGuard server for the other machines in the network
+* `yevaud`: Oracle Cloud free AMD VM, hosts a Forgejo instance and WireGuard server for the other machines in the network
+* `orm`: Oracle Cloud free AMD VM, currently idling
 
 ### Referenced only
 * `kilgharrah`: Custom-built personal desktop, currently running Arch
 * `shaw`: [My girlfriend's NAS](https://github.com/randomnetcat/nix-configs/tree/main/hosts/shaw)
+* `latias`: My Steam Deck
 
 ## Usage
 
