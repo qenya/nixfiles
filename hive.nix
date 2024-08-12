@@ -59,4 +59,15 @@ in {
       ./hosts/orm/configuration.nix
     ];
   };
+
+  kalessin = { name, nodes, ... }: {
+    networking.hostId = "534b538e";
+    time.timeZone = "Etc/UTC";
+    deployment.buildOnTarget = true;
+
+    imports = [
+      ./deployment/remote.nix
+      ./hosts/kalessin/configuration.nix
+    ];
+  };
 }
