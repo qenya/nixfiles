@@ -22,9 +22,9 @@
         "url": "https://git.qenya.tel/qenya/birdsong.git"
       },
       "branch": "main",
-      "revision": "752faa333d5686b5457e6c956d015bd6ec4e3eca",
+      "revision": "2fd6d96a00ef69a2afe72a2fe9d18d759c1cc8f3",
       "url": null,
-      "hash": "1zl4zwkqapwmghbmzcpfzm4sfmmfxvp8j5bk241zmkvi8frlx1jf"
+      "hash": "100l0mjfikv3sjphjb9aw2qhvqz7p616px1rl2gm1f5z9iljy7fp"
     },
     "home-manager": {
       "type": "Git",
@@ -46,15 +46,15 @@
         "repo": "nix-vscode-extensions"
       },
       "branch": "master",
-      "revision": "500be2a1404429cfccdb4bf71e515cc38f206a25",
-      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/500be2a1404429cfccdb4bf71e515cc38f206a25.tar.gz",
-      "hash": "0w01kcnjpwb9zfsw066lnq0l84w28nbryfrdbddnl768l30rbz63"
+      "revision": "7270c841614adb30d02e97cdb1a81e3757cef092",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/7270c841614adb30d02e97cdb1a81e3757cef092.tar.gz",
+      "hash": "0y86hbymlz41vmgs9h1f2lgyb8vlchvdrgrx1jpw9brfshnxy6d6"
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-24.05",
-      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.3268.d0907b75146a/nixexprs.tar.xz",
-      "hash": "1j40g3ms1pqldmx9pfhw4mslhxnrnklj0phwhzgk5g3m5hczb1j6"
+      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.3787.a781ff33ae25/nixexprs.tar.xz",
+      "hash": "1kjpxcxgf9nd6a18kdq5y2l379mb1rg57imxdx46rbl0aif7w12x"
     },
     "nur": {
       "type": "Git",
@@ -64,9 +64,9 @@
         "repo": "NUR"
       },
       "branch": "master",
-      "revision": "f769fc25d19d5521a997686ffd66c08a3d23334f",
-      "url": "https://github.com/nix-community/NUR/archive/f769fc25d19d5521a997686ffd66c08a3d23334f.tar.gz",
-      "hash": "1jrllqirq1jig9v7f7r9h5jmywcia7h7qdfn58z8gq24vbp8j0h4"
+      "revision": "a4f1c6cf98a629c082edc90fd84be7cc4525e244",
+      "url": "https://github.com/nix-community/NUR/archive/a4f1c6cf98a629c082edc90fd84be7cc4525e244.tar.gz",
+      "hash": "0c7j5px26vasr9r9xx4r4s7hkwfc31rcsqivn5cal0zwjyvbdg3z"
     }
   },
   "version": 3
