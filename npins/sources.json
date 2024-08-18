@@ -15,29 +15,6 @@
       "url": "https://api.github.com/repos/ryantm/agenix/tarball/0.15.0",
       "hash": "01dhrghwa7zw93cybvx4gnrskqk97b004nfxgsys0736823956la"
     },
-    "birdsong": {
-      "type": "Git",
-      "repository": {
-        "type": "Git",
-        "url": "https://git.qenya.tel/qenya/birdsong.git"
-      },
-      "branch": "main",
-      "revision": "2fd6d96a00ef69a2afe72a2fe9d18d759c1cc8f3",
-      "url": null,
-      "hash": "100l0mjfikv3sjphjb9aw2qhvqz7p616px1rl2gm1f5z9iljy7fp"
-    },
-    "home-manager": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nix-community",
-        "repo": "home-manager"
-      },
-      "branch": "release-24.05",
-      "revision": "e1391fb22e18a36f57e6999c7a9f966dc80ac073",
-      "url": "https://github.com/nix-community/home-manager/archive/e1391fb22e18a36f57e6999c7a9f966dc80ac073.tar.gz",
-      "hash": "0c83di08nhkzq0cwc3v7aax3x8y5m7qahyzxppinzwxi3r8fnjq3"
-    },
     "nix-vscode-extensions": {
       "type": "Git",
       "repository": {
@@ -49,12 +26,6 @@
       "revision": "27ce569a199d2da1a8483fe3d69dd41664da3a63",
       "url": "https://github.com/nix-community/nix-vscode-extensions/archive/27ce569a199d2da1a8483fe3d69dd41664da3a63.tar.gz",
       "hash": "1dpykmk4xmpvx9i8awd93h0g1q8ir2pwsisjzc7vc5f43lm7h86b"
-    },
-    "nixpkgs": {
-      "type": "Channel",
-      "name": "nixos-24.05",
-      "url": "https://releases.nixos.org/nixos/24.05/nixos-24.05.3914.c3d4ac725177/nixexprs.tar.xz",
-      "hash": "1bs4sl01pbxp47sr3hny9mipfibazw1ch2b9cd6vygi501ickx9w"
     },
     "nur": {
       "type": "Git",
