@@ -2,8 +2,8 @@ let sources = import ./npins;
 in {
   meta.nixpkgs = sources.nixpkgs;
 
-  defaults = { name, nodes, ... }: {
-    deployment.replaceUnknownProfiles = false;
+  defaults = { name, nodes, config, lib, pkgs, ... }: {
+    deployment.replaceUnknownProfiles = lib.mkDefault false;
     networking.hostName = name;
 
     nixpkgs.config = {
@@ -63,7 +63,10 @@ in {
   kalessin = { name, nodes, ... }: {
     networking.hostId = "534b538e";
     time.timeZone = "Etc/UTC";
-    deployment.buildOnTarget = true;
+    deployment = {
+      buildOnTarget = true;
+      replaceUnknownProfiles = true;
+    };
 
     imports = [
       ./deployment/remote.nix

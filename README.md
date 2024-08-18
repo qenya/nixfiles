@@ -10,6 +10,7 @@ The canonical location for this repository is https://git.qenya.tel/qenya/nixfil
 * `tohru`: Dell Latitude 5300, personal laptop
 * `yevaud`: Oracle Cloud free AMD VM, hosts a Forgejo instance and WireGuard server for the other machines in the network
 * `orm`: Oracle Cloud free AMD VM, currently idling
+* `kalessin`: Oracle Cloud free ARM VM, currently idling
 
 ### Referenced only
 * `kilgharrah`: Custom-built personal desktop, currently running Arch
