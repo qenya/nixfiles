@@ -28,11 +28,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/data" =
-    { device = "rpool_kalessin/data";
-      fsType = "zfs";
-    };
-
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/2ADE-A033";
       fsType = "vfat";
