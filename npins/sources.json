@@ -46,9 +46,9 @@
         "repo": "nix-vscode-extensions"
       },
       "branch": "master",
-      "revision": "5ea2b85a16c2d4b3c847854e7c8c188f3e0c6db8",
-      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/5ea2b85a16c2d4b3c847854e7c8c188f3e0c6db8.tar.gz",
-      "hash": "0192xjwzh1x9gmj6kwigd1zdpngx5qrnd2qbrc8xh5x0294qakgb"
+      "revision": "27ce569a199d2da1a8483fe3d69dd41664da3a63",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/27ce569a199d2da1a8483fe3d69dd41664da3a63.tar.gz",
+      "hash": "1dpykmk4xmpvx9i8awd93h0g1q8ir2pwsisjzc7vc5f43lm7h86b"
     },
     "nixpkgs": {
       "type": "Channel",
