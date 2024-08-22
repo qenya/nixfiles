@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 
 let
   inherit (lib) mkIf;
   inherit (pkgs) fetchFromGitHub;
-  system = "x86_64-linux"; # TODO: This should check the host architecture
+  inherit (osConfig.nixpkgs.hostPlatform) system;
   extensions =
     (import (fetchFromGitHub {
       # On a stable channel, do NOT keep this up-to-date! VS Code extensions
@@ -13,7 +13,8 @@ let
       rev = "27ce569a199d2da1a8483fe3d69dd41664da3a63";
       hash = "sha256-yyB4Kh3EFbYP+1JHza/IEeHwABypcYVi6vvWTmad/rY=";
     })).extensions.${system};
-in {
+in
+{
   programs.vscode = {
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
