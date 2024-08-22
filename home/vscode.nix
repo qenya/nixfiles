@@ -2,16 +2,27 @@
 
 let
   inherit (lib) mkIf;
+  inherit (pkgs) fetchFromGitHub;
+  system = "x86_64-linux"; # TODO: This should check the host architecture
+  extensions =
+    (import (fetchFromGitHub {
+      # On a stable channel, do NOT keep this up-to-date! VS Code extensions
+      # have breaking changes more frequently than the NixOS release cadence.
+      owner = "nix-community";
+      repo = "nix-vscode-extensions";
+      rev = "27ce569a199d2da1a8483fe3d69dd41664da3a63";
+      hash = "sha256-yyB4Kh3EFbYP+1JHza/IEeHwABypcYVi6vvWTmad/rY=";
+    })).extensions.${system};
 in {
   programs.vscode = {
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions; [
-      open-vsx.golang.go
-      open-vsx.jdinhlife.gruvbox
-      open-vsx.jnoortheen.nix-ide
-      open-vsx.ms-python.python
+    extensions = with extensions.open-vsx; [
+      golang.go
+      jdinhlife.gruvbox
+      jnoortheen.nix-ide
+      ms-python.python
     ];
     mutableExtensionsDir = false;
     userSettings = {

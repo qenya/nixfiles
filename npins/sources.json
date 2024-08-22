@@ -1,17 +1,5 @@
 {
   "pins": {
-    "nix-vscode-extensions": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nix-community",
-        "repo": "nix-vscode-extensions"
-      },
-      "branch": "master",
-      "revision": "27ce569a199d2da1a8483fe3d69dd41664da3a63",
-      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/27ce569a199d2da1a8483fe3d69dd41664da3a63.tar.gz",
-      "hash": "1dpykmk4xmpvx9i8awd93h0g1q8ir2pwsisjzc7vc5f43lm7h86b"
-    },
     "nur": {
       "type": "Git",
       "repository": {
