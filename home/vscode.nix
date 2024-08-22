@@ -2,24 +2,13 @@
 
 let
   inherit (lib) mkIf;
-  inherit (pkgs) fetchFromGitHub;
-  inherit (osConfig.nixpkgs.hostPlatform) system;
-  extensions =
-    (import (fetchFromGitHub {
-      # On a stable channel, do NOT keep this up-to-date! VS Code extensions
-      # have breaking changes more frequently than the NixOS release cadence.
-      owner = "nix-community";
-      repo = "nix-vscode-extensions";
-      rev = "27ce569a199d2da1a8483fe3d69dd41664da3a63";
-      hash = "sha256-yyB4Kh3EFbYP+1JHza/IEeHwABypcYVi6vvWTmad/rY=";
-    })).extensions.${system};
 in
 {
   programs.vscode = {
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     package = pkgs.vscodium;
-    extensions = with extensions.open-vsx; [
+    extensions = with pkgs.vscode-extensions; [
       golang.go
       jdinhlife.gruvbox
       jnoortheen.nix-ide
