@@ -36,7 +36,7 @@
           packageOverrides = pkgs:
             let sources = import ./npins;
             in {
-              agenix = (import sources.agenix { inherit pkgs; }).agenix;
+              agenix = agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
               nur = (import sources.nur { inherit pkgs; });
               vscode-extensions = (import sources.nix-vscode-extensions).extensions.x86_64-linux; # TODO: This should check the host architecture
             };
