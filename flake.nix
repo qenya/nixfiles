@@ -34,10 +34,16 @@
         nixpkgs.config = {
           allowUnfree = true;
           packageOverrides = pkgs:
-            let sources = import ./npins;
-            in {
-              agenix = agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
-              nur = (import sources.nur { inherit pkgs; });
+            let
+              sources = import ./npins;
+              inherit (config.nixpkgs.hostPlatform) system;
+            in
+            {
+              agenix = agenix.packages.${system}.default;
+              nur = (import sources.nur {
+                nurpkgs = pkgs;
+                inherit pkgs;
+              });
             };
         };
 
