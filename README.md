@@ -29,14 +29,8 @@ To build the remote machines, run `colmena apply`. See the [colmena documentatio
 
 ### Updating
 
-Run `npins update` to update the dependencies within the currently selected upgrade channels.
+Run `nix flake update` to update evaluation-time dependencies.
 
-To upgrade to a new major version of a dependency, simply re-add it and the old version will be overwritten, e.g.:
+Run `npins update` to update build-time dependencies.
 
-```sh
-npins add --name nixpkgs channel nixos-unstable
-```
-
-In either case, commit the changes to `npins/sources.json`.
-
-See the [npins documentation](https://github.com/andir/npins) for more details.
+Commit changes to `flake.lock` and `npins/sources.json`.
