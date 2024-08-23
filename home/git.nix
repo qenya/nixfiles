@@ -6,12 +6,9 @@
     userName = "Katherina Walshe-Grey";
     userEmail = "git@qenya.tel";
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      push = {
-        autoSetupRemote = true;
-      };
+      init.defaultBranch = "main";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
     };
   };
 }
