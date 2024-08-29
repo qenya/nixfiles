@@ -8,6 +8,5 @@
     ./nixpkgs.nix
     ./openssh.nix
     ./security.nix
-    ./zsh.nix
   ];
 }

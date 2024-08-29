@@ -9,4 +9,6 @@ in {
     openssh.authorizedKeys.keys = keys.users.qenya;
     uid = 1001;
   };
+
+  programs.zsh.enable = true;
 }
