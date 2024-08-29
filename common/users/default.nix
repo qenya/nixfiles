@@ -4,4 +4,6 @@
     ./randomcat.nix
     ./richard.nix
   ];
+
+  users.mutableUsers = false;
 }

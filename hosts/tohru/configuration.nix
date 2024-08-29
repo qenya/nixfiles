@@ -43,6 +43,8 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  age.secrets.user-password-tohru-qenya.file = ../../secrets/user-password-tohru-qenya.age;
+  users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-tohru-qenya.path;
   users.users.qenya.extraGroups = [
     "wheel" # sudo
     "networkmanager" # UI wifi configuration
