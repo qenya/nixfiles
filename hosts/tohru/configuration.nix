@@ -11,7 +11,6 @@
   boot.loader.systemd-boot.editor = false;
 
   age.secrets.wireguard-peer-tohru.file = ../../secrets/wireguard-peer-tohru.age;
-
   birdsong.peering = {
     enable = true;
     privateKeyFile = config.age.secrets.wireguard-peer-tohru.path;
@@ -29,6 +28,8 @@
   };
 
   networking.networkmanager.enable = true;
+
+  time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";

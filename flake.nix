@@ -59,7 +59,6 @@
 
       tohru = { name, nodes, ... }: {
         networking.hostId = "31da19c1";
-        time.timeZone = "Europe/London";
         deployment = {
           allowLocalDeployment = true;
           targetHost = null; # disallow remote deployment
@@ -72,7 +71,6 @@
 
       yevaud = { name, nodes, ... }: {
         networking.hostId = "09673d65";
-        time.timeZone = "Etc/UTC";
         deployment.targetHost = "yevaud.birdsong.network";
 
         imports = [
@@ -82,7 +80,6 @@
 
       orm = { name, nodes, ... }: {
         networking.hostId = "00000000";
-        time.timeZone = "Etc/UTC";
         deployment.targetHost = "orm.birdsong.network";
 
         imports = [
@@ -92,7 +89,6 @@
 
       kalessin = { name, nodes, ... }: {
         networking.hostId = "534b538e";
-        time.timeZone = "Etc/UTC";
         deployment = {
           targetHost = "kalessin.birdsong.network";
           buildOnTarget = true;

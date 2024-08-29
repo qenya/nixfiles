@@ -8,6 +8,8 @@ in
   options.qenya.sysadmin.enable = mkEnableOption "Base configuration for headless servers";
 
   config = mkIf cfg.enable {
+    time.timeZone = "Etc/UTC";
+
     # Allow remote deployment with colmena
     deployment.targetUser = null;
     security.sudo.wheelNeedsPassword = false;
