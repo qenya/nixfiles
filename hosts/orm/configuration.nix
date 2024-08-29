@@ -7,6 +7,8 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  qenya.sysadmin.enable = true;
 
   age.secrets.wireguard-peer-orm.file = ../../secrets/wireguard-peer-orm.age;
 

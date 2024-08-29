@@ -1,5 +1,6 @@
 {
   imports = [
+    ./sysadmin
     ./users
     ./environment.nix
     ./nginx.nix
