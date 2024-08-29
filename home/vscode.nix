@@ -9,6 +9,7 @@ in
     enableUpdateCheck = false;
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
+      dbaeumer.vscode-eslint
       golang.go
       jdinhlife.gruvbox
       jnoortheen.nix-ide
