@@ -10,6 +10,7 @@ in
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       dbaeumer.vscode-eslint
+      eamodio.gitlens
       golang.go
       jdinhlife.gruvbox
       jnoortheen.nix-ide
