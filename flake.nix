@@ -47,11 +47,6 @@
           overlays = [ nur.overlay ];
         };
 
-        home-manager = {
-          useUserPackages = true;
-          useGlobalPkgs = true;
-        };
-
         imports = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur

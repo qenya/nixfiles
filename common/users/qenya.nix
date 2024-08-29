@@ -14,12 +14,4 @@ in {
     openssh.authorizedKeys.keys = keys.users.qenya;
     uid = 1001;
   };
-
-  home-manager.users.qenya = { config, lib, pkgs, osConfig, ... }: {
-    home.homeDirectory = osConfig.users.users.qenya.home;
-
-    imports = [
-      ../../home
-    ];
-  };
 }
