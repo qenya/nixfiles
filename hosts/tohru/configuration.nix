@@ -43,6 +43,12 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  users.users.qenya.extraGroups = [
+    "wheel" # sudo
+    "networkmanager" # UI wifi configuration
+    "dialout" # access to serial ports
+  ];
+
   # USB drives
   boot.supportedFilesystems = [ "ntfs" ];
 
