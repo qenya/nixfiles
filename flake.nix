@@ -7,6 +7,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur.url = "github:nix-community/NUR";
+
     agenix = {
       url = "github:ryantm/agenix?tag=0.15.0";
       inputs = {
@@ -18,7 +20,7 @@
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, agenix, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, agenix, birdsong, ... }: {
     colmena = {
       meta.nixpkgs = import nixpkgs { system = "x86_64-linux"; };
       meta.nodeNixpkgs.kalessin = import nixpkgs { system = "aarch64-linux"; }; # TODO: this should be generated from the host config somehow
@@ -31,20 +33,15 @@
         nixpkgs.flake.source = nixpkgs;
         nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
 
-        nixpkgs.config = {
-          allowUnfree = true;
-          packageOverrides = pkgs:
-            let
-              sources = import ./npins;
-              inherit (config.nixpkgs.hostPlatform) system;
-            in
-            {
-              agenix = agenix.packages.${system}.default;
-              nur = (import sources.nur {
-                nurpkgs = pkgs;
-                inherit pkgs;
-              });
+        nixpkgs = {
+          config = {
+            allowUnfree = true;
+            packageOverrides = pkgs: {
+              agenix = agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
             };
+          };
+
+          overlays = [ nur.overlay ];
         };
 
         home-manager = {
@@ -54,6 +51,7 @@
 
         imports = [
           home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
           agenix.nixosModules.default
           birdsong.nixosModules.default
           ./common

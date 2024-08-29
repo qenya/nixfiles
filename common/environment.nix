@@ -14,7 +14,6 @@
     netcat # <3
 
     # used for nix config
-    npins
     colmena
     agenix
   ];

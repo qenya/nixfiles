@@ -29,8 +29,4 @@ To build the remote machines, run `colmena apply`. See the [colmena documentatio
 
 ### Updating
 
-Run `nix flake update` to update evaluation-time dependencies.
-
-Run `npins update` to update build-time dependencies.
-
-Commit changes to `flake.lock` and `npins/sources.json`.
+`nix flake update --commit-lock-file`
