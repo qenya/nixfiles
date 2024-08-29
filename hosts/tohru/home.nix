@@ -16,6 +16,7 @@
     jellyfin-media-player
     keepassxc
     tor-browser-bundle-bin
+    zoom-us
 
     # libreoffice
     libreoffice
