@@ -47,17 +47,7 @@
         ];
       };
 
-      tohru = { name, nodes, ... }: {
-        networking.hostId = "31da19c1";
-        deployment = {
-          allowLocalDeployment = true;
-          targetHost = null; # disallow remote deployment
-        };
-
-        imports = [
-          ./hosts/tohru/configuration.nix
-        ];
-      };
+      tohru.imports = [ ./hosts/tohru ];
 
       yevaud = { name, nodes, ... }: {
         networking.hostId = "09673d65";
