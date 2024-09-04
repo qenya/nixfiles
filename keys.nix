@@ -8,6 +8,7 @@
 
   users = {
     qenya = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjBuuxo+w3yED0aPnsNb8S90p/GgBqFEG9K4ETZ5Wkq qenya@kilgharrah"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru"
     ];
     randomcat = [
