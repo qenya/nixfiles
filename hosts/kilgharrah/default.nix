@@ -13,12 +13,8 @@
 
   deployment = {
     allowLocalDeployment = true;
-    # temporarily allow remote deployment for bootstrapping
-    targetHost = "192.168.2.1";
-    targetUser = null;
+    targetHost = null; # disallow remote deployment
   };
-  security.sudo.wheelNeedsPassword = false;
-  nix.settings.trusted-users = [ "@wheel" ];
 
   time.timeZone = "Europe/London";
 
