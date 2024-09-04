@@ -47,6 +47,7 @@
         ];
       };
 
+      kilgharrah.imports = [ ./hosts/kilgharrah ] ;
       tohru.imports = [ ./hosts/tohru ];
 
       yevaud = { name, nodes, ... }: {
