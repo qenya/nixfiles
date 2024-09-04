@@ -58,6 +58,11 @@
   ];
   home-manager.users.qenya = {
     programs.vscode.enable = true;
+    home.packages = with pkgs; [
+      bitwarden
+      discord
+      tor-browser-bundle-bin
+    ];
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
