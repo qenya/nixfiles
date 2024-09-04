@@ -1,10 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./boot.nix
+    ./filesystems.nix
+    ./hardware.nix
+    ./networking.nix
+  ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostId = "72885bb5";
@@ -18,19 +20,7 @@
   security.sudo.wheelNeedsPassword = false;
   nix.settings.trusted-users = [ "@wheel" ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "kilgharrah"; # Define your hostname.
-  
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
   time.timeZone = "Europe/London";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
@@ -65,6 +55,6 @@
     ];
   };
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 
 }
