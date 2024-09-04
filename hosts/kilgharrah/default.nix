@@ -42,10 +42,7 @@
 
   age.secrets.user-password-kilgharrah-qenya.file = ../../secrets/user-password-kilgharrah-qenya.age;
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-kilgharrah-qenya.path;
-  users.users.qenya.extraGroups = [
-    "wheel"
-    "networkmanager"
-  ];
+  users.users.qenya.extraGroups = [ "wheel" ];
   home-manager.users.qenya = {
     programs.vscode.enable = true;
     home.packages = with pkgs; [

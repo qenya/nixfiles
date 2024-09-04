@@ -1,5 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  networking.networkmanager.enable = true;
+  systemd.network.networks."10-wan" = {
+    matchConfig.Name = "enp2s0";
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
+    };
+    linkConfig.RequiredForOnline = "routable";
+  };
 }
