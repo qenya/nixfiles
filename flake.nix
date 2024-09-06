@@ -27,15 +27,24 @@
         nodeNixpkgs = {
           kalessin = import nixpkgs { system = "aarch64-linux"; }; # TODO: this should be generated from the host config somehow
         };
-        specialArgs = {
-          inherit inputs;
-        };
       };
 
-      defaults = { name, nodes, ... }: {
+      defaults = { name, nodes, config, ... }: {
         networking.hostName = name;
 
         nix.settings.experimental-features = "nix-command flakes";
+        nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
+        nixpkgs.config.allowUnfree = true;
+
+        nixpkgs.config.packageOverrides = pkgs: {
+          agenix = inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
+        };
+        nixpkgs.overlays = [ inputs.nur.overlay ];
+
+        home-manager = {
+          useUserPackages = true;
+          useGlobalPkgs = true;
+        };
 
         imports = [
           home-manager.nixosModules.home-manager
@@ -47,7 +56,7 @@
         ];
       };
 
-      kilgharrah.imports = [ ./hosts/kilgharrah ] ;
+      kilgharrah.imports = [ ./hosts/kilgharrah ];
       tohru.imports = [ ./hosts/tohru ];
 
       yevaud = { name, nodes, ... }: {
