@@ -2,6 +2,7 @@
   imports = [
     ./dconf
     ./cli.nix
+    ./firefox.nix
     ./git.nix
     ./tmux.nix
     ./vscode.nix

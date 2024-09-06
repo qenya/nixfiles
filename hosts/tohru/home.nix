@@ -4,7 +4,7 @@
   dconf.enable = true;
 
   programs = {
-    firefox.enable = true; # TODO: config is not yet nix-ified
+    firefox.enable = true;
     vscode.enable = true;
   };
 
