@@ -40,13 +40,17 @@
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-kilgharrah-qenya.path;
   users.users.qenya.extraGroups = [ "wheel" ];
   home-manager.users.qenya = {
+    programs.firefox.enable = true;
     programs.vscode.enable = true;
+
     home.packages = with pkgs; [
       bitwarden
       discord
       tor-browser-bundle-bin
     ];
   };
+
+  programs.steam.enable = true;
 
   system.stateVersion = "24.05";
 
