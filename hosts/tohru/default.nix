@@ -46,9 +46,9 @@
   ];
   home-manager.users.qenya.imports = [ ./home.nix ];
 
-  programs.evolution.enable = true;
+  programs.evolution.enable = true; # not in home-manager yet; not declaratively configurable yet
+  programs.steam.enable = true;
   qenya.services.fonts.enable = true;
-  qenya.services.steam.enable = true;
 
   system.stateVersion = "23.11";
 }

@@ -7,5 +7,6 @@
     ./nginx.nix
     ./openssh.nix
     ./security.nix
+    ./steam.nix
   ];
 }
