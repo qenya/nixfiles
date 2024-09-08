@@ -47,6 +47,7 @@
       bitwarden
       discord
       tor-browser-bundle-bin
+      zoom-us
     ];
   };
 
