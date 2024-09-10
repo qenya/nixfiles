@@ -6,6 +6,7 @@
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix
+    ./sound.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -28,13 +29,6 @@
   services.xserver.xkb.layout = "gb";
 
   services.printing.enable = true;
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
 
   age.secrets.user-password-kilgharrah-qenya.file = ../../secrets/user-password-kilgharrah-qenya.age;
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-kilgharrah-qenya.path;
