@@ -21,12 +21,8 @@
   qenya.base-graphical.enable = true;
 
   time.timeZone = "Europe/London";
-
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.xkb.layout = "gb";
 
   services.printing.enable = true;

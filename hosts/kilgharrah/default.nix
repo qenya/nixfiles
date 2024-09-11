@@ -17,15 +17,11 @@
   };
 
   qenya.base-graphical.enable = true;
+  qenya.base-graphical.desktop = "plasma6";
 
   time.timeZone = "Europe/London";
-
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
-
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
   services.xserver.xkb.layout = "gb";
 
   services.printing.enable = true;
