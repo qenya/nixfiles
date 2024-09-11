@@ -1,6 +1,6 @@
 {
   imports = [
-    ./sysadmin
+    ./base-server
     ./users
     ./environment.nix
     ./home-manager.nix

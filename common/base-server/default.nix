@@ -2,10 +2,10 @@
 
 with lib;
 let
-  cfg = config.qenya.sysadmin;
+  cfg = config.qenya.base-server;
 in
 {
-  options.qenya.sysadmin.enable = mkEnableOption "Base configuration for headless servers";
+  options.qenya.base-server.enable = mkEnableOption "Base configuration for headless servers";
 
   config = mkIf cfg.enable {
     time.timeZone = "Etc/UTC";

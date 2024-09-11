@@ -10,7 +10,7 @@
 
   users.users.qenya.extraGroups = [ "wheel" ];
 
-  qenya.sysadmin.enable = true;
+  qenya.base-server.enable = true;
 
   age.secrets.wireguard-peer-yevaud.file = ../../secrets/wireguard-peer-yevaud.age;
 
