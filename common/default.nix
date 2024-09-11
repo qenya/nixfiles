@@ -1,5 +1,6 @@
 {
   imports = [
+    ./base-graphical
     ./base-server
     ./users
     ./environment.nix

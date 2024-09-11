@@ -6,7 +6,6 @@
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix
-    ./sound.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -17,12 +16,13 @@
     targetHost = null; # disallow remote deployment
   };
 
+  qenya.base-graphical.enable = true;
+
   time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
 
-  services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;

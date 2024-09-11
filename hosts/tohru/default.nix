@@ -18,24 +18,18 @@
     targetHost = null; # disallow remote deployment
   };
 
+  qenya.base-graphical.enable = true;
+
   time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
 
-  services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.xkb.layout = "gb";
 
   services.printing.enable = true;
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
 
   age.secrets.user-password-tohru-qenya.file = ../../secrets/user-password-tohru-qenya.age;
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-tohru-qenya.path;
