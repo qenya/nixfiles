@@ -25,8 +25,6 @@
   console.keyMap = "uk";
   services.xserver.xkb.layout = "gb";
 
-  services.printing.enable = true;
-
   age.secrets.user-password-tohru-qenya.file = ../../secrets/user-password-tohru-qenya.age;
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-tohru-qenya.path;
   users.users.qenya.extraGroups = [
@@ -38,7 +36,6 @@
 
   programs.evolution.enable = true; # not in home-manager yet; not declaratively configurable yet
   programs.steam.enable = true;
-  qenya.services.fonts.enable = true;
 
   system.stateVersion = "23.11";
 }

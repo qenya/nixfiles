@@ -14,5 +14,11 @@ in
 
   config = mkIf cfg.enable {
     services.xserver.enable = true;
+    services.libinput.enable = true;
+    services.printing.enable = true;
+
+    fonts.packages = with pkgs; [
+      corefonts
+    ];
   };
 }
