@@ -16,6 +16,7 @@
     # used for nix config
     colmena
     agenix
+    rc2nix
   ];
 
   environment.wordlist.enable = true;

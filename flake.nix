@@ -7,6 +7,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     nur.url = "github:nix-community/NUR";
 
     agenix = {
@@ -20,7 +26,7 @@
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, agenix, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, nur, agenix, birdsong, ... }: {
     colmena = {
       meta = {
         nixpkgs = import nixpkgs { system = "x86_64-linux"; };
@@ -38,12 +44,14 @@
 
         nixpkgs.config.packageOverrides = pkgs: {
           agenix = inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
+          rc2nix = inputs.plasma-manager.packages.${config.nixpkgs.hostPlatform.system}.rc2nix;
         };
         nixpkgs.overlays = [ inputs.nur.overlay ];
 
         home-manager = {
           useUserPackages = true;
           useGlobalPkgs = true;
+          sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
         };
 
         imports = [
