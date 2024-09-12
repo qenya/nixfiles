@@ -42,10 +42,6 @@
         nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
         nixpkgs.config.allowUnfree = true;
 
-        nixpkgs.config.packageOverrides = pkgs: {
-          agenix = agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
-          rc2nix = plasma-manager.packages.${config.nixpkgs.hostPlatform.system}.rc2nix;
-        };
         nixpkgs.overlays = [ nur.overlay ];
         home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
 
@@ -92,5 +88,19 @@
         ];
       };
     };
+
+    # TODO: have this work on other systems too
+    devShells."x86_64-linux".default =
+      let
+        system = "x86_64-linux";
+        pkgs = import nixpkgs { inherit system; };
+      in
+      pkgs.mkShell {
+        packages = [
+          pkgs.colmena
+          agenix.packages.${system}.default
+          plasma-manager.packages.${system}.rc2nix
+        ];
+      };
   };
 }
