@@ -1,19 +1,23 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 
 # dconf is the configuration manager for GNOME.
 
-# home-manager, in its infinite wisdom, sets `dconf.enable` to true by default.
-# This is a problem because we don't want it to attempt to apply our settings on
-# a system that doesn't actually have GNOME installed. So, we override the
-# default to false.
+let
+  isGnome = osConfig.services.xserver.desktopManager.gnome.enable;
+in
+{
+  dconf.enable = isGnome;
 
-let inherit (lib) mkDefault;
-in {
-  dconf.enable = mkDefault false;
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/color".night-light-enabled = true;
+    "org/gnome/desktop/sound".event-sounds = false;
+  };
 
   imports = [
-    # TODO: nix-ify other parts of GNOME config
-    ./appearance.nix
+    ./desktop.nix
     ./keyboard.nix
+    ./mouse-touchpad.nix
+    ./multitasking.nix
+    ./shell.nix
   ];
 }

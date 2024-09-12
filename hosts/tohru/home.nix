@@ -1,12 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  dconf.enable = true;
-
-  programs = {
-    firefox.enable = true;
-    vscode.enable = true;
-  };
+  programs.firefox.enable = true;
+  programs.vscode.enable = true;
 
   home.packages = with pkgs; [
     bitwarden
