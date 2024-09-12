@@ -7,6 +7,7 @@
     ./git.nix
     ./tmux.nix
     ./vscode.nix
+    ./xdg-mime-apps.nix
     ./zsh.nix
   ];
   
