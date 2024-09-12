@@ -43,17 +43,11 @@
         nixpkgs.config.allowUnfree = true;
 
         nixpkgs.config.packageOverrides = pkgs: {
-          agenix = inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
-          rc2nix = inputs.plasma-manager.packages.${config.nixpkgs.hostPlatform.system}.rc2nix;
+          agenix = agenix.packages.${config.nixpkgs.hostPlatform.system}.default;
+          rc2nix = plasma-manager.packages.${config.nixpkgs.hostPlatform.system}.rc2nix;
         };
-        nixpkgs.overlays = [ inputs.nur.overlay ];
-
-        home-manager = {
-          useUserPackages = true;
-          useGlobalPkgs = true;
-          backupFileExtension = "backup";
-          sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-        };
+        nixpkgs.overlays = [ nur.overlay ];
+        home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
 
         imports = [
           home-manager.nixosModules.home-manager
