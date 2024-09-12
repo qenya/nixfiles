@@ -45,6 +45,10 @@
 
         "dom.private-attribution.submission.enabled" = false; # disable "Privacy-Preserving Attribution for Advertising"
         "extensions.autoDisableScopes" = 0; # automatically enable extensions installed through nix
+
+        # external password manager
+        "signon.rememberSignons" = false;
+        "extensions.formautofill.creditCards.enabled" = false;
       };
     };
   };
