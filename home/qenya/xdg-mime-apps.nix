@@ -12,6 +12,7 @@ in
       "image/gif" = [ "org.gnome.Loupe.desktop" "org.kde.gwenview.desktop" ];
       "image/jpeg" = [ "org.gnome.Loupe.desktop" "org.kde.gwenview.desktop" ];
       "image/png" = [ "org.gnome.Loupe.desktop" "org.kde.gwenview.desktop" ];
+      "text/plain" = [ "org.gnome.TextEditor.desktop" "org.kde.kate.desktop" ];
     };
   };
 }
