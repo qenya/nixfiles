@@ -57,36 +57,9 @@
 
       kilgharrah.imports = [ ./hosts/kilgharrah ];
       tohru.imports = [ ./hosts/tohru ];
-
-      yevaud = { name, nodes, ... }: {
-        networking.hostId = "09673d65";
-        deployment.targetHost = "yevaud.birdsong.network";
-
-        imports = [
-          ./hosts/yevaud/configuration.nix
-        ];
-      };
-
-      orm = { name, nodes, ... }: {
-        networking.hostId = "00000000";
-        deployment.targetHost = "orm.birdsong.network";
-
-        imports = [
-          ./hosts/orm/configuration.nix
-        ];
-      };
-
-      kalessin = { name, nodes, ... }: {
-        networking.hostId = "534b538e";
-        deployment = {
-          targetHost = "kalessin.birdsong.network";
-          buildOnTarget = true;
-        };
-
-        imports = [
-          ./hosts/kalessin/configuration.nix
-        ];
-      };
+      yevaud.imports = [ ./hosts/yevaud ];
+      orm.imports = [ ./hosts/orm ];
+      kalessin.imports = [ ./hosts/kalessin ];
     };
 
     # TODO: have this work on other systems too
