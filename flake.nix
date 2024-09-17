@@ -33,10 +33,15 @@
     #
     # However, note CppNix >= 2.22.3, >= 2.24 has blessed "homeModules":
     # https://github.com/NixOS/nix/pull/10858
-    homeManagerModules."qenya" = { config, lib, pkgs, ... }: {
-      imports = [
+    homeManagerModules = {
+      "qenya".imports = [
         plasma-manager.homeManagerModules.plasma-manager
         ./home/qenya
+      ];
+
+      "qenya@shaw".imports = [
+        self.homeManagerModules."qenya"
+        ./hosts/shaw/home.nix
       ];
     };
 
@@ -56,7 +61,7 @@
         nixpkgs.config.allowUnfree = true;
 
         nixpkgs.overlays = [ nur.overlay ];
-        
+
         # TODO: make this or something like it work without infinite recursion
         # home-manager.users."qenya" = lib.mkIf (config.users.users ? "qenya") self.homeManagerModules."qenya";
         home-manager.users."qenya" = self.homeManagerModules."qenya";
