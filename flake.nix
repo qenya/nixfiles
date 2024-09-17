@@ -39,10 +39,7 @@
         ./home/qenya
       ];
 
-      "qenya@shaw".imports = [
-        self.homeManagerModules."qenya"
-        ./hosts/shaw/home.nix
-      ];
+      "qenya@shaw".imports = [ ./hosts/shaw/home.nix ];
     };
 
     colmena = {
