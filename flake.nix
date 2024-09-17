@@ -27,6 +27,19 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, nur, agenix, birdsong, ... }: {
+    # The name of this output type is not standardised. I have picked
+    # "homeManagerModules" as the discussion here suggests it's the most common:
+    # https://github.com/nix-community/home-manager/issues/1783
+    #
+    # However, note CppNix >= 2.22.3, >= 2.24 has blessed "homeModules":
+    # https://github.com/NixOS/nix/pull/10858
+    homeManagerModules."qenya" = { config, lib, pkgs, ... }: {
+      imports = [
+        plasma-manager.homeManagerModules.plasma-manager
+        ./home/qenya
+      ];
+    };
+
     colmena = {
       meta = {
         nixpkgs = import nixpkgs { system = "x86_64-linux"; };
@@ -35,7 +48,7 @@
         };
       };
 
-      defaults = { name, nodes, config, ... }: {
+      defaults = { name, nodes, ... }: {
         networking.hostName = name;
 
         nix.settings.experimental-features = "nix-command flakes";
@@ -43,7 +56,10 @@
         nixpkgs.config.allowUnfree = true;
 
         nixpkgs.overlays = [ nur.overlay ];
-        home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+        
+        # TODO: make this or something like it work without infinite recursion
+        # home-manager.users."qenya" = lib.mkIf (config.users.users ? "qenya") self.homeManagerModules."qenya";
+        home-manager.users."qenya" = self.homeManagerModules."qenya";
 
         imports = [
           home-manager.nixosModules.home-manager
