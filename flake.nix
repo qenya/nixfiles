@@ -23,10 +23,15 @@
       };
     };
 
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, nur, agenix, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, nur, agenix, colmena, birdsong, ... }: {
     nixosModules.default = {
       nix.settings.experimental-features = "nix-command flakes";
       nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
@@ -48,14 +53,7 @@
       ];
     };
 
-    # TODO: simplify
-    nixosConfigurations = {
-      "kilgharrah" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/kilgharrah self.nixosModules.default ]; };
-      "tohru" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/tohru self.nixosModules.default ]; };
-      "yevaud" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/yevaud self.nixosModules.default ]; };
-      "orm" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/orm self.nixosModules.default ]; };
-      "kalessin" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/kalessin self.nixosModules.default ]; };
-    };
+    nixosConfigurations = (colmena.lib.makeHive self.outputs.colmena).nodes;
 
     # The name of this output type is not standardised. I have picked
     # "homeManagerModules" as the discussion here suggests it's the most common:
@@ -75,10 +73,12 @@
     colmena = {
       meta = {
         nixpkgs = import nixpkgs { system = "x86_64-linux"; };
-        nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) self.nixosConfigurations;
+        nodeNixpkgs = {
+          kalessin = import nixpkgs { system = "aarch64-linux"; };
+        };
+        specialArgs = { inherit inputs; };
       };
 
-      # TODO: eliminate duplication with nixosConfigurations
       defaults.imports = [ self.nixosModules.default ];
       kilgharrah.imports = [ ./hosts/kilgharrah ];
       tohru.imports = [ ./hosts/tohru ];
