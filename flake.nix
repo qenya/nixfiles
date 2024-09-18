@@ -34,27 +34,6 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgsSmall, home-manager, plasma-manager, nur, agenix, colmena, birdsong, ... }: {
-    nixosModules.default = {
-      nix.settings.experimental-features = "nix-command flakes";
-      nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
-      nixpkgs.config.allowUnfree = true;
-
-      nixpkgs.overlays = [ nur.overlay ];
-
-      # TODO: make this or something like it work without infinite recursion
-      # home-manager.users."qenya" = lib.mkIf (config.users.users ? "qenya") self.homeManagerModules."qenya";
-      home-manager.users."qenya" = self.homeManagerModules."qenya";
-
-      imports = [
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        agenix.nixosModules.default
-        birdsong.nixosModules.default
-        ./common
-        ./services
-      ];
-    };
-
     nixosConfigurations = (colmena.lib.makeHive self.outputs.colmena).nodes;
 
     # The name of this output type is not standardised. I have picked
@@ -85,7 +64,16 @@
         specialArgs = { inherit inputs; };
       };
 
-      defaults.imports = [ self.nixosModules.default ];
+      defaults.imports = [
+        home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
+        { nixpkgs.overlays = [ nur.overlay ]; }
+        agenix.nixosModules.default
+        birdsong.nixosModules.default
+        ./common
+        ./services
+      ];
+
       kilgharrah.imports = [ ./hosts/kilgharrah ];
       tohru.imports = [ ./hosts/tohru ];
       yevaud.imports = [ ./hosts/yevaud ];
