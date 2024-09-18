@@ -21,7 +21,7 @@ The canonical location for this repository is https://git.qenya.tel/qenya/nixfil
 
 ### Building
 
-To build locally, run `colmena apply-local` as root.
+To build locally, run `nixos-rebuild switch --flake .#[hostname]` as root.
 
 To build the remote machines, run `colmena apply`. See the [colmena documentation](https://colmena.cli.rs/) for command-line options. Notable options include:
 * `--on [hostname]`: build a specific machine only
