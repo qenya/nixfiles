@@ -2,6 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
+    nixpkgsSmall.url = "github:NixOS/nixpkgs/nixos-24.05-small";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +33,7 @@
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, nur, agenix, colmena, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgsSmall, home-manager, plasma-manager, nur, agenix, colmena, birdsong, ... }: {
     nixosModules.default = {
       nix.settings.experimental-features = "nix-command flakes";
       nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
@@ -74,7 +76,11 @@
       meta = {
         nixpkgs = import nixpkgs { system = "x86_64-linux"; };
         nodeNixpkgs = {
-          kalessin = import nixpkgs { system = "aarch64-linux"; };
+          kilgharrah = import nixpkgs { system = "x86_64-linux"; };
+          tohru = import nixpkgs { system = "x86_64-linux"; };
+          yevaud = import nixpkgsSmall { system = "x86_64-linux"; };
+          orm = import nixpkgsSmall { system = "x86_64-linux"; };
+          kalessin = import nixpkgsSmall { system = "aarch64-linux"; };
         };
         specialArgs = { inherit inputs; };
       };

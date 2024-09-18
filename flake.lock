@@ -151,6 +151,22 @@
         "type": "github"
       }
     },
+    "nixpkgsSmall": {
+      "locked": {
+        "lastModified": 1726611721,
+        "narHash": "sha256-oSDOQ5c7CTVzkaG5A19UW3Yxsv9TLNFNcrvQT9F4Pz0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a51a2cef87fc37c7e31d3a5345bc493e5f7a5f6e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "locked": {
         "lastModified": 1725486293,
@@ -196,6 +212,7 @@
         "colmena": "colmena",
         "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs",
+        "nixpkgsSmall": "nixpkgsSmall",
         "nur": "nur",
         "plasma-manager": "plasma-manager"
       }
