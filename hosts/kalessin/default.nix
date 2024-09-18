@@ -6,10 +6,6 @@
   ];
 
   networking.hostId = "534b538e";
-  deployment = {
-    targetHost = "kalessin.birdsong.network";
-    buildOnTarget = true;
-  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

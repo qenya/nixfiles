@@ -13,11 +13,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostId = "31da19c1";
 
-  deployment = {
-    allowLocalDeployment = true;
-    targetHost = null; # disallow remote deployment
-  };
-
   qenya.base-graphical.enable = true;
 
   time.timeZone = "Europe/London";

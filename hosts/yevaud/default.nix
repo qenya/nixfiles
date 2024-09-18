@@ -6,7 +6,6 @@
   ];
 
   networking.hostId = "09673d65";
-  deployment.targetHost = "yevaud.birdsong.network";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -78,6 +78,32 @@
       yevaud.imports = [ ./hosts/yevaud ];
       orm.imports = [ ./hosts/orm ];
       kalessin.imports = [ ./hosts/kalessin ];
+
+      kilgharrah.deployment = {
+        allowLocalDeployment = true;
+        targetHost = null; # disallow remote deployment
+      };
+
+      tohru.deployment = {
+        allowLocalDeployment = true;
+        targetHost = null; # disallow remote deployment
+      };
+
+      yevaud.deployment = {
+        targetHost = "yevaud.birdsong.network";
+        targetUser = null;
+      };
+
+      orm.deployment = {
+        targetHost = "orm.birdsong.network";
+        targetUser = null;
+      };
+
+      kalessin.deployment = {
+        targetHost = "kalessin.birdsong.network";
+        targetUser = null;
+        buildOnTarget = true;
+      };
     };
 
     # TODO: have this work on other systems too

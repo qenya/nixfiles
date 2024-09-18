@@ -11,11 +11,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostId = "72885bb5";
 
-  deployment = {
-    allowLocalDeployment = true;
-    targetHost = null; # disallow remote deployment
-  };
-
   qenya.base-graphical.enable = true;
   qenya.base-graphical.desktop = "plasma6";
 
