@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "orm";
   networking.hostId = "00000000";
 
   boot.loader.systemd-boot.enable = true;

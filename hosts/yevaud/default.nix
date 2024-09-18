@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "yevaud";
   networking.hostId = "09673d65";
 
   boot.loader.systemd-boot.enable = true;

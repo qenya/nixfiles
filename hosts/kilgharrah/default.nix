@@ -9,6 +9,7 @@
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
+  networking.hostName = "kilgharrah";
   networking.hostId = "72885bb5";
 
   qenya.base-graphical.enable = true;

@@ -11,6 +11,7 @@
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
+  networking.hostName = "tohru";
   networking.hostId = "31da19c1";
 
   qenya.base-graphical.enable = true;

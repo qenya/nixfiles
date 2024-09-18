@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "kalessin";
   networking.hostId = "534b538e";
 
   boot.loader.systemd-boot.enable = true;
