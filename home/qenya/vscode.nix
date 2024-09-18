@@ -38,10 +38,7 @@ in
       "nix.serverSettings".nil = {
         diagnostics.ignored = [ "unused_binding" "unused_with" ];
         formatting.command = [ "nixpkgs-fmt" ];
-        nix.flake = {
-          autoArchive = true;
-          autoEvalInputs = true;
-        };
+        nix.flake.autoArchive = true;
       };
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
