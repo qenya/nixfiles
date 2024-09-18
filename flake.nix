@@ -27,6 +27,36 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, plasma-manager, nur, agenix, birdsong, ... }: {
+    nixosModules.default = {
+      nix.settings.experimental-features = "nix-command flakes";
+      nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
+      nixpkgs.config.allowUnfree = true;
+
+      nixpkgs.overlays = [ nur.overlay ];
+
+      # TODO: make this or something like it work without infinite recursion
+      # home-manager.users."qenya" = lib.mkIf (config.users.users ? "qenya") self.homeManagerModules."qenya";
+      home-manager.users."qenya" = self.homeManagerModules."qenya";
+
+      imports = [
+        home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
+        agenix.nixosModules.default
+        birdsong.nixosModules.default
+        ./common
+        ./services
+      ];
+    };
+
+    # TODO: simplify
+    nixosConfigurations = {
+      "kilgharrah" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/kilgharrah self.nixosModules.default ]; };
+      "tohru" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/tohru self.nixosModules.default ]; };
+      "yevaud" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/yevaud self.nixosModules.default ]; };
+      "orm" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/orm self.nixosModules.default ]; };
+      "kalessin" = nixpkgs.lib.nixosSystem { modules = [ ./hosts/kalessin self.nixosModules.default ]; };
+    };
+
     # The name of this output type is not standardised. I have picked
     # "homeManagerModules" as the discussion here suggests it's the most common:
     # https://github.com/nix-community/home-manager/issues/1783
@@ -45,63 +75,28 @@
     colmena = {
       meta = {
         nixpkgs = import nixpkgs { system = "x86_64-linux"; };
-        nodeNixpkgs = {
-          kalessin = import nixpkgs { system = "aarch64-linux"; }; # TODO: this should be generated from the host config somehow
-        };
+        nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) self.nixosConfigurations;
       };
 
-      defaults = { name, nodes, ... }: {
-        nix.settings.experimental-features = "nix-command flakes";
-        nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
-        nixpkgs.config.allowUnfree = true;
-
-        nixpkgs.overlays = [ nur.overlay ];
-
-        # TODO: make this or something like it work without infinite recursion
-        # home-manager.users."qenya" = lib.mkIf (config.users.users ? "qenya") self.homeManagerModules."qenya";
-        home-manager.users."qenya" = self.homeManagerModules."qenya";
-
-        imports = [
-          home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
-          agenix.nixosModules.default
-          birdsong.nixosModules.default
-          ./common
-          ./services
-        ];
-      };
-
+      # TODO: eliminate duplication with nixosConfigurations
+      defaults.imports = [ self.nixosModules.default ];
       kilgharrah.imports = [ ./hosts/kilgharrah ];
       tohru.imports = [ ./hosts/tohru ];
       yevaud.imports = [ ./hosts/yevaud ];
       orm.imports = [ ./hosts/orm ];
       kalessin.imports = [ ./hosts/kalessin ];
 
-      kilgharrah.deployment = {
+      defaults.deployment = {
         allowLocalDeployment = true;
-        targetHost = null; # disallow remote deployment
-      };
-
-      tohru.deployment = {
-        allowLocalDeployment = true;
-        targetHost = null; # disallow remote deployment
-      };
-
-      yevaud.deployment = {
-        targetHost = "yevaud.birdsong.network";
-        targetUser = null;
-      };
-
-      orm.deployment = {
-        targetHost = "orm.birdsong.network";
-        targetUser = null;
-      };
-
-      kalessin.deployment = {
-        targetHost = "kalessin.birdsong.network";
-        targetUser = null;
         buildOnTarget = true;
+        targetUser = null;
       };
+
+      kilgharrah.deployment.targetHost = null;
+      tohru.deployment.targetHost = null;
+      yevaud.deployment.targetHost = "yevaud.birdsong.network";
+      orm.deployment.targetHost = "orm.birdsong.network";
+      kalessin.deployment.targetHost = "kalessin.birdsong.network";
     };
 
     # TODO: have this work on other systems too
