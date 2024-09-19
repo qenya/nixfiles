@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  systemd.network.enable = true;
+  networking.useDHCP = false;
+  
   systemd.network.networks."10-wan" = {
     matchConfig.Name = "enp2s0";
     networkConfig = {
