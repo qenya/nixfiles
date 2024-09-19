@@ -35,6 +35,9 @@
       tor-browser-bundle-bin
       zoom-us
     ];
+
+    # For the moment, this hosts some network-accessible services, so we want it on 24/7
+    programs.plasma.powerdevil.AC.autoSuspend.action = "nothing";
   };
 
   programs.steam.enable = true;
