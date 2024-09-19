@@ -64,33 +64,35 @@
         specialArgs = { inherit inputs; };
       };
 
-      defaults.imports = [
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        { nixpkgs.overlays = [ nur.overlay ]; }
-        agenix.nixosModules.default
-        birdsong.nixosModules.default
-        ./common
-        ./services
-      ];
+      defaults = { config, lib, pkgs, ... }: {
+        # disable remote deployment by default
+        # (can stil build locally with nixos-rebuild)
+        deployment.targetHost = lib.mkDefault null;
+
+        # TODO: set up some remote builders
+        # until this is done, as we have multiple architectures, safer to build on target
+        deployment.buildOnTarget = true;
+
+        imports = [
+          home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
+          { nixpkgs.overlays = [ nur.overlay ]; }
+          agenix.nixosModules.default
+          birdsong.nixosModules.default
+          ./common
+          ./services
+        ];
+      };
+
+      yevaud.deployment.targetHost = "yevaud.birdsong.network";
+      orm.deployment.targetHost = "orm.birdsong.network";
+      kalessin.deployment.targetHost = "kalessin.birdsong.network";
 
       kilgharrah.imports = [ ./hosts/kilgharrah ];
       tohru.imports = [ ./hosts/tohru ];
       yevaud.imports = [ ./hosts/yevaud ];
       orm.imports = [ ./hosts/orm ];
       kalessin.imports = [ ./hosts/kalessin ];
-
-      defaults.deployment = {
-        allowLocalDeployment = true;
-        buildOnTarget = true;
-        targetUser = null;
-      };
-
-      kilgharrah.deployment.targetHost = null;
-      tohru.deployment.targetHost = null;
-      yevaud.deployment.targetHost = "yevaud.birdsong.network";
-      orm.deployment.targetHost = "orm.birdsong.network";
-      kalessin.deployment.targetHost = "kalessin.birdsong.network";
     };
 
     # TODO: have this work on other systems too
