@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     tree # like `ls -R` but nicer
+    units
 
     # Extremely important
     fortune
