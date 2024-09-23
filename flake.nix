@@ -18,11 +18,9 @@
     nur.url = "github:nix-community/NUR";
 
     agenix = {
-      url = "github:ryantm/agenix/0.15.0";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        darwin.follows = "";
-      };
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
     };
 
     colmena = {
