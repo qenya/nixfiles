@@ -2,8 +2,14 @@
 
 {
   boot.initrd.luks.devices = {
-    "enc".device = "/dev/disk/by-uuid/b414aaba-0a36-4135-a7e1-dc9489286acd";
+    "cryptroot".device = "/dev/disk/by-uuid/b414aaba-0a36-4135-a7e1-dc9489286acd";
   };
+
+  boot.supportedFilesystems = [ "zfs" ];
+
+  environment.etc.crypttab.text = ''
+    cryptstorage UUID=acda0e7a-069f-47c7-8e37-ec00e7cdde0f /root/luks-albion.key
+  '';
 
   fileSystems = {
     "/" = {
