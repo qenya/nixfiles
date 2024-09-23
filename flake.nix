@@ -18,7 +18,7 @@
     nur.url = "github:nix-community/NUR";
 
     agenix = {
-      url = "github:ryantm/agenix?tag=0.15.0";
+      url = "github:ryantm/agenix/0.15.0";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         darwin.follows = "";
