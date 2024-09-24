@@ -1,10 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.steam = {
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
+  config = lib.mkIf config.programs.steam.enable {
+    programs.steam = {
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
 
-  services.joycond.enable = config.programs.steam.enable;
+    services.joycond.enable = true;
+  };
 }
