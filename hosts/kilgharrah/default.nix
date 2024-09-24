@@ -6,6 +6,8 @@
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix
+
+    ./datasets.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";

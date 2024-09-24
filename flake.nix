@@ -28,10 +28,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    randomcat = {
+      url = "github:randomnetcat/nix-configs";
+      flake = false;
+    };
+
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgsSmall, home-manager, plasma-manager, nur, agenix, colmena, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgsSmall, home-manager, plasma-manager, nur, agenix, colmena, randomcat, birdsong, ... }: {
     nixosConfigurations = (colmena.lib.makeHive self.outputs.colmena).nodes;
 
     # The name of this output type is not standardised. I have picked
@@ -79,6 +84,7 @@
           birdsong.nixosModules.default
           ./common
           ./services
+          (builtins.toPath "${randomcat}/services/default.nix")
         ];
       };
 
