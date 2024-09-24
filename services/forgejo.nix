@@ -10,9 +10,6 @@ in
     domain = mkOption {
       type = types.str;
     };
-    stateDir = mkOption {
-      type = types.str;
-    };
   };
 
   config = mkIf cfg.enable {
@@ -33,7 +30,6 @@ in
 
       forgejo = {
         enable = true;
-        stateDir = cfg.stateDir;
         settings = {
           DEFAULT.APP_NAME = cfg.domain;
           cache = {

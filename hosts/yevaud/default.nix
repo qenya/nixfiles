@@ -52,10 +52,14 @@
   networking.firewall.allowedTCPPorts = [ 53 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
 
+  randomcat.services.zfs.datasets = {
+    "rpool/state" = { mountpoint = "none"; };
+    "rpool/state/forgejo" = { mountpoint = "/var/lib/forgejo"; };
+  };
+
   qenya.services.forgejo = {
     enable = true;
     domain = "git.qenya.tel";
-    stateDir = "/data/forgejo";
   };
 
   services.nginx = {

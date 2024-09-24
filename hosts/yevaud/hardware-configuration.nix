@@ -28,11 +28,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/data/forgejo" =
-    { device = "rpool/forgejo";
-      fsType = "zfs";
-    };
-
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/107D-5AB3";
       fsType = "vfat";
