@@ -21,5 +21,15 @@
     privateKeyFile = config.age.secrets.wireguard-peer-orm.path;
   };
 
+  randomcat.services.zfs.datasets = {
+    "rpool_orm/state" = { mountpoint = "none"; };
+    "rpool_orm/state/actual" = { mountpoint = "/var/lib/actual"; };
+  };
+
+  qenya.services.actual = {
+    enable = true;
+    domain = "actual.qenya.tel";
+  };
+
   system.stateVersion = "23.11";
 }

@@ -33,10 +33,11 @@
       flake = false;
     };
 
+    actual.url = "git+https://git.xeno.science/xenofem/actual-nix?ref=main";
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgsSmall, home-manager, plasma-manager, nur, agenix, colmena, randomcat, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgsSmall, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
     nixosConfigurations = (colmena.lib.makeHive self.outputs.colmena).nodes;
 
     # The name of this output type is not standardised. I have picked
@@ -82,6 +83,7 @@
           { nixpkgs.overlays = [ nur.overlay ]; }
           agenix.nixosModules.default
           birdsong.nixosModules.default
+          actual.nixosModules.default
           ./common
           ./services
           (builtins.toPath "${randomcat}/services/default.nix")

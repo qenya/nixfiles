@@ -1,5 +1,24 @@
 {
   "nodes": {
+    "actual": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1725392458,
+        "narHash": "sha256-sp1Ps5XBrIwDE0e2QOm2dJRRJ12aEWtJBhzohFwn+K4=",
+        "ref": "main",
+        "rev": "4cc6a8289f809ec4470eb01429aa6ed548349a56",
+        "revCount": 14,
+        "type": "git",
+        "url": "https://git.xeno.science/xenofem/actual-nix"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://git.xeno.science/xenofem/actual-nix"
+      }
+    },
     "agenix": {
       "inputs": {
         "darwin": [],
@@ -137,16 +156,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1726969270,
-        "narHash": "sha256-8fnFlXBgM/uSvBlLWjZ0Z0sOdRBesyNdH0+esxqizGc=",
+        "lastModified": 1725103162,
+        "narHash": "sha256-Ym04C5+qovuQDYL/rKWSR+WESseQBbNAe5DsXNx5trY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "23cbb250f3bf4f516a2d0bf03c51a30900848075",
+        "rev": "12228ff1752d7b7624a54e9c1af4b222b3c1073b",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-24.05",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -163,6 +182,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-24.05-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1726969270,
+        "narHash": "sha256-8fnFlXBgM/uSvBlLWjZ0Z0sOdRBesyNdH0+esxqizGc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "23cbb250f3bf4f516a2d0bf03c51a30900848075",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -223,11 +258,12 @@
     },
     "root": {
       "inputs": {
+        "actual": "actual",
         "agenix": "agenix",
         "birdsong": "birdsong",
         "colmena": "colmena",
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgsSmall": "nixpkgsSmall",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
