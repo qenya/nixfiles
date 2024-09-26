@@ -1,20 +1,27 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-
-    nixpkgsSmall.url = "github:NixOS/nixpkgs/nixos-24.05-small";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-24.05-small";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.home-manager.follows = "home-manager-unstable";
+    };
+
+    # TODO: remove dependency on NUR (#16)
     nur.url = "github:nix-community/NUR";
 
     agenix = {
@@ -33,11 +40,17 @@
       flake = false;
     };
 
-    actual.url = "git+https://git.xeno.science/xenofem/actual-nix?ref=main";
+    # Third-party flake providing package and NixOS module for Actual Budget as
+    # nixpkgs are having trouble: https://github.com/NixOS/nixpkgs/issues/269069
+    actual = {
+      url = "git+https://git.xeno.science/xenofem/actual-nix?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgsSmall, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-small, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
     nixosConfigurations = (colmena.lib.makeHive self.outputs.colmena).nodes;
 
     # The name of this output type is not standardised. I have picked
@@ -61,9 +74,9 @@
         nodeNixpkgs = {
           kilgharrah = import nixpkgs { system = "x86_64-linux"; };
           tohru = import nixpkgs { system = "x86_64-linux"; };
-          yevaud = import nixpkgsSmall { system = "x86_64-linux"; };
-          orm = import nixpkgsSmall { system = "x86_64-linux"; };
-          kalessin = import nixpkgsSmall { system = "aarch64-linux"; };
+          yevaud = import nixpkgs-small { system = "x86_64-linux"; };
+          orm = import nixpkgs-small { system = "x86_64-linux"; };
+          kalessin = import nixpkgs-small { system = "aarch64-linux"; };
         };
         specialArgs = { inherit self; };
       };
