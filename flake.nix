@@ -65,7 +65,7 @@
           orm = import nixpkgsSmall { system = "x86_64-linux"; };
           kalessin = import nixpkgsSmall { system = "aarch64-linux"; };
         };
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit self; };
       };
 
       defaults = { config, lib, pkgs, ... }: {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, self, ... }:
 
 let keys = import ../../keys.nix;
 in {
@@ -12,5 +12,5 @@ in {
 
   programs.zsh.enable = true;
 
-  home-manager.users."qenya" = inputs.self.homeManagerModules."qenya";
+  home-manager.users."qenya" = self.homeManagerModules."qenya";
 }
