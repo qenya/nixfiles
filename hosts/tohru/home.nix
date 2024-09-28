@@ -5,15 +5,17 @@
   programs.vscode.enable = true;
 
   home.packages = with pkgs; [
-    amberol
     bitwarden
     discord
-    foliate
     gimp-with-plugins
     jellyfin-media-player
     keepassxc
     tor-browser-bundle-bin
     zoom-us
+
+    amberol
+    foliate
+    nicotine-plus
 
     # libreoffice
     libreoffice
