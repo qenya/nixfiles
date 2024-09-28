@@ -8,6 +8,7 @@
     ./networking.nix
 
     ./datasets.nix
+    ./ftp.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";

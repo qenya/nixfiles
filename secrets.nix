@@ -4,6 +4,7 @@ let
   commonKeys = keys.users.qenya;
 
   secrets = with keys; {
+    ftp-userDb-qenya = [ machines.kilgharrah ];
     user-password-kilgharrah-qenya = [ machines.kilgharrah ];
     user-password-tohru-qenya = [ machines.tohru ];
     wireguard-peer-orm = [ machines.orm ];
