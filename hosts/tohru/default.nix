@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./boot.nix
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix
@@ -13,6 +12,9 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "tohru";
   networking.hostId = "31da19c1";
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "rtsx_pci_sdmmc" ];
+  boot.kernelModules = [ "kvm-intel" ];
 
   qenya.base-graphical.enable = true;
 

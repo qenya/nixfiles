@@ -3,6 +3,7 @@
     ./base-graphical
     ./base-server
     ./users
+    ./boot.nix
     ./environment.nix
     ./home-manager.nix
     ./nginx.nix

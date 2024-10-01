@@ -5,6 +5,8 @@
     "rpool".device = "/dev/nvme0n1p2";
   };
 
+  boot.supportedFilesystems = [ "ntfs" ]; # for USB drives
+
   fileSystems = {
     "/" = {
       device = "rpool/root";

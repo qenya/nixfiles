@@ -8,9 +8,6 @@
   networking.hostName = "yevaud";
   networking.hostId = "09673d65";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   users.users.qenya.extraGroups = [ "wheel" ];
 
   qenya.base-server.enable = true;

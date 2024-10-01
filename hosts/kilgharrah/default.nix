@@ -2,18 +2,18 @@
 
 {
   imports = [
-    ./boot.nix
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix
-
-    ./datasets.nix
     ./ftp.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "kilgharrah";
   networking.hostId = "72885bb5";
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.kernelModules = [ "kvm-intel" ];
 
   qenya.base-graphical.enable = true;
   qenya.base-graphical.desktop = "plasma6";
@@ -46,6 +46,11 @@
   };
 
   programs.steam.enable = true;
+
+  randomcat.services.zfs.datasets = {
+    "rpool_albion/data" = { mountpoint = "none"; };
+    "rpool_albion/data/steam" = { mountpoint = "/home/qenya/.local/share/Steam"; };
+  };
 
   system.stateVersion = "24.05";
 
