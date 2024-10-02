@@ -46,10 +46,18 @@
   };
 
   programs.steam.enable = true;
+  qenya.services.jellyfin = {
+    enable = true;
+    domain = "jellyfin.qenya.tel";
+  };
 
   randomcat.services.zfs.datasets = {
     "rpool_albion/data" = { mountpoint = "none"; };
     "rpool_albion/data/steam" = { mountpoint = "/home/qenya/.local/share/Steam"; };
+    "rpool_albion/state" = { mountpoint = "none"; };
+    "rpool_albion/state/jellyfin" = { mountpoint = "/var/lib/jellyfin"; };
+    "rpool_albion/srv" = { mountpoint = "none"; };
+    "rpool_albion/srv/jellyfin" = { mountpoint = "/srv/jellyfin"; };
   };
 
   system.stateVersion = "24.05";
