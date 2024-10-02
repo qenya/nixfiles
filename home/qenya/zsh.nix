@@ -10,6 +10,11 @@
 
     shellAliases = {
       ll = "ls -l";
+
+      # don't clobber
+      mv = "mv -i";
+      rename = "rename -i";
+
       nix-shell = ''nix-shell --command "zsh"''; # TODO: tweak theme to display something when inside nix-shell
     };
 
