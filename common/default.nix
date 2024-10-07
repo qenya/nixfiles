@@ -6,6 +6,7 @@
     ./boot.nix
     ./environment.nix
     ./home-manager.nix
+    ./misc.nix
     ./nginx.nix
     ./nix.nix
     ./openssh.nix
