@@ -2,9 +2,9 @@
   imports = [
     ./dconf
     ./plasma
-    ./cli.nix
     ./firefox.nix
     ./git.nix
+    ./packages.nix
     ./tmux.nix
     ./vscode.nix
     ./xdg-mime-apps.nix

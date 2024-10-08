@@ -4,7 +4,8 @@ let
   inherit (lib) mkIf;
 in
 {
-  programs.vscode = {
+  programs.vscode = mkIf osConfig.qenya.base-graphical.enable {
+    enable = true;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     package = pkgs.vscodium;

@@ -29,19 +29,6 @@
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-kilgharrah-qenya.path;
   users.users.qenya.extraGroups = [ "wheel" ];
   home-manager.users.qenya = {
-    programs.firefox.enable = true;
-    programs.vscode.enable = true;
-
-    home.packages = with pkgs; [
-      bitwarden
-      discord
-      feishin
-      gimp-with-plugins
-      jellyfin-media-player
-      tor-browser-bundle-bin
-      zoom-us
-    ];
-
     # For the moment, this hosts some network-accessible services, so we want it on 24/7
     programs.plasma.powerdevil.AC.autoSuspend.action = "nothing";
   };

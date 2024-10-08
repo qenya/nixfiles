@@ -1,7 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 
+let
+  inherit (lib) mkIf;
+in
 {
-  programs.firefox = {
+  programs.firefox = lib.mkIf osConfig.qenya.base-graphical.enable {
+    enable = true;
+
     # coming in 24.11
     # languagePacks = [ "en-GB" ];
 

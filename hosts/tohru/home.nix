@@ -1,27 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.firefox.enable = true;
-  programs.vscode.enable = true;
-
   home.packages = with pkgs; [
-    bitwarden
-    discord
-    feishin
-    gimp-with-plugins
-    jellyfin-media-player
     keepassxc
-    tor-browser-bundle-bin
-    zoom-us
-
     amberol
     foliate
     nicotine-plus
-
-    # libreoffice
-    libreoffice
-    hunspell
-    hunspellDicts.en_GB-ise
 
     # games
     openttd
