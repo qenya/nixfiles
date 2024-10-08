@@ -35,6 +35,7 @@
     home.packages = with pkgs; [
       bitwarden
       discord
+      feishin
       gimp-with-plugins
       jellyfin-media-player
       tor-browser-bundle-bin
