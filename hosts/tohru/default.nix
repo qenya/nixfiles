@@ -30,7 +30,20 @@
     "networkmanager" # UI wifi configuration
     "dialout" # access to serial ports
   ];
-  home-manager.users.qenya.imports = [ ./home.nix ];
+  home-manager.users.qenya = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      keepassxc
+      amberol
+      foliate
+      nicotine-plus
+
+      # games
+      openttd
+      prismlauncher
+      nur.repos.qenya.digital-a-love-story
+      nur.repos.qenya.dont-take-it-personally-babe
+    ];
+  };
 
   programs.evolution.enable = true; # not in home-manager yet; not declaratively configurable yet
   programs.steam.enable = true;
