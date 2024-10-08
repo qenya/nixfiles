@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  randomcat.services.zfs.datasets = {
-    "rpool_albion/srv" = { mountpoint = "none"; };
-    "rpool_albion/srv/ftp" = { mountpoint = "/srv/ftp"; };
-  };
-
   age.secrets.ftp-userDb-qenya = {
     # To update this, see the nixos docs for services.vsftpd.userDbPath. Note
     # that the command it gives to create a userDb, if applied to an *existing*

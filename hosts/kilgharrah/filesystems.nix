@@ -1,15 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  # SSD on board
+
   boot.initrd.luks.devices = {
     "cryptroot".device = "/dev/disk/by-uuid/b414aaba-0a36-4135-a7e1-dc9489286acd";
   };
-
-  environment.etc.crypttab.text = ''
-    albion UUID=acda0e7a-069f-47c7-8e37-ec00e7cdde0f /root/luks-albion.key
-  '';
-
-  boot.supportedFilesystems = [ "ntfs" ]; # for USB drives
 
   fileSystems = {
     "/" = {
@@ -68,4 +64,28 @@
     device = "/swap/swapfile";
     size = 32 * 1024;
   }];
+
+
+  # HDD in bay
+
+  environment.etc.crypttab.text = ''
+    albion UUID=acda0e7a-069f-47c7-8e37-ec00e7cdde0f /root/luks-albion.key
+  '';
+
+  randomcat.services.zfs.datasets = {
+    "rpool_albion/data" = { mountpoint = "none"; };
+    "rpool_albion/data/steam" = { mountpoint = "/home/qenya/.local/share/Steam"; };
+    "rpool_albion/state" = { mountpoint = "none"; };
+    "rpool_albion/state/jellyfin" = { mountpoint = "/var/lib/jellyfin"; };
+    "rpool_albion/state/navidrome" = { mountpoint = "/var/lib/navidrome"; };
+    "rpool_albion/srv" = { mountpoint = "none"; };
+    "rpool_albion/srv/ftp" = { mountpoint = "/srv/ftp"; };
+    "rpool_albion/srv/jellyfin" = { mountpoint = "/srv/jellyfin"; };
+    "rpool_albion/srv/music" = { mountpoint = "/srv/music"; };
+  };
+
+
+  # Other
+
+  boot.supportedFilesystems = [ "ntfs" ]; # for USB drives
 }
