@@ -34,6 +34,10 @@
   };
 
   programs.steam.enable = true;
+  qenya.services.audiobookshelf = {
+    enable = true;
+    domain = "audiobookshelf.qenya.tel";
+  };
   qenya.services.jellyfin = {
     enable = true;
     domain = "jellyfin.qenya.tel";

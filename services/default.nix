@@ -1,6 +1,7 @@
 {
   imports = [
     ./actual.nix
+    ./audiobookshelf.nix
     ./forgejo.nix
     ./jellyfin.nix
     ./navidrome.nix

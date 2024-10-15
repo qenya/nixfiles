@@ -76,9 +76,11 @@
     "rpool_albion/data" = { mountpoint = "none"; };
     "rpool_albion/data/steam" = { mountpoint = "/home/qenya/.local/share/Steam"; };
     "rpool_albion/state" = { mountpoint = "none"; };
+    "rpool_albion/state/audiobookshelf" = { mountpoint = "/var/lib/audiobookshelf"; };
     "rpool_albion/state/jellyfin" = { mountpoint = "/var/lib/jellyfin"; };
     "rpool_albion/state/navidrome" = { mountpoint = "/var/lib/navidrome"; };
     "rpool_albion/srv" = { mountpoint = "none"; };
+    "rpool_albion/srv/audiobookshelf" = { mountpoint = "/srv/audiobookshelf"; };
     "rpool_albion/srv/ftp" = { mountpoint = "/srv/ftp"; };
     "rpool_albion/srv/jellyfin" = { mountpoint = "/srv/jellyfin"; };
     "rpool_albion/srv/music" = { mountpoint = "/srv/music"; };
