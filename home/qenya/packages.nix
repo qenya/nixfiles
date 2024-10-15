@@ -2,6 +2,7 @@
 
 let
   inherit (lib) optionals;
+  isGraphical = osConfig.services.xserver.enable;
 in
 {
   home.packages = with pkgs; [
@@ -12,7 +13,7 @@ in
     fortune
     cowsay
     lolcat
-  ] ++ optionals osConfig.qenya.base-graphical.enable [
+  ] ++ optionals isGraphical [
     bitwarden
     discord
     feishin

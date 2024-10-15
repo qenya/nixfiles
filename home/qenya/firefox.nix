@@ -2,9 +2,10 @@
 
 let
   inherit (lib) mkIf;
+  isGraphical = osConfig.services.xserver.enable;
 in
 {
-  programs.firefox = lib.mkIf osConfig.qenya.base-graphical.enable {
+  programs.firefox = lib.mkIf isGraphical {
     enable = true;
 
     # coming in 24.11

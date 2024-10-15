@@ -2,9 +2,10 @@
 
 let
   inherit (lib) mkIf;
+  isGraphical = osConfig.services.xserver.enable;
 in
 {
-  programs.vscode = mkIf osConfig.qenya.base-graphical.enable {
+  programs.vscode = mkIf isGraphical {
     enable = true;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
