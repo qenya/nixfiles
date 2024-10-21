@@ -1,7 +1,7 @@
 { config, lib, pkgs, osConfig, ... }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf mkDefault;
   isGraphical = osConfig.services.xserver.enable;
 in
 {
@@ -30,28 +30,25 @@ in
       "git.enableSmartCommit" = true;
       "git.inputValidation" = true;
       "git.inputValidationSubjectLength" = null;
+      "go.alternateTools" = {
+        "go" = "${pkgs.go}/bin/go";
+        "gopls" = "${pkgs.gopls}/bin/gopls";
+      };
       "gopls" = {
         "formatting.gofumpt" = true;
         "ui.semanticTokens" = true;
       };
       "javascript.updateImportsOnFileMove.enabled" = "always";
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
+      "nix.serverPath" = "${pkgs.nil}/bin/nil";
       "nix.serverSettings".nil = {
         diagnostics.ignored = [ "unused_binding" "unused_with" ];
-        formatting.command = [ "nixpkgs-fmt" ];
+        formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
         nix.flake.autoArchive = true;
       };
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
-      "workbench.colorTheme" = "Gruvbox Dark Hard";
+      "workbench.colorTheme" = mkDefault "Gruvbox Dark Hard";
     };
   };
-
-  # Language servers etc
-  home.packages = mkIf config.programs.vscode.enable (with pkgs; [
-    gopls
-    nil
-    nixpkgs-fmt
-  ]);
 }

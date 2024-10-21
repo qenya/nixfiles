@@ -31,6 +31,8 @@
   home-manager.users.qenya = {
     # For the moment, this hosts some network-accessible services, so we want it on 24/7
     programs.plasma.powerdevil.AC.autoSuspend.action = "nothing";
+    # Trying this out
+    programs.vscode.userSettings."workbench.colorTheme" = "Quiet Light";
   };
 
   programs.steam.enable = true;
