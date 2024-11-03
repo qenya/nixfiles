@@ -16,6 +16,11 @@ in
     services.xserver.enable = true;
     services.libinput.enable = true;
     services.printing.enable = true;
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
 
     fonts.packages = with pkgs; [
       corefonts
