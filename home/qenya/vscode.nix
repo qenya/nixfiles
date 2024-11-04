@@ -33,7 +33,10 @@ in
       "go.alternateTools" = {
         "go" = "${pkgs.go}/bin/go";
         "gopls" = "${pkgs.gopls}/bin/gopls";
+        "dlv" = "${pkgs.delve}/bin/dlv";
+        "staticcheck" = "${pkgs.go-tools}/bin/staticcheck";
       };
+      "go.toolsManagement.checkForUpdates" = "off";
       "gopls" = {
         "formatting.gofumpt" = true;
         "ui.semanticTokens" = true;
