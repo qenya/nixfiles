@@ -51,7 +51,7 @@ in
       };
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
-      "workbench.colorTheme" = mkDefault "Gruvbox Dark Hard";
+      "workbench.colorTheme" = "Gruvbox Dark Medium";
     };
   };
 }
