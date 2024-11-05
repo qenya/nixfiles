@@ -12,7 +12,12 @@
 
   qenya.base-server.enable = true;
 
-  age.secrets.wireguard-peer-yevaud.file = ../../secrets/wireguard-peer-yevaud.age;
+  age.secrets.wireguard-peer-yevaud = {
+    file = ../../secrets/wireguard-peer-yevaud.age;
+    owner = "root";
+    group = "systemd-network";
+    mode = "640";
+  };
 
   birdsong.peering = {
     enable = true;

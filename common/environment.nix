@@ -13,6 +13,7 @@
     lsof
     tcpdump
     netcat # <3
+    wireguard-tools
   ];
 
   environment.wordlist.enable = true;
