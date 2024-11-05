@@ -8,6 +8,7 @@ in
   home.packages = with pkgs; [
     tree # like `ls -R` but nicer
     units
+    zip unzip
 
     # Extremely important
     fortune
