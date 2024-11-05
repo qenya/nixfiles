@@ -3,8 +3,10 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./networking.nix
   ];
 
+  nixpkgs.hostPlatform = "aarch64-linux";
   networking.hostName = "kalessin";
   networking.hostId = "534b538e";
 

@@ -3,26 +3,15 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./networking.nix
   ];
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   networking.hostName = "yevaud";
   networking.hostId = "09673d65";
 
   users.users.qenya.extraGroups = [ "wheel" ];
-
   qenya.base-server.enable = true;
-
-  age.secrets.wireguard-peer-yevaud = {
-    file = ../../secrets/wireguard-peer-yevaud.age;
-    owner = "root";
-    group = "systemd-network";
-    mode = "640";
-  };
-
-  birdsong.peering = {
-    enable = true;
-    privateKeyFile = config.age.secrets.wireguard-peer-yevaud.path;
-  };
 
   services.bind = {
     # enable = true;
