@@ -13,5 +13,15 @@
     linkConfig.RequiredForOnline = "routable";
   };
 
-  systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
+  age.secrets.wireguard-peer-kilgharrah = {
+    file = ../../secrets/wireguard-peer-kilgharrah.age;
+    owner = "root";
+    group = "systemd-network";
+    mode = "640";
+  };
+
+  birdsong.peering = {
+    enable = true;
+    privateKeyFile = config.age.secrets.wireguard-peer-kilgharrah.path;
+  };
 }
