@@ -36,6 +36,7 @@ in
         "dlv" = "${pkgs.delve}/bin/dlv";
         "staticcheck" = "${pkgs.go-tools}/bin/staticcheck";
       };
+      "go.lintTool" = "golangci-lint";
       "go.toolsManagement.checkForUpdates" = "off";
       "gopls" = {
         "formatting.gofumpt" = true;
