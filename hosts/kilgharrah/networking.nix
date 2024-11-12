@@ -23,5 +23,6 @@
   birdsong.peering = {
     enable = true;
     privateKeyFile = config.age.secrets.wireguard-peer-kilgharrah.path;
+    persistentKeepalive = 31;
   };
 }
