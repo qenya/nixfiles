@@ -28,7 +28,8 @@
   age.secrets.user-password-kilgharrah-qenya.file = ../../secrets/user-password-kilgharrah-qenya.age;
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-kilgharrah-qenya.path;
   users.users.qenya.extraGroups = [ "wheel" ];
-  home-manager.users.qenya = {
+  home-manager.users.qenya = { pkgs, ... }: {
+    home.packages = with pkgs; [ obs-studio ];
     # For the moment, this hosts some network-accessible services, so we want it on 24/7
     programs.plasma.powerdevil.AC.autoSuspend.action = "nothing";
   };
