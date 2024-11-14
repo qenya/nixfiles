@@ -10,6 +10,7 @@
   networking.hostName = "orm";
   networking.hostId = "00000000";
 
+  fountain.users.qenya.enable = true;
   users.users.qenya.extraGroups = [ "wheel" ];
   qenya.base-server.enable = true;
 

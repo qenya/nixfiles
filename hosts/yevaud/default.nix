@@ -10,6 +10,7 @@
   networking.hostName = "yevaud";
   networking.hostId = "09673d65";
 
+  fountain.users.qenya.enable = true;
   users.users.qenya.extraGroups = [ "wheel" ];
   qenya.base-server.enable = true;
 

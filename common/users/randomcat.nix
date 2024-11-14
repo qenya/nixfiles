@@ -1,12 +1,23 @@
 { config, lib, pkgs, ... }:
 
-let keys = import ../../keys.nix;
+let
+  inherit (lib) mkIf mkEnableOption;
+  keys = import ../../keys.nix;
+  cfg = config.fountain.users.randomcat;
 in
 {
-  users.users.randomcat = {
-    isNormalUser = true;
-    home = "/home/randomcat";
-    openssh.authorizedKeys.keys = keys.users.randomcat;
-    uid = 1003;
+  options.fountain.users.randomcat = {
+    enable = mkEnableOption "user randomcat";
+  };
+
+  config = mkIf cfg.enable {
+    users.users.randomcat = {
+      uid = 1000;
+      isNormalUser = true;
+      group = "randomcat";
+      openssh.authorizedKeys.keys = keys.users.randomcat;
+    };
+
+    users.groups.randomcat.gid = config.users.users.randomcat.uid;
   };
 }

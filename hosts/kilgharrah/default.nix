@@ -25,6 +25,7 @@
 
   qenya.services.pipewire.lowLatency.enable = true;
 
+  fountain.users.qenya.enable = true;
   age.secrets.user-password-kilgharrah-qenya.file = ../../secrets/user-password-kilgharrah-qenya.age;
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-kilgharrah-qenya.path;
   users.users.qenya.extraGroups = [ "wheel" ];
