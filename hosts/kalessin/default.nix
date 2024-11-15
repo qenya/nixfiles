@@ -18,10 +18,14 @@ in
   fountain.users.trungle.enable = true;
 
   qenya.base-server.enable = true;
-  
+
   qenya.services.remote-builder = {
     enable = true;
-    authorizedKeys.keys = [ keys.machines.tohru ];
+    authorizedKeys.keys = [
+      keys.machines.tohru
+      keys.machines.yevaud
+      keys.machines.orm
+    ];
   };
   boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
 

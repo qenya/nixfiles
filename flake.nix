@@ -86,10 +86,6 @@
         # (can stil build locally with nixos-rebuild)
         deployment.targetHost = lib.mkDefault null;
 
-        # TODO: set up some remote builders
-        # until this is done, as we have multiple architectures, safer to build on target
-        deployment.buildOnTarget = true;
-
         imports = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
