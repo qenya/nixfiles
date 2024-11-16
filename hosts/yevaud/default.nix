@@ -14,12 +14,6 @@
   users.users.qenya.extraGroups = [ "wheel" ];
   qenya.base-server.enable = true;
 
-  qenya.services.distributed-builds = {
-    enable = true;
-    keyFile = "/etc/ssh/ssh_host_ed25519_key";
-    builders = [ "kalessin" ];
-  };
-
   services.bind = {
     # enable = true;
     cacheNetworks = [ "10.127.0.0/16" "fd70:81ca:0f8f::/48" ];

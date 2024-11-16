@@ -38,8 +38,17 @@ in
         hostName = config.birdsong.hosts."kalessin".ipv4;
         sshUser = "remotebuild";
         sshKey = cfg.keyFile;
-        systems = [ "aarch64-linux" "x86_64-linux" ];
-        supportedFeatures = [ ];
+        systems = [ "aarch64-linux" ];
+        maxJobs = 2;
+        supportedFeatures = [ "big-parallel" ];
+      })
+      ++ (optional (elem "kilgharrah" cfg.builders) {
+        hostName = config.birdsong.hosts."kilgharrah".ipv4;
+        sshUser = "remotebuild";
+        sshKey = cfg.keyFile;
+        systems = [ "x86_64-linux" ];
+        maxJobs = 12;
+        supportedFeatures = [ "big-parallel" ];
       });
   };
 }
