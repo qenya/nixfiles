@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+let
+  keys = import ../../keys.nix;
+in
 {
   imports = [
     ./filesystems.nix
@@ -33,6 +36,15 @@
     home.packages = with pkgs; [ obs-studio ];
     # For the moment, this hosts some network-accessible services, so we want it on 24/7
     programs.plasma.powerdevil.AC.autoSuspend.action = "nothing";
+  };
+
+  qenya.services.remote-builder = {
+    enable = true;
+    authorizedKeys.keys = [
+      keys.machines.tohru
+      keys.machines.yevaud
+      keys.machines.orm
+    ];
   };
 
   programs.steam.enable = true;
