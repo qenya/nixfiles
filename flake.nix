@@ -5,6 +5,11 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module?ref=stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +55,7 @@
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-small, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-small, lix-module, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
     nixosConfigurations = (colmena.lib.makeHive self.outputs.colmena).nodes;
 
     # The name of this output type is not standardised. I have picked
@@ -87,6 +92,7 @@
         deployment.targetHost = lib.mkDefault null;
 
         imports = [
+          lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
           { nixpkgs.overlays = [ nur.overlay ]; }
