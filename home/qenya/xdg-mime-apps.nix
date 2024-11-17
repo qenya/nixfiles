@@ -7,6 +7,7 @@ in
   xdg.mimeApps = {
     enable = isGraphical;
     defaultApplications = {
+      "application/pdf" = [ "org.gnome.Evince.desktop" "org.kde.okular.desktop" ];
       "application/zip" = [ "org.gnome.FileRoller.desktop" "org.kde.ark.desktop" ];
       "image/gif" = [ "org.gnome.Loupe.desktop" "org.kde.gwenview.desktop" ];
       "image/jpeg" = [ "org.gnome.Loupe.desktop" "org.kde.gwenview.desktop" ];
