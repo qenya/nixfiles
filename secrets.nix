@@ -10,6 +10,7 @@ let
     wireguard-peer-yevaud = [ machines.yevaud ] ++ keys.users.qenya;
     wireguard-peer-kalessin = [ machines.kalessin ] ++ keys.users.qenya;
     wireguard-peer-kilgharrah = [ machines.kilgharrah ] ++ keys.users.qenya;
+    protonvpn-pennykettle1 = [ machines.yevaud ] ++ keys.users.qenya;
   };
 in
 builtins.listToAttrs (

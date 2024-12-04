@@ -6,6 +6,7 @@
     ./networking.nix
 
     ./experiments/birdsong-dns.nix
+    ./experiments/pennykettle.nix
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
