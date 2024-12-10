@@ -32,6 +32,7 @@ in
       "git.inputValidationSubjectLength" = null;
       "go.alternateTools" = {
         "go" = "${pkgs.go}/bin/go";
+        "golangci-lint" = "${pkgs.golangci-lint}/bin/golangci-lint";
         "gopls" = "${pkgs.gopls}/bin/gopls";
         "dlv" = "${pkgs.delve}/bin/dlv";
         "staticcheck" = "${pkgs.go-tools}/bin/staticcheck";
