@@ -49,7 +49,7 @@
   qenya.services.distributed-builds = {
     enable = true;
     keyFile = "/etc/ssh/ssh_host_ed25519_key";
-    builders = [ "kilgharrah" "kalessin" ];
+    builders = [ "kilgharrah" ];
   };
 
   programs.evolution.enable = true; # not in home-manager yet; not declaratively configurable yet

@@ -17,6 +17,12 @@
   users.users.qenya.extraGroups = [ "wheel" ];
   qenya.base-server.enable = true;
 
+  qenya.services.distributed-builds = {
+    enable = true;
+    keyFile = "/etc/ssh/ssh_host_ed25519_key";
+    builders = [ "kilgharrah" ];
+  };
+
   randomcat.services.zfs.datasets = {
     "rpool/state" = { mountpoint = "none"; };
     "rpool/state/forgejo" = { mountpoint = "/var/lib/forgejo"; };

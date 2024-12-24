@@ -90,6 +90,7 @@
         # disable remote deployment by default
         # (can stil build locally with nixos-rebuild)
         deployment.targetHost = lib.mkDefault null;
+        deployment.buildOnTarget = lib.mkDefault true;
 
         imports = [
           lix-module.nixosModules.default

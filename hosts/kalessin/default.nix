@@ -21,10 +21,7 @@ in
 
   qenya.services.remote-builder = {
     enable = true;
-    authorizedKeys.keys = [
-      keys.machines.kilgharrah
-      keys.machines.tohru
-    ];
+    authorizedKeys.keys = [ ];
   };
 
   system.stateVersion = "23.11";

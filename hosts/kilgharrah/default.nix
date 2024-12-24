@@ -41,12 +41,11 @@ in
 
   qenya.services.remote-builder = {
     enable = true;
-    authorizedKeys.keys = [ keys.machines.tohru ];
-  };
-  qenya.services.distributed-builds = {
-    enable = true;
-    keyFile = "/etc/ssh/ssh_host_ed25519_key";
-    builders = [ "kalessin" ];
+    authorizedKeys.keys = [
+      keys.machines.yevaud
+      keys.machines.orm
+      keys.machines.tohru
+    ];
   };
 
   programs.steam.enable = true;
