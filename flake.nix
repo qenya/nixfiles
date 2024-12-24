@@ -1,7 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-24.05-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-24.11-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
@@ -11,7 +11,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,11 +33,15 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
+      inputs.home-manager.follows = "";
     };
 
     colmena = {
       url = "github:zhaofengli/colmena";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.stable.follows = "";
+      inputs.nix-github-actions.follows = "";
+      inputs.flake-compat.follows = "";
     };
 
     randomcat = {
@@ -52,7 +56,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
+    birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=compat-24.11";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-small, lix-module, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
