@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./backup.nix
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix

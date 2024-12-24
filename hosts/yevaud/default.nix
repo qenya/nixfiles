@@ -22,6 +22,11 @@
     "rpool/state/forgejo" = { mountpoint = "/var/lib/forgejo"; };
   };
 
+  services.sanoid.datasets."rpool/state" = {
+    useTemplate = [ "production" ];
+    recursive = "zfs";
+  };
+
   qenya.services.forgejo = {
     enable = true;
     domain = "git.qenya.tel";

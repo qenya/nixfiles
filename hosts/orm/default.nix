@@ -19,6 +19,11 @@
     "rpool_orm/state/actual" = { mountpoint = "/var/lib/actual"; };
   };
 
+  services.sanoid.datasets."rpool_orm/state" = {
+    useTemplate = [ "production" ];
+    recursive = "zfs";
+  };
+
   qenya.services.actual = {
     enable = true;
     domain = "actual.qenya.tel";

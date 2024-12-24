@@ -10,6 +10,7 @@
     ./nginx.nix
     ./nix.nix
     ./openssh.nix
+    ./sanoid.nix
     ./security.nix
     ./steam.nix
   ];
