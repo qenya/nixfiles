@@ -22,6 +22,7 @@
     keyFile = "/etc/ssh/ssh_host_ed25519_key";
     builders = [ "kilgharrah" ];
   };
+  nix.settings.max-jobs = 0;
 
   randomcat.services.zfs.datasets = {
     "rpool/state" = { mountpoint = "none"; };
