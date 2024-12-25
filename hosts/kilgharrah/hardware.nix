@@ -6,7 +6,7 @@
   services.fwupd.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.modesetting.enable = true; # this defaults to true from 24.11
+  hardware.nvidia.open = false;
 
   # # Downgrade to driver version 535 as 550 has problems with Wayland
   # hardware.nvidia.package =
