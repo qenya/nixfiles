@@ -15,6 +15,7 @@ in
 
   fountain.users.qenya.enable = true;
   users.users.qenya.extraGroups = [ "wheel" ];
+  fountain.users.randomcat.enable = true;
   fountain.users.trungle.enable = true;
 
   qenya.base-server.enable = true;
