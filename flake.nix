@@ -60,8 +60,9 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-small, lix-module, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
-    nixosConfigurations = (colmena.lib.makeHive self.outputs.colmena).nodes;
-
+    nixosConfigurations = self.outputs.colmenaHive.nodes;
+    colmenaHive = colmena.lib.makeHive self.outputs.colmena;
+    
     # The name of this output type is not standardised. I have picked
     # "homeManagerModules" as the discussion here suggests it's the most common:
     # https://github.com/nix-community/home-manager/issues/1783
@@ -129,7 +130,7 @@
       in
       pkgs.mkShell {
         packages = [
-          pkgs.colmena
+          colmena.packages.${system}.colmena
           agenix.packages.${system}.default
           plasma-manager.packages.${system}.rc2nix
         ];

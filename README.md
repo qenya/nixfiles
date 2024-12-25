@@ -26,6 +26,7 @@ To build locally, run `nixos-rebuild switch --flake .#[hostname]` as root.
 To build the remote machines, run `colmena apply`. See the [colmena documentation](https://colmena.cli.rs/) for command-line options. Notable options include:
 * `--on [hostname]`: build a specific machine only
 * `--reboot`: reboot after building (but note [this bug](https://github.com/zhaofengli/colmena/issues/166) means it may hang even when the reboot completes successfully)
+* `--experimental-flake-eval`: currently necessary to build at all. See [here](https://github.com/zhaofengli/colmena/pull/228)
 
 ### Updating
 
