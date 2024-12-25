@@ -56,7 +56,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=compat-24.11";
+    birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-small, lix-module, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
