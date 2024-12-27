@@ -1,4 +1,4 @@
-{ config, lib, pkgs, osConfig, ... }:
+{ config, lib, pkgs, osConfig, inputs, ... }:
 
 let
   inherit (lib) mkIf;
@@ -7,12 +7,10 @@ in
 {
   programs.firefox = lib.mkIf isGraphical {
     enable = true;
-
-    # coming in 24.11
-    # languagePacks = [ "en-GB" ];
+    languagePacks = [ "en-GB" ];
 
     profiles.default = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions = with inputs.firefox-addons.packages.${pkgs.hostPlatform.system}; [
         bitwarden
         ublock-origin
       ];

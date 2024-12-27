@@ -49,6 +49,11 @@
       flake = false;
     };
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?ref=master&dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # Third-party flake providing package and NixOS module for Actual Budget as
     # nixpkgs are having trouble: https://github.com/NixOS/nixpkgs/issues/269069
     actual = {
