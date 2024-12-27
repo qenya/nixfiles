@@ -26,9 +26,6 @@
       inputs.home-manager.follows = "home-manager-unstable";
     };
 
-    # TODO: remove dependency on NUR (#16)
-    nur.url = "github:nix-community/NUR";
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -113,8 +110,6 @@
         imports = [
           inputs.lix-module.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
-          inputs.nur.nixosModules.nur
-          { nixpkgs.overlays = [ inputs.nur.overlay ]; }
           inputs.agenix.nixosModules.default
           inputs.birdsong.nixosModules.default
           inputs.actual.nixosModules.default
