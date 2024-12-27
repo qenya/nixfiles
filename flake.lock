@@ -344,7 +344,29 @@
         "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
-        "randomcat": "randomcat"
+        "randomcat": "randomcat",
+        "scoutshonour": "scoutshonour"
+      }
+    },
+    "scoutshonour": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735301893,
+        "narHash": "sha256-d95MCTUYMCcOQv4LpmWxPuVnx7McezXYs2Idw8u8ngI=",
+        "ref": "main",
+        "rev": "f447cd380ea1fb81a0ff8f292b6bbdf0be9c9520",
+        "revCount": 23,
+        "type": "git",
+        "url": "https://git.qenya.tel/qenya/nix-scoutshonour"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://git.qenya.tel/qenya/nix-scoutshonour"
       }
     },
     "systems": {

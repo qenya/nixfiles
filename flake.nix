@@ -57,12 +57,17 @@
     };
 
     birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
+
+    scoutshonour = {
+      url = "git+https://git.qenya.tel/qenya/nix-scoutshonour?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-small, lix-module, home-manager, plasma-manager, nur, agenix, colmena, randomcat, actual, birdsong, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-small, colmena, ... }: {
     nixosConfigurations = self.outputs.colmenaHive.nodes;
     colmenaHive = colmena.lib.makeHive self.outputs.colmena;
-    
+
     # The name of this output type is not standardised. I have picked
     # "homeManagerModules" as the discussion here suggests it's the most common:
     # https://github.com/nix-community/home-manager/issues/1783
@@ -71,7 +76,7 @@
     # https://github.com/NixOS/nix/pull/10858
     homeManagerModules = {
       "qenya".imports = [
-        plasma-manager.homeManagerModules.plasma-manager
+        inputs.plasma-manager.homeManagerModules.plasma-manager
         ./home/qenya
       ];
 
@@ -88,7 +93,10 @@
           orm = import nixpkgs-small { system = "x86_64-linux"; };
           kalessin = import nixpkgs-small { system = "aarch64-linux"; };
         };
-        specialArgs = { inherit self; };
+        specialArgs = {
+          inherit self;
+          inherit inputs;
+        };
       };
 
       defaults = { config, lib, pkgs, ... }: {
@@ -98,16 +106,16 @@
         deployment.buildOnTarget = lib.mkDefault true;
 
         imports = [
-          lix-module.nixosModules.default
-          home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
-          { nixpkgs.overlays = [ nur.overlay ]; }
-          agenix.nixosModules.default
-          birdsong.nixosModules.default
-          actual.nixosModules.default
+          inputs.lix-module.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          inputs.nur.nixosModules.nur
+          { nixpkgs.overlays = [ inputs.nur.overlay ]; }
+          inputs.agenix.nixosModules.default
+          inputs.birdsong.nixosModules.default
+          inputs.actual.nixosModules.default
           ./common
           ./services
-          (builtins.toPath "${randomcat}/services/default.nix")
+          (builtins.toPath "${inputs.randomcat}/services/default.nix")
         ];
       };
 
@@ -130,9 +138,9 @@
       in
       pkgs.mkShell {
         packages = [
-          colmena.packages.${system}.colmena
-          agenix.packages.${system}.default
-          plasma-manager.packages.${system}.rc2nix
+          inputs.colmena.packages.${system}.colmena
+          inputs.agenix.packages.${system}.default
+          inputs.plasma-manager.packages.${system}.rc2nix
         ];
       };
   };

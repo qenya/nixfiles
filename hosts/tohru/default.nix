@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -31,6 +31,8 @@
     "networkmanager" # UI wifi configuration
     "dialout" # access to serial ports
   ];
+
+  nixpkgs.overlays = [ inputs.scoutshonour.overlays.default ];
   home-manager.users.qenya = { pkgs, ... }: {
     home.packages = with pkgs; [
       keepassxc
@@ -41,8 +43,8 @@
       # games
       openttd
       prismlauncher
-      nur.repos.qenya.digital-a-love-story
-      nur.repos.qenya.dont-take-it-personally-babe
+      scoutshonour.digital-a-love-story
+      scoutshonour.dont-take-it-personally-babe
     ];
   };
 
