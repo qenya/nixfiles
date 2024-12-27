@@ -6,7 +6,8 @@
     ./networking.nix
 
     ./experiments/birdsong-dns.nix
-    ./experiments/pennykettle.nix
+    # TODO: this breaks external IPv6 somehow
+    # ./experiments/pennykettle.nix
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
