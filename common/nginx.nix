@@ -20,6 +20,6 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "accounts@katherina.rocks"; # TODO: replace with more appropriate email
+    defaults.email = "auto@qenya.tel";
   };
 }

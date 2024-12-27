@@ -10,12 +10,11 @@
     zones = {
       "birdsong.internal" = {
         master = true;
-        # TODO: pick better email address for SOA record
         file = pkgs.writeText "birdsong.internal.zone" ''
           $TTL 60
           $ORIGIN birdsong.internal.
 
-          birdsong.internal. IN SOA ns.birdsong.internal. accounts.katherina.rocks. ( 2024080401 7200 3600 1209600 3600 )
+          birdsong.internal. IN SOA ns.birdsong.internal. auto.qenya.tel. ( 2024122701 7200 3600 1209600 3600 )
           birdsong.internal. IN NS ns.birdsong.internal.
 
           yevaud.c.birdsong.internal. IN A 10.127.1.1
