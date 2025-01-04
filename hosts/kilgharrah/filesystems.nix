@@ -67,25 +67,24 @@
 
 
   # HDD in bay
-  # FIXME: failing drive
 
-  # environment.etc.crypttab.text = ''
-  #   albion UUID=acda0e7a-069f-47c7-8e37-ec00e7cdde0f /root/luks-albion.key
-  # '';
+  environment.etc.crypttab.text = ''
+    albion UUID=8a924f24-9b65-4f05-aeda-5b4080cc7aa1 /root/luks-albion.key
+  '';
 
-  # randomcat.services.zfs.datasets = {
-  #   "rpool_albion/data" = { mountpoint = "none"; };
-  #   "rpool_albion/data/steam" = { mountpoint = "/home/qenya/.local/share/Steam"; };
-  #   "rpool_albion/state" = { mountpoint = "none"; };
-  #   "rpool_albion/state/audiobookshelf" = { mountpoint = "/var/lib/audiobookshelf"; };
-  #   "rpool_albion/state/jellyfin" = { mountpoint = "/var/lib/jellyfin"; };
-  #   "rpool_albion/state/navidrome" = { mountpoint = "/var/lib/navidrome"; };
-  #   "rpool_albion/srv" = { mountpoint = "none"; };
-  #   "rpool_albion/srv/audiobookshelf" = { mountpoint = "/srv/audiobookshelf"; };
-  #   "rpool_albion/srv/ftp" = { mountpoint = "/srv/ftp"; };
-  #   "rpool_albion/srv/jellyfin" = { mountpoint = "/srv/jellyfin"; };
-  #   "rpool_albion/srv/music" = { mountpoint = "/srv/music"; };
-  # };
+  randomcat.services.zfs.datasets = {
+    "rpool_albion/data" = { mountpoint = "none"; };
+    "rpool_albion/data/steam" = { mountpoint = "/home/qenya/.local/share/Steam"; };
+    "rpool_albion/state" = { mountpoint = "none"; };
+    "rpool_albion/state/audiobookshelf" = { mountpoint = "/var/lib/audiobookshelf"; };
+    "rpool_albion/state/jellyfin" = { mountpoint = "/var/lib/jellyfin"; };
+    "rpool_albion/state/navidrome" = { mountpoint = "/var/lib/navidrome"; };
+    "rpool_albion/srv" = { mountpoint = "none"; };
+    "rpool_albion/srv/audiobookshelf" = { mountpoint = "/srv/audiobookshelf"; };
+    "rpool_albion/srv/ftp" = { mountpoint = "/srv/ftp"; };
+    "rpool_albion/srv/jellyfin" = { mountpoint = "/srv/jellyfin"; };
+    "rpool_albion/srv/music" = { mountpoint = "/srv/music"; };
+  };
 
 
   # Other

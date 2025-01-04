@@ -9,8 +9,7 @@ in
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix
-    # FIXME: failing drive
-    # ./ftp.nix
+    ./ftp.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -49,20 +48,20 @@ in
     ];
   };
 
-  # programs.steam.enable = true;
-  # qenya.services.audiobookshelf = {
-  #   enable = true;
-  #   domain = "audiobookshelf.qenya.tel";
-  # };
-  # qenya.services.jellyfin = {
-  #   enable = true;
-  #   domain = "jellyfin.qenya.tel";
-  # };
-  # qenya.services.navidrome = {
-  #   enable = true;
-  #   domain = "music.qenya.tel";
-  #   dataDir = "/srv/music";
-  # };
+  programs.steam.enable = true;
+  qenya.services.audiobookshelf = {
+    enable = true;
+    domain = "audiobookshelf.qenya.tel";
+  };
+  qenya.services.jellyfin = {
+    enable = true;
+    domain = "jellyfin.qenya.tel";
+  };
+  qenya.services.navidrome = {
+    enable = true;
+    domain = "music.qenya.tel";
+    dataDir = "/srv/music";
+  };
 
   system.stateVersion = "24.05";
 
