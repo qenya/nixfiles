@@ -4,9 +4,12 @@
   environment.systemPackages = with pkgs; [
     btop
     git
+    wget
+
+    # hardware troubleshooting
     lshw
     parted
-    wget
+    smartmontools
 
     # network troubleshooting
     inetutils
