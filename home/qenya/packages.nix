@@ -6,6 +6,8 @@ let
 in
 {
   home.packages = with pkgs; [
+    eza # like `ls` but fancier
+    hexyl # like `xxd` but cooler
     tree # like `ls -R` but nicer
     units
     zip unzip
