@@ -20,10 +20,6 @@ in
     ];
     mutableExtensionsDir = false;
     userSettings = {
-      "[go]" = {
-        "editor.defaultFormatter" = "golang.go";
-        "editor.formatOnSave" = false;
-      };
       "extensions.autoUpdate" = false;
       "files.insertFinalNewline" = true;
       "git.autofetch" = true;
@@ -31,6 +27,22 @@ in
       "git.enableSmartCommit" = true;
       "git.inputValidation" = true;
       "git.inputValidationSubjectLength" = null;
+      "javascript.updateImportsOnFileMove.enabled" = "always";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "${pkgs.nil}/bin/nil";
+      "nix.serverSettings".nil = {
+        diagnostics.ignored = [ "unused_binding" "unused_with" ];
+        formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
+        nix.flake.autoArchive = true;
+      };
+      "terminal.integrated.allowChords" = false;
+      "terminal.integrated.defaultProfile.linux" = "zsh";
+      "workbench.colorTheme" = "Gruvbox Dark Medium";
+
+      "[go]" = {
+        "editor.defaultFormatter" = "golang.go";
+        "editor.formatOnSave" = false;
+      };
       "go.alternateTools" = {
         "go" = "${pkgs.go}/bin/go";
         "golangci-lint" = "${pkgs.golangci-lint}/bin/golangci-lint";
@@ -44,17 +56,6 @@ in
         "formatting.gofumpt" = true;
         "ui.semanticTokens" = true;
       };
-      "javascript.updateImportsOnFileMove.enabled" = "always";
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "${pkgs.nil}/bin/nil";
-      "nix.serverSettings".nil = {
-        diagnostics.ignored = [ "unused_binding" "unused_with" ];
-        formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
-        nix.flake.autoArchive = true;
-      };
-      "terminal.integrated.allowChords" = false;
-      "terminal.integrated.defaultProfile.linux" = "zsh";
-      "workbench.colorTheme" = "Gruvbox Dark Medium";
     };
   };
 }
