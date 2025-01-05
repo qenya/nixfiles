@@ -66,7 +66,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-small, colmena, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-small, nixpkgs-unstable, colmena, ... }: {
     nixosConfigurations = self.outputs.colmenaHive.nodes;
     colmenaHive = colmena.lib.makeHive self.outputs.colmena;
 
@@ -87,7 +87,12 @@
 
     colmena = {
       meta = {
-        nixpkgs = import nixpkgs { system = "x86_64-linux"; };
+        nixpkgs = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          overlays = [
+            inputs.lix-module.overlays.default
+          ];
+        };
         nodeNixpkgs = {
           kilgharrah = import nixpkgs { system = "x86_64-linux"; };
           tohru = import nixpkgs { system = "x86_64-linux"; };
