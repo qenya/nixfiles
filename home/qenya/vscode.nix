@@ -25,6 +25,7 @@ in
         "editor.formatOnSave" = false;
       };
       "extensions.autoUpdate" = false;
+      "files.insertFinalNewline" = true;
       "git.autofetch" = true;
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
