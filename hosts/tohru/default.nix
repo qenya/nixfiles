@@ -1,5 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 
+let
+  inherit (lib) mkForce;
+in
 {
   imports = [
     ./filesystems.nix
@@ -22,6 +25,11 @@
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
   services.xserver.xkb.layout = "gb";
+
+  # tohru does not have the resources to run these under other load and is generally powered off when not in use.
+  # instead, just run `nix-collect-garbage -d` and `nix-store --optimise` every so often.
+  nix.gc.automatic = mkForce false;
+  nix.optimise.automatic = mkForce false;
 
   fountain.users.qenya.enable = true;
   age.secrets.user-password-tohru-qenya.file = ../../secrets/user-password-tohru-qenya.age;
