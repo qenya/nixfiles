@@ -17,7 +17,7 @@
     };
   };
 
-  swapDevices = [ ]; # TODO: add
+  swapDevices = [{ device = "/dev/disk/by-uuid/c7c48325-e90d-414d-b579-84cb45616ee9"; }];
 
   boot.supportedFilesystems = [ "ntfs" ]; # for USB drives
 }
