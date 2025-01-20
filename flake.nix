@@ -96,6 +96,7 @@
         nodeNixpkgs = {
           kilgharrah = import nixpkgs { system = "x86_64-linux"; };
           tohru = import nixpkgs { system = "x86_64-linux"; };
+          elucredassa = import nixpkgs-small { system = "x86_64-linux"; };
           yevaud = import nixpkgs-small { system = "x86_64-linux"; };
           orm = import nixpkgs-small { system = "x86_64-linux"; };
           kalessin = import nixpkgs-small { system = "aarch64-linux"; };
@@ -130,6 +131,7 @@
 
       kilgharrah.imports = [ ./hosts/kilgharrah ];
       tohru.imports = [ ./hosts/tohru ];
+      elucredassa.imports = [ ./hosts/elucredassa ];
       yevaud.imports = [ ./hosts/yevaud ];
       orm.imports = [ ./hosts/orm ];
       kalessin.imports = [ ./hosts/kalessin ];
