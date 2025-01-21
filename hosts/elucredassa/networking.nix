@@ -12,4 +12,10 @@
     };
     linkConfig.RequiredForOnline = "routable";
   };
+
+  birdsong.peering = {
+    enable = true;
+    privateKeyFile = "/etc/wireguard/privatekey";
+    persistentKeepalive = 29;
+  };
 }
