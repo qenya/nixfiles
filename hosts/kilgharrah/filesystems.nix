@@ -89,5 +89,5 @@
 
   # Other
 
-  boot.supportedFilesystems = [ "ntfs" ]; # for USB drives
+  boot.supportedFilesystems = [ "ntfs" "zfs" ];
 }
