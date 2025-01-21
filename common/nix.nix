@@ -9,4 +9,12 @@
   };
   nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
   nixpkgs.config.allowUnfree = true;
+
+  # this is a dependency of feishin (used in qenya's home-manager). it does not actually have a known vulnerability,
+  # it's just unsuspported because Electron's support cycle is a ludicrously short 6 months.
+  # feishin's dev is going to be rewriting it without Electron (as "audioling").
+  # modern software development was a mistake.
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-31.7.7"
+  ];
 }

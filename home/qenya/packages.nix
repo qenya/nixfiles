@@ -10,7 +10,8 @@ in
     hexyl # like `xxd` but cooler
     tree # like `ls -R` but nicer
     units
-    zip unzip
+    zip
+    unzip
 
     # Extremely important
     fortune
