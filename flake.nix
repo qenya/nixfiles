@@ -125,6 +125,7 @@
         ];
       };
 
+      elucredassa.deployment.targetHost = "10.127.3.2";
       yevaud.deployment.targetHost = "yevaud.birdsong.network";
       orm.deployment.targetHost = "orm.birdsong.network";
       kalessin.deployment.targetHost = "kalessin.birdsong.network";
