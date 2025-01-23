@@ -19,6 +19,7 @@
       Name = "sit-he-ipv6";
       Kind = "sit";
       Description = "Hurricane Electric IPv6 Tunnel";
+      MTUBytes = 1480;
     };
 
     tunnelConfig = {
@@ -38,4 +39,10 @@
     privateKeyFile = "/etc/wireguard/privatekey";
     persistentKeepalive = 29;
   };
+
+  # restricted to fit within the 6in4 tunnel
+  systemd.network.netdevs."30-birdsong".netdevConfig.MTUBytes = 1280;
+  # these two lines work around this bug: https://github.com/NixOS/nixpkgs/issues/375960
+  systemd.network.netdevs."30-birdsong".netdevConfig.Kind = "wireguard";
+  systemd.network.netdevs."30-birdsong".netdevConfig.Name = "wg-birdsong";
 }
