@@ -45,6 +45,7 @@ in
       keys.machines.yevaud
       keys.machines.orm
       keys.machines.tohru
+      keys.machines.elucredassa
     ];
   };
 

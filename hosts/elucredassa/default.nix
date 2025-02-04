@@ -23,6 +23,12 @@ in
   console.keyMap = "uk";
   services.xserver.xkb.layout = "gb";
 
+  qenya.services.distributed-builds = {
+    enable = true;
+    keyFile = "/etc/ssh/ssh_host_ed25519_key";
+    builders = [ "kilgharrah" ];
+  };
+
   fountain.users.qenya.enable = true;
   users.users.qenya.extraGroups = [ "wheel" ];
 
