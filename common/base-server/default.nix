@@ -13,6 +13,5 @@ in
     # Allow remote deployment with colmena
     deployment.targetUser = null;
     security.sudo.wheelNeedsPassword = false;
-    nix.settings.trusted-users = [ "@wheel" ];
   };
 }
