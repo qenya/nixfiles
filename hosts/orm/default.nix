@@ -30,6 +30,24 @@
     useTemplate = [ "production" ];
     recursive = "zfs";
   };
+  
+  # TODO: modularise this
+  randomcat.services.zfs.datasets."rpool_orm/state".zfsPermissions.users.backup = [ "hold" "send" ];
+  users.users.backup = {
+    group = "backup";
+    isSystemUser = true;
+    useDefaultShell = true;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOFa3hjej6KGmS2aQ4s46Y7U8pN4yyR2FuMofpHRwXNk syncoid@elucredassa"
+    ];
+
+    # syncoid uses these if available but doesn't pull them in automatically
+    packages = with pkgs; [
+      pkgs.mbuffer
+      pkgs.lzop
+    ];
+  };
+  users.groups.backup = { };
 
   qenya.services.actual = {
     enable = true;

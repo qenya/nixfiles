@@ -23,6 +23,29 @@ in
   console.keyMap = "uk";
   services.xserver.xkb.layout = "gb";
 
+  # TODO: modularise this
+  randomcat.services.zfs.datasets = {
+    "rpool_elucredassa/backups" = {
+      mountpoint = "none";
+      zfsPermissions.users.syncoid = [ "mount" "create" "receive" "recordsize" ];
+    };
+    "rpool_elucredassa/backups/rpool_orm" = { mountpoint = "none"; };
+  };
+  services.syncoid = {
+    enable = true;
+    interval = "*-*-* *:15:00";
+    commonArgs = [ "--no-sync-snap" ];
+    commands = {
+      "testing1" = {
+        source = "backup@10.127.1.2:rpool_orm/state";
+        target = "rpool_elucredassa/backups/rpool_orm/state";
+        recursive = true;
+        recvOptions = "ux recordsize o compression=lz4";
+        extraArgs = [ "--debug" ];
+      };
+    };
+  };
+
   qenya.services.distributed-builds = {
     enable = true;
     keyFile = "/etc/ssh/ssh_host_ed25519_key";
