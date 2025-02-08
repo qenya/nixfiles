@@ -25,11 +25,11 @@ in
 
   # TODO: modularise this
   randomcat.services.zfs.datasets = {
-    "rpool_elucredassa/backups" = {
+    "rpool_elucredassa/backup" = { mountpoint = "none"; };
+    "rpool_elucredassa/backup/orm" = {
       mountpoint = "none";
       zfsPermissions.users.syncoid = [ "mount" "create" "receive" "recordsize" ];
     };
-    "rpool_elucredassa/backups/rpool_orm" = { mountpoint = "none"; };
   };
   services.syncoid = {
     enable = true;
@@ -38,10 +38,9 @@ in
     commands = {
       "testing1" = {
         source = "backup@10.127.1.2:rpool_orm/state";
-        target = "rpool_elucredassa/backups/rpool_orm/state";
+        target = "rpool_elucredassa/backup/orm/state";
         recursive = true;
         recvOptions = "ux recordsize o compression=lz4";
-        extraArgs = [ "--debug" ];
       };
     };
   };
