@@ -26,6 +26,8 @@
       inputs.home-manager.follows = "home-manager-unstable";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,90 +68,91 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-small, nixpkgs-unstable, colmena, ... }: {
-    nixosConfigurations = self.outputs.colmenaHive.nodes;
-    colmenaHive = colmena.lib.makeHive self.outputs.colmena;
+  outputs = inputs@{ self, nixpkgs, nixpkgs-small, nixpkgs-unstable, flake-parts, colmena, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ ];
 
-    # The name of this output type is not standardised. I have picked
-    # "homeManagerModules" as the discussion here suggests it's the most common:
-    # https://github.com/nix-community/home-manager/issues/1783
-    #
-    # However, note CppNix >= 2.22.3, >= 2.24 has blessed "homeModules":
-    # https://github.com/NixOS/nix/pull/10858
-    homeManagerModules = {
-      "qenya".imports = [
-        inputs.plasma-manager.homeManagerModules.plasma-manager
-        ./home/qenya
-      ];
+      systems = [ "x86_64-linux" "aarch64-linux" ];
 
-      "qenya@shaw".imports = [ ./hosts/shaw/home.nix ];
-    };
-
-    colmena = {
-      meta = {
-        nixpkgs = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          overlays = [
-            inputs.lix-module.overlays.default
+      perSystem = { pkgs, system, ... }: {
+        devShells.default = pkgs.mkShell {
+          packages = [
+            inputs.colmena.packages.${system}.colmena
+            inputs.agenix.packages.${system}.default
+            inputs.plasma-manager.packages.${system}.rc2nix
           ];
         };
-        nodeNixpkgs = {
-          kilgharrah = import nixpkgs { system = "x86_64-linux"; };
-          tohru = import nixpkgs { system = "x86_64-linux"; };
-          elucredassa = import nixpkgs-small { system = "x86_64-linux"; };
-          yevaud = import nixpkgs-small { system = "x86_64-linux"; };
-          orm = import nixpkgs-small { system = "x86_64-linux"; };
-          kalessin = import nixpkgs-small { system = "aarch64-linux"; };
-        };
-        specialArgs = {
-          inherit self;
-          inherit inputs;
-        };
       };
 
-      defaults = { config, lib, pkgs, ... }: {
-        # disable remote deployment by default
-        # (can stil build locally with nixos-rebuild)
-        deployment.targetHost = lib.mkDefault null;
-        deployment.buildOnTarget = lib.mkDefault true;
+      flake.nixosConfigurations = self.outputs.colmenaHive.nodes;
+      flake.colmenaHive = colmena.lib.makeHive self.outputs.colmena;
 
-        imports = [
-          inputs.lix-module.nixosModules.default
-          inputs.home-manager.nixosModules.home-manager
-          inputs.agenix.nixosModules.default
-          inputs.birdsong.nixosModules.default
-          inputs.actual.nixosModules.default
-          ./common
-          ./services
-          (builtins.toPath "${inputs.randomcat}/services/default.nix")
+      # The name of this output type is not standardised. I have picked
+      # "homeManagerModules" as the discussion here suggests it's the most common:
+      # https://github.com/nix-community/home-manager/issues/1783
+      #
+      # However, note CppNix >= 2.22.3, >= 2.24 has blessed "homeModules":
+      # https://github.com/NixOS/nix/pull/10858
+      flake.homeManagerModules = {
+        "qenya".imports = [
+          inputs.plasma-manager.homeManagerModules.plasma-manager
+          ./home/qenya
         ];
+
+        "qenya@shaw".imports = [ ./hosts/shaw/home.nix ];
       };
 
-      elucredassa.deployment.targetHost = "10.127.3.2";
-      yevaud.deployment.targetHost = "yevaud.birdsong.network";
-      orm.deployment.targetHost = "orm.birdsong.network";
-      kalessin.deployment.targetHost = "kalessin.birdsong.network";
+      flake.colmena = {
+        meta = {
+          nixpkgs = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            overlays = [
+              inputs.lix-module.overlays.default
+            ];
+          };
+          nodeNixpkgs = {
+            kilgharrah = import nixpkgs { system = "x86_64-linux"; };
+            tohru = import nixpkgs { system = "x86_64-linux"; };
+            elucredassa = import nixpkgs-small { system = "x86_64-linux"; };
+            yevaud = import nixpkgs-small { system = "x86_64-linux"; };
+            orm = import nixpkgs-small { system = "x86_64-linux"; };
+            kalessin = import nixpkgs-small { system = "aarch64-linux"; };
+          };
+          specialArgs = {
+            inherit self;
+            inherit inputs;
+          };
+        };
 
-      kilgharrah.imports = [ ./hosts/kilgharrah ];
-      tohru.imports = [ ./hosts/tohru ];
-      elucredassa.imports = [ ./hosts/elucredassa ];
-      yevaud.imports = [ ./hosts/yevaud ];
-      orm.imports = [ ./hosts/orm ];
-      kalessin.imports = [ ./hosts/kalessin ];
+        defaults = { config, lib, pkgs, ... }: {
+          # disable remote deployment by default
+          # (can stil build locally with nixos-rebuild)
+          deployment.targetHost = lib.mkDefault null;
+          deployment.buildOnTarget = lib.mkDefault true;
+
+          imports = [
+            inputs.lix-module.nixosModules.default
+            inputs.home-manager.nixosModules.home-manager
+            inputs.agenix.nixosModules.default
+            inputs.birdsong.nixosModules.default
+            inputs.actual.nixosModules.default
+            ./common
+            ./services
+            (builtins.toPath "${inputs.randomcat}/services/default.nix")
+          ];
+        };
+
+        elucredassa.deployment.targetHost = "10.127.3.2";
+        yevaud.deployment.targetHost = "yevaud.birdsong.network";
+        orm.deployment.targetHost = "orm.birdsong.network";
+        kalessin.deployment.targetHost = "kalessin.birdsong.network";
+
+        kilgharrah.imports = [ ./hosts/kilgharrah ];
+        tohru.imports = [ ./hosts/tohru ];
+        elucredassa.imports = [ ./hosts/elucredassa ];
+        yevaud.imports = [ ./hosts/yevaud ];
+        orm.imports = [ ./hosts/orm ];
+        kalessin.imports = [ ./hosts/kalessin ];
+      };
     };
-
-    # TODO: have this work on other systems too
-    devShells."x86_64-linux".default =
-      let
-        system = "x86_64-linux";
-        pkgs = import nixpkgs { inherit system; };
-      in
-      pkgs.mkShell {
-        packages = [
-          inputs.colmena.packages.${system}.colmena
-          inputs.agenix.packages.${system}.default
-          inputs.plasma-manager.packages.${system}.rc2nix
-        ];
-      };
-  };
 }
