@@ -11,11 +11,14 @@ in
     enableUpdateCheck = false;
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
+      charliermarsh.ruff
       dbaeumer.vscode-eslint
       eamodio.gitlens
       golang.go
       jdinhlife.gruvbox
       jnoortheen.nix-ide
+      matangover.mypy
+      ms-python.black-formatter
       ms-python.python
     ];
     mutableExtensionsDir = false;
@@ -56,6 +59,18 @@ in
         "formatting.gofumpt" = true;
         "ui.semanticTokens" = true;
       };
+
+      "[python]" = {
+        "editor.defaultFormatter" = "ms-python.black-formatter";
+        "editor.formatOnSave" = true;
+        "editor.codeActionsOnSave" = {
+          "source.fixAll" = "explicit";
+          "source.organizeImports" = "explicit";
+        };
+      };
+      "ruff.nativeServer" = "on";
+      "ruff.path" = "${pkgs.ruff}/bin/ruff";
+      "mypy.dmypyExecutable" = "${pkgs.mypy}/bin/dmypy";
     };
   };
 }
