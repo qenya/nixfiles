@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [ direnv ];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -26,18 +27,9 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "sudo" ];
+      plugins = [ "git" "sudo" "direnv" ];
       theme = "agnoster";
     };
-
-    initExtra = ''
-      # If a shell is started in a directory with a shell.nix, automatically run nix-shell
-      if [ -f ./shell.nix ]; then
-        if [ -z "$IN_NIX_SHELL" ]; then
-          nix-shell --command "zsh"
-        fi
-      fi
-    '';
 
     envExtra = ''
       DEFAULT_USER=qenya
