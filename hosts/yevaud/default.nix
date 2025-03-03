@@ -13,6 +13,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   networking.hostName = "yevaud";
   networking.hostId = "09673d65";
+  networking.domain = "birdsong.network";
 
   fountain.users.qenya.enable = true;
   users.users.qenya.extraGroups = [ "wheel" ];

@@ -125,9 +125,7 @@
         };
 
         defaults = { config, lib, pkgs, ... }: {
-          # disable remote deployment by default
-          # (can stil build locally with nixos-rebuild)
-          deployment.targetHost = lib.mkDefault null;
+          deployment.targetHost = lib.mkDefault config.networking.fqdn;
           deployment.buildOnTarget = lib.mkDefault true;
 
           imports = [
@@ -142,10 +140,9 @@
           ];
         };
 
-        elucredassa.deployment.targetHost = "10.127.3.2";
-        yevaud.deployment.targetHost = "yevaud.birdsong.network";
-        orm.deployment.targetHost = "orm.birdsong.network";
-        kalessin.deployment.targetHost = "kalessin.birdsong.network";
+        kilgharrah.deployment.targetHost = null; # disable remote deployment
+        tohru.deployment.targetHost = null; # disable remote deployment
+        elucredassa.deployment.targetHost = "10.127.3.2"; # no fqdn yet
 
         kilgharrah.imports = [ ./hosts/kilgharrah ];
         tohru.imports = [ ./hosts/tohru ];
