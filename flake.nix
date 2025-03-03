@@ -70,7 +70,7 @@
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-small, nixpkgs-unstable, flake-parts, colmena, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ];
+      imports = [ ./flake ];
 
       systems = [ "x86_64-linux" "aarch64-linux" ];
 
