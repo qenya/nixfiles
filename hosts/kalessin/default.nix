@@ -26,5 +26,15 @@ in
     authorizedKeys.keys = [ ];
   };
 
+  randomcat.services.zfs.datasets = {
+    "rpool_kalessin/state" = { mountpoint = "none"; };
+  };
+
+  services.sanoid.datasets."rpool_kalessin/state" = {
+    useTemplate = [ "production" ];
+    recursive = "zfs";
+    process_children_only = true;
+  };
+
   system.stateVersion = "23.11";
 }

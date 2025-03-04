@@ -114,6 +114,13 @@
             source = "rpool_orm";
             target = "rpool_elucredassa/backup/orm";
           };
+          "kalessin-state" = {
+            dataset = "state";
+            sourceHost = "kalessin";
+            targetHost = "elucredassa";
+            source = "rpool_kalessin";
+            target = "rpool_elucredassa/backup/kalessin";
+          };
         };
       };
 
