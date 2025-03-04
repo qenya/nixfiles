@@ -102,6 +102,21 @@
         "qenya@shaw".imports = [ ./hosts/shaw/home.nix ];
       };
 
+      fountain.backup = {
+        keys = {
+          elucredassa = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOFa3hjej6KGmS2aQ4s46Y7U8pN4yyR2FuMofpHRwXNk syncoid@elucredassa" ];
+        };
+        sync = {
+          "orm-state" = {
+            dataset = "state";
+            sourceHost = "orm";
+            targetHost = "elucredassa";
+            source = "rpool_orm";
+            target = "rpool_elucredassa/backup/orm";
+          };
+        };
+      };
+
       flake.colmena = {
         meta = {
           nixpkgs = import nixpkgs-unstable {

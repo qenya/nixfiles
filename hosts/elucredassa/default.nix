@@ -23,26 +23,10 @@ in
   console.keyMap = "uk";
   services.xserver.xkb.layout = "gb";
 
-  # TODO: modularise this
+  # These are populated by fountain.backup
   randomcat.services.zfs.datasets = {
     "rpool_elucredassa/backup" = { mountpoint = "none"; };
-    "rpool_elucredassa/backup/orm" = {
-      mountpoint = "none";
-      zfsPermissions.users.syncoid = [ "mount" "create" "receive" "recordsize" ];
-    };
-  };
-  services.syncoid = {
-    enable = true;
-    interval = "*-*-* *:15:00";
-    commonArgs = [ "--no-sync-snap" ];
-    commands = {
-      "testing1" = {
-        source = "backup@10.127.1.2:rpool_orm/state";
-        target = "rpool_elucredassa/backup/orm/state";
-        recursive = true;
-        recvOptions = "ux recordsize o compression=lz4";
-      };
-    };
+    "rpool_elucredassa/backup/orm" = { mountpoint = "none"; };
   };
 
   qenya.services.distributed-builds = {
