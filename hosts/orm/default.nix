@@ -33,10 +33,7 @@
     process_children_only = true;
   };
 
-  qenya.services.actual = {
-    enable = true;
-    domain = "actual.qenya.tel";
-  };
+  qenya.services.actual.enable = true;
 
   system.stateVersion = "23.11";
 }
