@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.fountain.backup;
+  keys = import ../keys.nix;
 
   syncOptions = {
     dataset = lib.mkOption {
@@ -91,36 +92,47 @@ in
   # TODO: add some assertions to verify the options
 
   config.flake.colmena = lib.mkMerge (lib.mapAttrsToList
-    (name: sync: {
-      ${sync.sourceHost} = { pkgs, ... }: {
-        randomcat.services.zfs.datasets."${sync.source}/${sync.dataset}".zfsPermissions.users.backup = [ "hold" "send" ];
-        users.users.backup = {
-          group = "backup";
-          isSystemUser = true;
-          useDefaultShell = true;
-          openssh.authorizedKeys.keys = cfg.keys.${sync.targetHost};
-          packages = with pkgs; [ mbuffer lzop ]; # syncoid uses these if available but doesn't pull them in automatically
-        };
-        users.groups.backup = { };
-      };
+    (name: sync:
+      let
+        inherit (sync) dataset sourceHost targetHost source target;
+        # TODO: don't want to have to dig into the node config for the fqdn
+        sourceFqdn = config.flake.nixosConfigurations.${sourceHost}.config.networking.fqdn;
+      in
+      {
+        ${sourceHost} = { pkgs, ... }: {
+          randomcat.services.zfs.datasets."${source}/${dataset}".zfsPermissions.users.backup = [ "hold" "send" ];
 
-      ${sync.targetHost} = {
-        randomcat.services.zfs.datasets."${sync.target}".zfsPermissions.users.syncoid = [ "mount" "create" "receive" "recordsize" ];
-        services.syncoid = {
-          enable = true;
-          interval = "*-*-* *:15:00";
-          commonArgs = [ "--no-sync-snap" ];
-          commands = {
-            ${name} = {
-              source = "backup@${config.flake.nixosConfigurations.${sync.sourceHost}.config.networking.fqdn}:${sync.source}/${sync.dataset}";
-              target = "${sync.target}/${sync.dataset}";
-              recursive = true;
-              recvOptions = "ux recordsize o compression=lz4";
+          users.users.backup = {
+            group = "backup";
+            isSystemUser = true;
+            useDefaultShell = true;
+            openssh.authorizedKeys.keys = cfg.keys.${targetHost};
+            packages = with pkgs; [ mbuffer lzop ]; # syncoid uses these if available but doesn't pull them in automatically
+          };
+          users.groups.backup = { };
+        };
+
+        ${targetHost} = {
+          randomcat.services.zfs.datasets.${target}.zfsPermissions.users.syncoid = [ "mount" "create" "receive" "recordsize" ];
+
+          services.syncoid = {
+            enable = true;
+            interval = "*-*-* *:15:00";
+            commonArgs = [ "--no-sync-snap" ];
+            commands = {
+              ${name} = {
+                source = "backup@${sourceFqdn}:${source}/${dataset}";
+                target = "${target}/${dataset}";
+                recursive = true;
+                recvOptions = "ux recordsize o compression=lz4";
+              };
             };
           };
+
+          # TODO: this should be handled by a networking module
+          programs.ssh.knownHosts.${sourceFqdn}.publicKey = keys.machines.${sourceHost};
         };
-      };
-    })
+      })
     cfg.sync
   );
 }
