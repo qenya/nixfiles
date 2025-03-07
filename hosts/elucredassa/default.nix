@@ -26,6 +26,7 @@ in
   # These are populated by fountain.backup
   randomcat.services.zfs.datasets = {
     "rpool_elucredassa/backup" = { mountpoint = "none"; };
+    "rpool_elucredassa/backup/kalessin" = { mountpoint = "none"; };
     "rpool_elucredassa/backup/orm" = { mountpoint = "none"; };
   };
 
