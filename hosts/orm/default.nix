@@ -43,7 +43,8 @@
     enableTCPIP = true;
     settings = {
       port = 5432;
-      ssl = true;
+      # TODO: fix SSL
+      # ssl = true;
     };
     # only allow remote connections from within birdsong vpn
     # TODO: don't hardcode the IP addresses
