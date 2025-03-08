@@ -50,6 +50,7 @@
     # TODO: don't hardcode the IP addresses
     authentication = pkgs.lib.mkOverride 10 ''
       #type database  DBuser  auth-method
+      local all       all     trust   # used by nixos for local monitoring
       host  sameuser  all     10.127.0.0/16 scram-sha-256
       host  sameuser  all     fd70:81ca:f8f::/48 scram-sha-256
     '';
