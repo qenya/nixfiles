@@ -23,6 +23,8 @@ in
     ];
     mutableExtensionsDir = false;
     userSettings = {
+      "css.format.spaceAroundSelectorSeparator" = true;
+      "css.format.newlineBetweenSelectors" = false;
       "extensions.autoUpdate" = false;
       "files.insertFinalNewline" = true;
       "git.autofetch" = true;
