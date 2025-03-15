@@ -7,10 +7,11 @@ The canonical location for this repository is https://git.qenya.tel/qenya/nixfil
 ## Machines
 
 ### Managed
-* `kilgharrah`: Custom-built personal desktop
+* `kilgharrah`: Custom-built personal desktop; also currently running Jellyfin, Navidrome and Audiobookshelf servers (and an FTP server, for shits and giggles)
 * `tohru`: Dell Latitude 5300, personal laptop
+* `elucredassa`: Acer Aspire A315-53, old laptop with a broken keyboard that now sits in a corner being a backup server
 * `yevaud`: Oracle Cloud free AMD VM, hosts a Forgejo instance and WireGuard server for the other machines in the network
-* `orm`: Oracle Cloud free AMD VM, currently idling
+* `orm`: Oracle Cloud free AMD VM, hosts an instance of Actual Budget and a PostgreSQL server for other services that need one
 * `kalessin`: Oracle Cloud free ARM VM, currently idling
 
 ### Referenced only
