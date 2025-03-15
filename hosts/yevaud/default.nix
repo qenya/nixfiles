@@ -38,7 +38,7 @@
 
   qenya.services.forgejo = {
     enable = true;
-    domain = "git.qenya.tel";
+    domain = "git.unspecified.systems";
   };
 
   services.nginx = {
@@ -47,12 +47,17 @@
       "git.katherina.rocks" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".return = "301 https://git.qenya.tel$request_uri";
+        locations."/".return = "301 https://git.unspecified.systems$request_uri";
+      };
+      "git.qenya.tel" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".return = "301 https://git.unspecified.systems$request_uri";
       };
       "birdsong.network" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".return = "301 https://git.qenya.tel/qenya/birdsong/";
+        locations."/".return = "301 https://git.unspecified.systems/qenya/birdsong/";
       };
     };
   };
