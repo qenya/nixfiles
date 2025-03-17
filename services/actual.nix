@@ -1,20 +1,22 @@
 { config, lib, pkgs, ... }:
 
-with lib;
 let
+  inherit (lib) mkIf mkOption mkEnableOption types;
   cfg = config.qenya.services.actual;
-  domain = "actual.qenya.tel";
 in
 {
   options.qenya.services.actual = {
     enable = mkEnableOption "Actual Budget";
+    domain = mkOption {
+      type = types.str;
+    };
   };
 
   config = mkIf cfg.enable {
     services.nginx = {
       enable = true;
       virtualHosts = {
-        ${domain} = {
+        ${cfg.domain} = {
           forceSSL = true;
           enableACME = true;
           locations."/".proxyPass = "http://127.0.0.1:5006/";

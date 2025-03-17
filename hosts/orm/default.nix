@@ -57,7 +57,21 @@
   };
   networking.firewall.interfaces."wg-birdsong".allowedTCPPorts = [ 5432 ];
 
-  qenya.services.actual.enable = true;
+  qenya.services.actual = {
+    enable = true;
+    domain = "actual.unspecified.systems";
+  };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      "actual.qenya.tel" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".return = "301 https://actual.unspecified.systems$request_uri";
+      };
+    };
+  };
 
   system.stateVersion = "23.11";
 }
