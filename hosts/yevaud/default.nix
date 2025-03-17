@@ -40,20 +40,17 @@
     enable = true;
     domain = "git.unspecified.systems";
   };
+  fountain.services.web-redirect = {
+    enable = true;
+    domains = {
+      "git.katherina.rocks" = "git.unspecified.systems";
+      "git.qenya.tel" = "git.unspecified.systems";
+    };
+  };
 
   services.nginx = {
     enable = true;
     virtualHosts = {
-      "git.katherina.rocks" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/".return = "301 https://git.unspecified.systems$request_uri";
-      };
-      "git.qenya.tel" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/".return = "301 https://git.unspecified.systems$request_uri";
-      };
       "birdsong.network" = {
         forceSSL = true;
         enableACME = true;

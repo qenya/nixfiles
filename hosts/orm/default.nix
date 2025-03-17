@@ -61,15 +61,10 @@
     enable = true;
     domain = "actual.unspecified.systems";
   };
-
-  services.nginx = {
+  fountain.services.web-redirect = {
     enable = true;
-    virtualHosts = {
-      "actual.qenya.tel" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/".return = "301 https://actual.unspecified.systems$request_uri";
-      };
+    domains = {
+      "actual.qenya.tel" = "actual.unspecified.systems";
     };
   };
 
