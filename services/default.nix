@@ -6,7 +6,6 @@
     ./forgejo.nix
     ./jellyfin.nix
     ./navidrome.nix
-    ./pipewire-low-latency.nix
     ./remote-builder.nix
     ./web-redirect.nix
   ];
