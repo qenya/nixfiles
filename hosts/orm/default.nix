@@ -12,7 +12,7 @@
   networking.domain = "birdsong.network";
 
   fountain.users.qenya.enable = true;
-  users.users.qenya.extraGroups = [ "wheel" ];
+  fountain.admins = [ "qenya" ];
   qenya.base-server.enable = true;
 
   qenya.services.distributed-builds = {

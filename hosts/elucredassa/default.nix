@@ -37,7 +37,7 @@ in
   };
 
   fountain.users.qenya.enable = true;
-  users.users.qenya.extraGroups = [ "wheel" ];
+  fountain.admins = [ "qenya" ];
 
   system.stateVersion = "24.11";
 }

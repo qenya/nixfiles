@@ -15,7 +15,7 @@ in
   networking.domain = "birdsong.network";
 
   fountain.users.qenya.enable = true;
-  users.users.qenya.extraGroups = [ "wheel" ];
+  fountain.admins = [ "qenya" ];
   fountain.users.randomcat.enable = true;
   fountain.users.trungle.enable = true;
 
