@@ -18,13 +18,17 @@ in
       jdinhlife.gruvbox
       jnoortheen.nix-ide
       matangover.mypy
+      mkhl.direnv
       ms-python.black-formatter
       ms-python.python
+      rust-lang.rust-analyzer
+      vadimcn.vscode-lldb
     ];
     mutableExtensionsDir = false;
     userSettings = {
       "css.format.spaceAroundSelectorSeparator" = true;
       "css.format.newlineBetweenSelectors" = false;
+      "debug.allowBreakpointsEverywhere" = true;
       "extensions.autoUpdate" = false;
       "files.insertFinalNewline" = true;
       "git.autofetch" = true;
@@ -40,6 +44,7 @@ in
         formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
         nix.flake.autoArchive = true;
       };
+      "rust-analyzer.check.command" = "clippy";
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
       "workbench.colorTheme" = "Gruvbox Dark Medium";
