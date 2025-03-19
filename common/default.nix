@@ -4,6 +4,7 @@
     ./base-server
     ./users
     ./boot.nix
+    ./gpg.nix
     ./home-manager.nix
     ./misc.nix
     ./nginx.nix
