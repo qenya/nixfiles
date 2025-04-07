@@ -28,18 +28,12 @@ in
 
   randomcat.services.zfs.datasets = {
     "rpool_kalessin/state" = { mountpoint = "none"; };
-    "rpool_kalessin/state/kanidm" = { mountpoint = "/var/lib/kanidm"; };
   };
 
   services.sanoid.datasets."rpool_kalessin/state" = {
     useTemplate = [ "production" ];
     recursive = "zfs";
     process_children_only = true;
-  };
-
-  fountain.services.kanidm = {
-    enable = true;
-    domain = "auth.unspecified.systems";
   };
 
   system.stateVersion = "23.11";
