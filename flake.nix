@@ -6,7 +6,8 @@
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module?ref=stable";
+      # lix haven't figured out automatic updates yet: https://git.lix.systems/lix-project/nixos-module/issues/39
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
