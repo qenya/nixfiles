@@ -28,12 +28,19 @@ in
 
   randomcat.services.zfs.datasets = {
     "rpool_kalessin/state" = { mountpoint = "none"; };
+    "rpool_kalessin/state/owncast" = { mountpoint = "/var/lib/owncast"; };
   };
 
   services.sanoid.datasets."rpool_kalessin/state" = {
     useTemplate = [ "production" ];
     recursive = "zfs";
     process_children_only = true;
+  };
+
+  qenya.services.owncast = {
+    enable = true;
+    domain = "live.qenya.tel";
+    dataDir = "/var/lib/owncast";
   };
 
   system.stateVersion = "23.11";

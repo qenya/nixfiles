@@ -6,6 +6,7 @@
     ./forgejo.nix
     ./jellyfin.nix
     ./navidrome.nix
+    ./owncast.nix
     ./remote-builder.nix
     ./web-redirect.nix
   ];
