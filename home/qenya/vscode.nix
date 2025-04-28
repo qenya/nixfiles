@@ -75,6 +75,8 @@ in
           "source.organizeImports" = "explicit";
         };
       };
+      "python.createEnvironment.contentButton" = "show";
+      "python.defaultInterpreterPath" = "${pkgs.python3}/bin/python";
       "ruff.nativeServer" = "on";
       "ruff.path" = "${pkgs.ruff}/bin/ruff";
       "mypy.dmypyExecutable" = "${pkgs.mypy}/bin/dmypy";
