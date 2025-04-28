@@ -12,11 +12,11 @@
     shellAliases = {
       ll = "ls -l";
 
-      # don't clobber
+      # don't clobber 
       mv = "mv -i";
       rename = "rename -i";
 
-      nix-shell = ''nix-shell --command "zsh"''; # TODO: tweak theme to display something when inside nix-shell
+      nix-shell = ''nix-shell --command "zsh"'';
     };
 
     history = {
@@ -28,8 +28,13 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "sudo" "direnv" ];
-      theme = "agnoster";
+      theme = ""; # defer to powerlevel10k
     };
+
+    initExtra = ''
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      source ${./.p10k.zsh}
+    '';
 
     envExtra = ''
       DEFAULT_USER=qenya
