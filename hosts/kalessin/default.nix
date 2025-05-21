@@ -15,9 +15,9 @@ in
   networking.domain = "birdsong.network";
 
   fountain.users.qenya.enable = true;
-  fountain.admins = [ "qenya" ];
   fountain.users.randomcat.enable = true;
   fountain.users.trungle.enable = true;
+  fountain.admins = [ "qenya" "randomcat" ];
 
   qenya.base-server.enable = true;
 

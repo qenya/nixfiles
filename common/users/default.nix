@@ -27,7 +27,6 @@ in
     users.users = genAttrs cfg.admins
       (name: {
         extraGroups = [ "wheel" ];
-      }
-      );
+      });
   };
 }
