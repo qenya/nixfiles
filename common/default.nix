@@ -14,5 +14,6 @@
     ./sanoid.nix
     ./security.nix
     ./steam.nix
+    ./tailscale.nix
   ];
 }

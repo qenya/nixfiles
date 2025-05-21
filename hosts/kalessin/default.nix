@@ -28,6 +28,7 @@ in
 
   randomcat.services.zfs.datasets = {
     "rpool_kalessin/state" = { mountpoint = "none"; };
+    "rpool_kalessin/state/headscale" = { mountpoint = "/var/lib/headscale"; };
     "rpool_kalessin/state/owncast" = { mountpoint = "/var/lib/owncast"; };
   };
 
@@ -41,6 +42,12 @@ in
     enable = true;
     domain = "live.qenya.tel";
     dataDir = "/var/lib/owncast";
+  };
+
+  qenya.services.headscale = {
+    enable = true;
+    domain = "headscale.unspecified.systems";
+    dataDir = "/var/lib/headscale";
   };
 
   system.stateVersion = "23.11";

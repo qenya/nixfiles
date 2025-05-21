@@ -4,6 +4,7 @@
     ./audiobookshelf.nix
     ./distributed-builds.nix
     ./forgejo.nix
+    ./headscale.nix
     ./jellyfin.nix
     ./navidrome.nix
     ./owncast.nix
