@@ -27,5 +27,24 @@
   #   };
 
   services.printing.drivers = [ pkgs.hplip ];
-}
 
+  # enable playing from bluray drive
+  boot.kernelModules = [ "sg" ];
+  environment.systemPackages = [
+    ((pkgs.vlc.override {
+      libbluray = (pkgs.libbluray.override {
+        withJava = true;
+        withAACS = true;
+        withBDplus = true;
+      });
+    }).overrideAttrs (originalAttrs: {
+      # TODO: nixpkgs bug: libbluray needs patching to look at the nix store path of jdk17 when searching for a jdk
+      # as a workaround, wrap vlc and set JAVA_HOME, which it uses instead of searching when specified
+      nativeBuildInputs = originalAttrs.nativeBuildInputs ++ [ pkgs.makeWrapper ];
+      postFixup = ''
+        ${originalAttrs.postFixup or ""}
+        wrapProgram $out/bin/vlc --set JAVA_HOME ${pkgs.jdk17.home}
+      '';
+    }))
+  ];
+}
