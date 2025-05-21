@@ -22,7 +22,7 @@ in
         ${cfg.domain} = {
           forceSSL = true;
           enableACME = true;
-          locations."/".proxyPass = "http://127.0.0.1:8080/";
+          locations."/".proxyPass = "http://127.0.0.1:32769/";
         };
       };
     };
@@ -30,6 +30,7 @@ in
     networking.firewall.allowedTCPPorts = [ 80 443 1935 ]; # 1935 for rtmp
 
     services.owncast.enable = true;
+    services.owncast.port = 32769;
     services.owncast.dataDir = cfg.dataDir;
   };
 }
