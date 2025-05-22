@@ -140,6 +140,7 @@
             yevaud = import nixpkgs-small { system = "x86_64-linux"; };
             orm = import nixpkgs-small { system = "x86_64-linux"; };
             kalessin = import nixpkgs-small { system = "aarch64-linux"; };
+            tehanu = import nixpkgs-small { system = "aarch64-linux"; };
           };
           specialArgs = {
             inherit self;
@@ -173,6 +174,7 @@
         yevaud.imports = [ ./hosts/yevaud ];
         orm.imports = [ ./hosts/orm ];
         kalessin.imports = [ ./hosts/kalessin ];
+        tehanu.imports = [ ./hosts/tehanu ];
       };
     };
 }
