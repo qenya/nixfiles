@@ -7,7 +7,6 @@
     setNixPath = true;
     setFlakeRegistry = true;
   };
-  nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
   nixpkgs.config.allowUnfree = true;
   nix.settings.trusted-users = [ "@wheel" ];
 }
