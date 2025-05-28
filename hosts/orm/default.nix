@@ -31,7 +31,6 @@
   services.sanoid.datasets."rpool_orm/state" = {
     useTemplate = [ "production" ];
     recursive = "zfs";
-    process_children_only = true;
   };
 
   services.postgresql = {

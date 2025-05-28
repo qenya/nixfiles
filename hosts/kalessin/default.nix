@@ -35,7 +35,6 @@ in
   services.sanoid.datasets."rpool_kalessin/state" = {
     useTemplate = [ "production" ];
     recursive = "zfs";
-    process_children_only = true;
   };
 
   qenya.services.owncast = {
