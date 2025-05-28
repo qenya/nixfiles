@@ -14,7 +14,7 @@ in
       pulse.enable = true;
       jack.enable = true;
     };
-    hardware.pulseaudio.enable = false; # this theoretically defaults to false but something else seems to be flipping it
+    services.pulseaudio.enable = false; # this theoretically defaults to false but something else seems to be flipping it
     environment.systemPackages = with pkgs; [ helvum ]; # patchbay
   };
 }
