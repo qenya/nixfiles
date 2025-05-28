@@ -1,7 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-24.11-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
@@ -12,7 +12,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -51,13 +51,6 @@
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?ref=master&dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    # Third-party flake providing package and NixOS module for Actual Budget as
-    # nixpkgs are having trouble: https://github.com/NixOS/nixpkgs/issues/269069
-    actual = {
-      url = "git+https://git.xeno.science/xenofem/actual-nix?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -157,7 +150,6 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.agenix.nixosModules.default
             inputs.birdsong.nixosModules.default
-            inputs.actual.nixosModules.default
             ./common
             ./services
             (builtins.toPath "${inputs.randomcat}/services/default.nix")

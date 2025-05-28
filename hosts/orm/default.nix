@@ -24,7 +24,7 @@
 
   randomcat.services.zfs.datasets = {
     "rpool_orm/state" = { mountpoint = "none"; };
-    "rpool_orm/state/actual" = { mountpoint = "/var/lib/actual"; };
+    "rpool_orm/state/actual" = { mountpoint = "/var/lib/private/actual"; };
     "rpool_orm/state/postgresql" = { mountpoint = "/var/lib/postgresql"; };
   };
 
