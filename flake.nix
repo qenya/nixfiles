@@ -158,7 +158,7 @@
 
           kilgharrah.deployment.targetHost = null; # disable remote deployment
           tohru.deployment.targetHost = null; # disable remote deployment
-          elucredassa.deployment.targetHost = "10.127.3.2"; # no fqdn yet
+          elucredassa.deployment.targetHost = "100.73.34.182"; # TODO: no fqdn yet
 
           kilgharrah.imports = [ ./hosts/kilgharrah home-manager-unstable ];
           tohru.imports = [ ./hosts/tohru home-manager ];

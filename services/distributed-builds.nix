@@ -35,7 +35,7 @@ in
 
     nix.buildMachines =
       (optional (elem "kalessin" cfg.builders) {
-        hostName = config.birdsong.hosts."kalessin".ipv4;
+        hostName = "100.108.149.33"; # TODO: get tailscale internal DNS up
         sshUser = "remotebuild";
         sshKey = cfg.keyFile;
         systems = [ "aarch64-linux" ];
@@ -43,7 +43,7 @@ in
         supportedFeatures = [ "big-parallel" ];
       })
       ++ (optional (elem "kilgharrah" cfg.builders) {
-        hostName = config.birdsong.hosts."kilgharrah".ipv4;
+        hostName = "100.92.127.92"; # TODO: get tailscale internal DNS up
         sshUser = "remotebuild";
         sshKey = cfg.keyFile;
         systems = [ "x86_64-linux" ];

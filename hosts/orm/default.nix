@@ -47,6 +47,7 @@
     };
     # only allow remote connections from within birdsong vpn
     # TODO: don't hardcode the IP addresses
+    # TODO: move to tailscale
     authentication = pkgs.lib.mkOverride 10 ''
       #type database  DBuser  auth-method
       local all       all     trust   # used by nixos for local monitoring

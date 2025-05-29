@@ -5,7 +5,6 @@
     ./hardware-configuration.nix
     ./networking.nix
 
-    ./experiments/birdsong-dns.nix
     # TODO: this breaks external IPv6 somehow
     # ./experiments/pennykettle.nix
   ];
