@@ -114,55 +114,59 @@
         };
       };
 
-      flake.colmena = {
-        meta = {
-          nixpkgs = import nixpkgs-unstable {
-            system = "x86_64-linux";
-            overlays = [
-              inputs.lix-module.overlays.default
+      flake.colmena =
+        let
+          home-manager = inputs.home-manager.nixosModules.home-manager;
+          home-manager-unstable = inputs.home-manager-unstable.nixosModules.home-manager;
+        in
+        {
+          meta = {
+            nixpkgs = import nixpkgs-unstable {
+              system = "x86_64-linux";
+              overlays = [
+                inputs.lix-module.overlays.default
+              ];
+            };
+            nodeNixpkgs = {
+              kilgharrah = import nixpkgs-unstable { system = "x86_64-linux"; };
+              tohru = import nixpkgs { system = "x86_64-linux"; };
+              elucredassa = import nixpkgs-small { system = "x86_64-linux"; };
+              yevaud = import nixpkgs-small { system = "x86_64-linux"; };
+              orm = import nixpkgs-small { system = "x86_64-linux"; };
+              kalessin = import nixpkgs-small { system = "aarch64-linux"; };
+              tehanu = import nixpkgs-small { system = "aarch64-linux"; };
+            };
+            specialArgs = {
+              inherit self;
+              inherit inputs;
+            };
+          };
+
+          defaults = { config, lib, pkgs, ... }: {
+            deployment.targetHost = lib.mkDefault config.networking.fqdn;
+            deployment.buildOnTarget = lib.mkDefault true;
+
+            imports = [
+              inputs.lix-module.nixosModules.default
+              inputs.agenix.nixosModules.default
+              inputs.birdsong.nixosModules.default
+              ./common
+              ./services
+              (builtins.toPath "${inputs.randomcat}/services/default.nix")
             ];
           };
-          nodeNixpkgs = {
-            kilgharrah = import nixpkgs { system = "x86_64-linux"; };
-            tohru = import nixpkgs { system = "x86_64-linux"; };
-            elucredassa = import nixpkgs-small { system = "x86_64-linux"; };
-            yevaud = import nixpkgs-small { system = "x86_64-linux"; };
-            orm = import nixpkgs-small { system = "x86_64-linux"; };
-            kalessin = import nixpkgs-small { system = "aarch64-linux"; };
-            tehanu = import nixpkgs-small { system = "aarch64-linux"; };
-          };
-          specialArgs = {
-            inherit self;
-            inherit inputs;
-          };
+
+          kilgharrah.deployment.targetHost = null; # disable remote deployment
+          tohru.deployment.targetHost = null; # disable remote deployment
+          elucredassa.deployment.targetHost = "10.127.3.2"; # no fqdn yet
+
+          kilgharrah.imports = [ ./hosts/kilgharrah home-manager-unstable ];
+          tohru.imports = [ ./hosts/tohru home-manager ];
+          elucredassa.imports = [ ./hosts/elucredassa home-manager ];
+          yevaud.imports = [ ./hosts/yevaud home-manager ];
+          orm.imports = [ ./hosts/orm home-manager ];
+          kalessin.imports = [ ./hosts/kalessin home-manager ];
+          tehanu.imports = [ ./hosts/tehanu home-manager ];
         };
-
-        defaults = { config, lib, pkgs, ... }: {
-          deployment.targetHost = lib.mkDefault config.networking.fqdn;
-          deployment.buildOnTarget = lib.mkDefault true;
-
-          imports = [
-            inputs.lix-module.nixosModules.default
-            inputs.home-manager.nixosModules.home-manager
-            inputs.agenix.nixosModules.default
-            inputs.birdsong.nixosModules.default
-            ./common
-            ./services
-            (builtins.toPath "${inputs.randomcat}/services/default.nix")
-          ];
-        };
-
-        kilgharrah.deployment.targetHost = null; # disable remote deployment
-        tohru.deployment.targetHost = null; # disable remote deployment
-        elucredassa.deployment.targetHost = "10.127.3.2"; # no fqdn yet
-
-        kilgharrah.imports = [ ./hosts/kilgharrah ];
-        tohru.imports = [ ./hosts/tohru ];
-        elucredassa.imports = [ ./hosts/elucredassa ];
-        yevaud.imports = [ ./hosts/yevaud ];
-        orm.imports = [ ./hosts/orm ];
-        kalessin.imports = [ ./hosts/kalessin ];
-        tehanu.imports = [ ./hosts/tehanu ];
-      };
     };
 }
