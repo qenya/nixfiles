@@ -2,7 +2,7 @@
   imports = [
     ./dconf
     ./firefox.nix
-    ./fontconfig.nix
+    ./fonts.nix
     ./git.nix
     ./packages.nix
     ./tmux.nix

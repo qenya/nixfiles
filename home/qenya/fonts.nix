@@ -13,5 +13,5 @@ mkIf isGraphical {
     meslo-lgs-nf
   ];
 
-  programs.vscode.userSettings."terminal.integrated.fontFamily" = "MesloLGS NF";
+  programs.vscode.profiles.default.userSettings."terminal.integrated.fontFamily" = "MesloLGS NF";
 }
