@@ -23,7 +23,6 @@ in
   ] ++ optionals isGraphical [
     bitwarden
     discord
-    feishin
     gimp-with-plugins
     jellyfin-media-player
     tor-browser-bundle-bin

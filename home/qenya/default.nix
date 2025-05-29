@@ -1,6 +1,7 @@
 {
   imports = [
     ./dconf
+    ./feishin.nix
     ./firefox.nix
     ./fonts.nix
     ./git.nix
