@@ -9,6 +9,8 @@ in
     ./filesystems.nix
     ./hardware.nix
     ./networking.nix
+    ./plasma.nix
+
     ./ftp.nix
   ];
 
@@ -20,7 +22,6 @@ in
   boot.kernelModules = [ "kvm-intel" ];
 
   qenya.base-graphical.enable = true;
-  qenya.base-graphical.desktop = "plasma6";
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -33,8 +34,6 @@ in
   fountain.admins = [ "qenya" ];
   home-manager.users.qenya = { pkgs, ... }: {
     home.packages = with pkgs; [ obs-studio ];
-    # For the moment, this hosts some network-accessible services, so we want it on 24/7
-    programs.plasma.powerdevil.AC.autoSuspend.action = "nothing";
   };
 
   qenya.services.remote-builder = {

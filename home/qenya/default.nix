@@ -1,7 +1,6 @@
 {
   imports = [
     ./dconf
-    ./plasma
     ./firefox.nix
     ./fontconfig.nix
     ./git.nix

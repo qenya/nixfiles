@@ -6,7 +6,7 @@ let
 in
 {
   imports = [
-    ./desktop.nix
+    ./gnome.nix
     ./sound.nix
   ];
 

@@ -88,11 +88,7 @@
       # However, note CppNix >= 2.22.3, >= 2.24 has blessed "homeModules":
       # https://github.com/NixOS/nix/pull/10858
       flake.homeManagerModules = {
-        "qenya".imports = [
-          inputs.plasma-manager.homeManagerModules.plasma-manager
-          ./home/qenya
-        ];
-
+        "qenya".imports = [ ./home/qenya ];
         "qenya@shaw".imports = [ ./hosts/shaw/home.nix ];
       };
 
