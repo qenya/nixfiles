@@ -53,10 +53,11 @@ in
               fill = false;
               iconSpacing = 2;
               launchers = lib.concatStringsSep "," [
-                "applications:discord.desktop"
                 "applications:firefox.desktop"
                 "applications:codium-url-handler.desktop"
                 "applications:steam.desktop"
+                "applications:discord.desktop"
+                "applications:com.obsproject.Studio.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:org.kde.konsole.desktop"
                 "applications:org.kde.plasma-systemmonitor.desktop"
