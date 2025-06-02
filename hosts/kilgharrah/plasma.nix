@@ -54,7 +54,7 @@ in
               iconSpacing = 2;
               launchers = lib.concatStringsSep "," [
                 "applications:firefox.desktop"
-                "applications:codium-url-handler.desktop"
+                "applications:codium.desktop"
                 "applications:steam.desktop"
                 "applications:discord.desktop"
                 "applications:com.obsproject.Studio.desktop"
