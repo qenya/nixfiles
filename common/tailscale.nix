@@ -18,4 +18,6 @@
       ${lib.getExe config.services.tailscale.package} up --reset ${lib.escapeShellArgs config.services.tailscale.extraUpFlags}
     '';
   };
+  
+  networking.domain = "birdsong.network";
 }

@@ -39,7 +39,10 @@ in
       settings = {
         server_url = "https://${cfg.domain}:443";
         prefixes.allocation = "random";
-        dns.magic_dns = false;
+        dns = {
+          magic_dns = true;
+          base_domain = "birdsong.network";
+        };
 
         # disable built-in ACME client
         tls_cert_path = null;

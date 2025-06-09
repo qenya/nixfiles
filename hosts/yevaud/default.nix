@@ -12,7 +12,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   networking.hostName = "yevaud";
   networking.hostId = "09673d65";
-  networking.domain = "birdsong.network";
 
   fountain.users.qenya.enable = true;
   fountain.admins = [ "qenya" ];
@@ -44,17 +43,6 @@
     domains = {
       "git.katherina.rocks" = "git.unspecified.systems";
       "git.qenya.tel" = "git.unspecified.systems";
-    };
-  };
-
-  services.nginx = {
-    enable = true;
-    virtualHosts = {
-      "birdsong.network" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/".return = "301 https://git.unspecified.systems/qenya/birdsong/";
-      };
     };
   };
 

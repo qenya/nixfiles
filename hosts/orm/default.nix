@@ -9,7 +9,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "orm";
   networking.hostId = "00000000";
-  networking.domain = "birdsong.network";
 
   fountain.users.qenya.enable = true;
   fountain.admins = [ "qenya" ];
