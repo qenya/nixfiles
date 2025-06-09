@@ -95,8 +95,7 @@ in
     (name: sync:
       let
         inherit (sync) dataset sourceHost targetHost source target;
-        # TODO: don't want to have to dig into the node config for the fqdn
-        sourceFqdn = config.flake.nixosConfigurations.${sourceHost}.config.networking.fqdn;
+        sourceFqdn = "${sourceHost}.birdsong.network";
       in
       {
         ${sourceHost} = { pkgs, ... }: {
@@ -128,9 +127,6 @@ in
               };
             };
           };
-
-          # TODO: this should be handled by a networking module
-          programs.ssh.knownHosts.${sourceFqdn}.publicKey = keys.machines.${sourceHost};
         };
       })
     cfg.sync
