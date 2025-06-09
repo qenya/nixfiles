@@ -1,12 +1,17 @@
 {
   machines = {
-    kilgharrah = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOgGF3gzzlMbxxk3UAAgHJ7sDdjqtrw7UW16M1XhXtz2 root@kilgharrah";
-    elucredassa = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA+Y/vqGNc1wXUAg4XMAAcLupkggywj2LpYDwA16ONbH root@elucredassa";
+    reese = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPd0qGxvcMLDwX1bqYpwOUL5c/CIgBllMFr+bGkwiwAn root@reese";
+    bear = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZ9Kn1CIcDHaleKHf7zO6O30Rbxs/FwL0/Ie+mEjZJr root@bear";
+    shaw = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMC0AomCZZiUV/BCpImiV4p/vGvFaz5QNc+fJLXmS5p root@shaw";
+    groves = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPQNZ/Q+x7mDYfYXftpZpWkfPByyMBbYmVFobM4vSDW2 root@groves";
     tohru = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8wuGzF0Y7SaH9aimo3SmCz99MTQwL+rEVhx0jsueU root@tohru";
     yevaud = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICHUAgyQhl390yUObLUI+jEbuNrZ2U6+8px628DolD+T root@yevaud";
     orm = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGc9rkcdOVWozBFj3kLVnSyUQQbyyH+UG+bLawanQkRQ root@orm";
     kalessin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOPt3iSSmgnlsv1/jafgZgI7o8UuXzcAL45hID2ThfS8 root@kalessin";
-    shaw = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMC0AomCZZiUV/BCpImiV4p/vGvFaz5QNc+fJLXmS5p root@shaw";
+    tehanu = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1fNylfLo7Z8m/DroRlj7cHMLhYL7boP3r/upVrtMJQ root@tehanu";
+    kilgharrah = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOgGF3gzzlMbxxk3UAAgHJ7sDdjqtrw7UW16M1XhXtz2 root@kilgharrah";
+    elucredassa = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA+Y/vqGNc1wXUAg4XMAAcLupkggywj2LpYDwA16ONbH root@elucredassa";
+    carter = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEHHHYG6A995Po05+JXQsvB79ZoIiSOJnW6AiJgVYPic root@carter";
   };
 
   users = {

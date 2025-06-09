@@ -9,10 +9,10 @@
     ./misc.nix
     ./nginx.nix
     ./nix.nix
-    ./openssh.nix
     ./packages.nix
     ./sanoid.nix
     ./security.nix
+    ./ssh.nix
     ./steam.nix
     ./tailscale.nix
   ];
