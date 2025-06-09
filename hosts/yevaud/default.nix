@@ -5,8 +5,7 @@
     ./hardware-configuration.nix
     ./networking.nix
 
-    # TODO: this breaks external IPv6 somehow
-    # ./experiments/pennykettle.nix
+    ./experiments/pennykettle.nix
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

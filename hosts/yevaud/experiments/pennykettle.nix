@@ -2,15 +2,30 @@
 
 {
   networking.nat.enable = true;
+  networking.nat.enableIPv6 = true;
   networking.nat.internalInterfaces = [ "ve-pennykettle1" ];
   networking.nat.externalInterface = "ens3";
   networking.firewall.allowedUDPPorts = [ 51821 ];
+  
+  # RA = Router Advertisement (how a host finds a gateway IPv6 address for
+  # SLAAC or DHCPv6).
+  # networkd usually defaults this to true, but instead defaults it to false
+  # for ALL networks if ANY network has IPv6Forwarding enabled, on the
+  # (reasonable) assumption that a host doing IP forwarding is probably a
+  # network bridge.
+  # The kernel's RA implementation does this too, and the NixOS networking.nat
+  # module explicitly overrides that with sysctl, but networkd doesn't pay
+  # attention to that.
+  # We thus explicitly enable it, as otherwise external IPv6 is broken.
+  systemd.network.networks."40-ens3".networkConfig.IPv6AcceptRA = true;
 
   containers."pennykettle1" = {
     privateNetwork = true;
     extraVeths."ve-pennykettle1" = {
-      hostAddress = "10.235.1.1";
-      localAddress = "10.235.2.1";
+      hostAddress = "10.231.136.1";
+      localAddress = "10.231.136.2";
+      hostAddress6 = "fc00::1";
+      localAddress6 = "fc00::2";
       forwardPorts = [{ hostPort = 51821; }];
     };
     ephemeral = true;
@@ -30,13 +45,11 @@
 
         networks."10-ve" = {
           matchConfig.Name = "ve-pennykettle1";
-          networkConfig.Address = "10.235.2.1/32";
+          networkConfig.Address = [ "10.231.136.2/24" "fc00::2/64" ];
           # linkConfig.RequiredForOnline = "routable";
           routes = [{
-            routeConfig = {
-              Gateway = "10.235.1.1";
-              Destination = "217.138.216.162/32";
-            };
+            Gateway = [ "10.231.136.1" "fc00::1" ];
+            Destination = "217.138.216.162";
           }];
         };
 
@@ -64,12 +77,10 @@
             PrivateKeyFile = "/run/secrets/wg-key";
           };
           wireguardPeers = [{
-            wireguardPeerConfig = {
-              PublicKey = "C+u+eQw5yWI2APCfVJwW6Ovj3g4IrTOfe+tMZnNz43s=";
-              AllowedIPs = "0.0.0.0/0";
-              Endpoint = "217.138.216.162:51820";
-              PersistentKeepalive = 5;
-            };
+            PublicKey = "C+u+eQw5yWI2APCfVJwW6Ovj3g4IrTOfe+tMZnNz43s=";
+            AllowedIPs = "0.0.0.0/0";
+            Endpoint = "217.138.216.162:51820";
+            PersistentKeepalive = 5;
           }];
         };
       };
