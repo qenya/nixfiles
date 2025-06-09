@@ -44,17 +44,15 @@
       # TODO: fix SSL
       # ssl = true;
     };
-    # only allow remote connections from within birdsong vpn
-    # TODO: don't hardcode the IP addresses
-    # TODO: move to tailscale
+    # only allow remote connections from within Tailscale
     authentication = pkgs.lib.mkOverride 10 ''
       #type database  DBuser  auth-method
       local all       all     trust   # used by nixos for local monitoring
-      host  sameuser  all     10.127.0.0/16 scram-sha-256
-      host  sameuser  all     fd70:81ca:f8f::/48 scram-sha-256
+      host  sameuser  all     100.64.0.0/10 scram-sha-256
+      host  sameuser  all     fd7a:115c:a1e0::/48 scram-sha-256
     '';
   };
-  networking.firewall.interfaces."wg-birdsong".allowedTCPPorts = [ 5432 ];
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 5432 ];
 
   qenya.services.actual = {
     enable = true;

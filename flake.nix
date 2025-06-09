@@ -54,8 +54,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    birdsong.url = "git+https://git.qenya.tel/qenya/birdsong?ref=main";
-
     scoutshonour = {
       url = "git+https://git.qenya.tel/qenya/nix-scoutshonour?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -149,7 +147,6 @@
             imports = [
               inputs.lix-module.nixosModules.default
               inputs.agenix.nixosModules.default
-              inputs.birdsong.nixosModules.default
               ./common
               ./services
               (builtins.toPath "${inputs.randomcat}/services/default.nix")
