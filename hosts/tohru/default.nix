@@ -43,7 +43,6 @@ in
   home-manager.users.qenya = { pkgs, ... }: {
     home.packages = with pkgs; [
       keepassxc
-      amberol
       foliate
       nicotine-plus
 
