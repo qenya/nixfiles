@@ -14,18 +14,6 @@
   ];
   networking.firewall.allowedUDPPorts = [ 51821 ];
 
-  # RA = Router Advertisement (how a host finds a gateway IPv6 address for
-  # SLAAC or DHCPv6).
-  # networkd usually defaults this to true, but instead defaults it to false
-  # for ALL networks if ANY network has IPv6Forwarding enabled, on the
-  # (reasonable) assumption that a host doing IP forwarding is probably a
-  # network bridge.
-  # The kernel's RA implementation does this too, and the NixOS networking.nat
-  # module explicitly overrides that with sysctl, but networkd doesn't pay
-  # attention to that.
-  # We thus explicitly enable it, as otherwise external IPv6 is broken.
-  systemd.network.networks."40-ens3".networkConfig.IPv6AcceptRA = true;
-
   containers."pennykettle1" = {
     privateNetwork = true;
     extraVeths."ve-pennykettle1" = {
