@@ -75,7 +75,7 @@
           };
           wireguardPeers = [{
             PublicKey = "C+u+eQw5yWI2APCfVJwW6Ovj3g4IrTOfe+tMZnNz43s=";
-            AllowedIPs = "0.0.0.0/0";
+            AllowedIPs = [ "0.0.0.0/0" "::/0" ];
             Endpoint = "217.138.216.162:51820";
             PersistentKeepalive = 5;
           }];
