@@ -5,8 +5,15 @@
   networking.nat.enableIPv6 = true;
   networking.nat.internalInterfaces = [ "ve-pennykettle1" ];
   networking.nat.externalInterface = "ens3";
+  networking.nat.forwardPorts = [
+    {
+      sourcePort = 51821;
+      destination = "[fc00::2]:51821";
+      proto = "udp";
+    }
+  ];
   networking.firewall.allowedUDPPorts = [ 51821 ];
-  
+
   # RA = Router Advertisement (how a host finds a gateway IPv6 address for
   # SLAAC or DHCPv6).
   # networkd usually defaults this to true, but instead defaults it to false
@@ -26,7 +33,6 @@
       localAddress = "10.231.136.2";
       hostAddress6 = "fc00::1";
       localAddress6 = "fc00::2";
-      forwardPorts = [{ hostPort = 51821; }];
     };
     ephemeral = true;
     autoStart = true;
@@ -46,7 +52,7 @@
         networks."10-ve" = {
           matchConfig.Name = "ve-pennykettle1";
           networkConfig.Address = [ "10.231.136.2/24" "fc00::2/64" ];
-          # linkConfig.RequiredForOnline = "routable";
+          linkConfig.RequiredForOnline = "yes";
           routes = [{
             Gateway = [ "10.231.136.1" "fc00::1" ];
             Destination = "217.138.216.162";
@@ -56,7 +62,6 @@
         networks."30-protonvpn" = {
           matchConfig.Name = "wg-protonvpn";
           networkConfig = {
-            DefaultRouteOnDevice = true;
             Address = [ "10.2.0.2/32" ];
             DNS = "10.2.0.1";
           };
@@ -64,6 +69,10 @@
             RequiredForOnline = "yes";
             ActivationPolicy = "always-up";
           };
+          routes = [
+            { Gateway = [ "0.0.0.0" ]; }
+            { Gateway = [ "::" ]; }
+          ];
         };
 
         netdevs."30-protonvpn" = {
