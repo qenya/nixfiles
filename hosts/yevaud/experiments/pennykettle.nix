@@ -3,25 +3,25 @@
 {
   networking.nat.enable = true;
   networking.nat.enableIPv6 = true;
-  networking.nat.internalInterfaces = [ "ve-pennykettle1" ];
+  networking.nat.internalInterfaces = [ "ve-pennykettle" ];
   networking.nat.externalInterface = "ens3";
   networking.nat.forwardPorts = [
     {
-      sourcePort = 51821;
-      destination = "10.231.136.2:51821";
+      sourcePort = 51820;
+      destination = "10.231.136.2:51820";
       proto = "udp";
     }
     {
-      sourcePort = 51821;
-      destination = "[fc00::2]:51821";
+      sourcePort = 51820;
+      destination = "[fc00::2]:51820";
       proto = "udp";
     }
   ];
-  networking.firewall.allowedUDPPorts = [ 51821 ];
+  networking.firewall.allowedUDPPorts = [ 51820 ];
 
-  containers."pennykettle1" = {
+  containers."pennykettle" = {
     privateNetwork = true;
-    extraVeths."ve-pennykettle1" = {
+    extraVeths."ve-pennykettle" = {
       hostAddress = "10.231.136.1";
       localAddress = "10.231.136.2";
       hostAddress6 = "fc00::1";
@@ -29,7 +29,7 @@
     };
     ephemeral = true;
     autoStart = true;
-    bindMounts."/run/secrets/wg-key".hostPath = config.age.secrets.protonvpn-pennykettle1.path;
+    bindMounts."/run/secrets/wg-key".hostPath = config.age.secrets.protonvpn-pennykettle.path;
 
     config = { config, pkgs, ... }: {
       system.stateVersion = "24.05";
@@ -38,12 +38,12 @@
 
       networking.useDHCP = false;
       networking.useHostResolvConf = false;
-      networking.firewall.allowedUDPPorts = [ 51821 ];
+      networking.firewall.allowedUDPPorts = [ 51820 ];
       systemd.network = {
         enable = true;
 
-        networks."10-ve" = {
-          matchConfig.Name = "ve-pennykettle1";
+        networks."10-ve-pennykettle" = {
+          matchConfig.Name = "ve-pennykettle";
           networkConfig.Address = [ "10.231.136.2/24" "fc00::2/64" ];
           linkConfig.RequiredForOnline = "yes";
           routes = [{
@@ -52,7 +52,7 @@
           }];
         };
 
-        networks."30-protonvpn" = {
+        networks."30-wg-protonvpn" = {
           matchConfig.Name = "wg-protonvpn";
           networkConfig = {
             Address = [ "10.2.0.2/32" ];
@@ -68,14 +68,14 @@
           ];
         };
 
-        netdevs."30-protonvpn" = {
+        netdevs."30-wg-protonvpn" = {
           netdevConfig = {
             Name = "wg-protonvpn";
             Kind = "wireguard";
             Description = "WireGuard tunnel to ProtonVPN (DE#1; NAT: strict, no port forwarding)";
           };
           wireguardConfig = {
-            ListenPort = 51821;
+            ListenPort = 51820;
             PrivateKeyFile = "/run/secrets/wg-key";
           };
           wireguardPeers = [{
@@ -89,12 +89,12 @@
 
       networking.nat.enable = true;
       networking.nat.enableIPv6 = true;
-      networking.nat.internalInterfaces = [ "ve-pennykettle1" ];
+      networking.nat.internalInterfaces = [ "ve-pennykettle" ];
       networking.nat.externalInterface = "wg-protonvpn";
     };
   };
 
-  age.secrets.protonvpn-pennykettle1 = {
+  age.secrets.protonvpn-pennykettle = {
     file = ../../../secrets/protonvpn-pennykettle1.age;
     owner = "root";
     group = "systemd-network";
