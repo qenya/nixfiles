@@ -43,8 +43,10 @@ in
   home-manager.users.qenya = { pkgs, ... }: {
     home.packages = with pkgs; [
       keepassxc
+      apostrophe
       foliate
       nicotine-plus
+      tuba
 
       # games
       openttd
