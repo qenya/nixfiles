@@ -8,6 +8,11 @@
   networking.nat.forwardPorts = [
     {
       sourcePort = 51821;
+      destination = "10.231.136.2:51821";
+      proto = "udp";
+    }
+    {
+      sourcePort = 51821;
       destination = "[fc00::2]:51821";
       proto = "udp";
     }
