@@ -59,7 +59,7 @@
           };
           routes = [
             { Gateway = [ "0.0.0.0" ]; }
-            { Gateway = [ "::" ]; }
+            { Gateway = [ "::" ]; } # TODO: ipv6 out is still not working for unclear reasons
           ];
         };
 
@@ -81,6 +81,11 @@
           }];
         };
       };
+
+      networking.nat.enable = true;
+      networking.nat.enableIPv6 = true;
+      networking.nat.internalInterfaces = [ "ve-pennykettle1" ];
+      networking.nat.externalInterface = "wg-protonvpn";
     };
   };
 
@@ -90,4 +95,16 @@
     group = "systemd-network";
     mode = "640";
   };
+
+  # TODO: password-protect the proxy instead of relying on only listening over Tailscale
+  services.microsocks = {
+    enable = true;
+    port = 1080;
+    ip = "::";
+    outgoingBindIp = "fc00::2";
+    # authUsername = "testusername123";
+    # authPasswordFile = pkgs.writeText "testpassword" "testpassworddonotuse";
+    # execWrapper = "${lib.getExe pkgs.strace}";
+  };
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1080 ];
 }
