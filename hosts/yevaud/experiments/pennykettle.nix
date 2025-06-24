@@ -1,115 +1,66 @@
 { config, lib, pkgs, ... }:
 
 {
-  networking.nat.enable = true;
-  networking.nat.enableIPv6 = true;
-  networking.nat.internalInterfaces = [ "ve-pennykettle" ];
-  networking.nat.externalInterface = "ens3";
-  networking.nat.forwardPorts = [
-    {
-      sourcePort = 51820;
-      destination = "10.231.136.2:51820";
-      proto = "udp";
-    }
-    {
-      sourcePort = 51820;
-      destination = "[fc00::2]:51820";
-      proto = "udp";
-    }
-  ];
   networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = config.networking.firewall.allowedTCPPorts ++ [ 1080 ];
 
-  containers."pennykettle" = {
-    privateNetwork = true;
-    extraVeths."ve-pennykettle" = {
-      hostAddress = "10.231.136.1";
-      localAddress = "10.231.136.2";
-      hostAddress6 = "fc00::1";
-      localAddress6 = "fc00::2";
-    };
-    ephemeral = true;
-    autoStart = true;
-    bindMounts."/run/secrets/wg-key".hostPath = config.age.secrets.protonvpn-pennykettle.path;
-
-    config = { config, pkgs, ... }: {
-      system.stateVersion = "24.05";
-      systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
-      environment.systemPackages = [ pkgs.wireguard-tools ];
-
-      networking.useDHCP = false;
-      networking.useHostResolvConf = false;
-      networking.firewall.allowedUDPPorts = [ 51820 ];
-      systemd.network = {
-        enable = true;
-
-        networks."10-ve-pennykettle" = {
-          matchConfig.Name = "ve-pennykettle";
-          networkConfig.Address = [ "10.231.136.2/24" "fc00::2/64" ];
-          linkConfig.RequiredForOnline = "yes";
-          routes = [{
-            Gateway = [ "10.231.136.1" "fc00::1" ];
-            Destination = "217.138.216.162";
-          }];
-        };
-
-        networks."30-wg-protonvpn" = {
-          matchConfig.Name = "wg-protonvpn";
-          networkConfig = {
-            Address = [ "10.2.0.2/32" ];
-            DNS = "10.2.0.1";
-          };
-          linkConfig = {
-            RequiredForOnline = "yes";
-            ActivationPolicy = "always-up";
-          };
-          routes = [
-            { Gateway = [ "0.0.0.0" ]; }
-            { Gateway = [ "::" ]; } # TODO: ipv6 out is still not working for unclear reasons
-          ];
-        };
-
-        netdevs."30-wg-protonvpn" = {
-          netdevConfig = {
-            Name = "wg-protonvpn";
-            Kind = "wireguard";
-            Description = "WireGuard tunnel to ProtonVPN (DE#1; NAT: strict, no port forwarding)";
-          };
-          wireguardConfig = {
-            ListenPort = 51820;
-            PrivateKeyFile = "/run/secrets/wg-key";
-          };
-          wireguardPeers = [{
-            PublicKey = "C+u+eQw5yWI2APCfVJwW6Ovj3g4IrTOfe+tMZnNz43s=";
-            AllowedIPs = [ "0.0.0.0/0" "::/0" ];
-            Endpoint = "217.138.216.162:51820";
-            PersistentKeepalive = 5;
-          }];
-        };
-      };
-
-      networking.nat.enable = true;
-      networking.nat.enableIPv6 = true;
-      networking.nat.internalInterfaces = [ "ve-pennykettle" ];
-      networking.nat.externalInterface = "wg-protonvpn";
-    };
+  environment.systemPackages = [ pkgs.wireguard-tools ];
+  networking.wireguard.interfaces."wg-protonvpn" = {
+    ips = [ "10.2.0.2/32" ];
+    peers = [{
+      allowedIPs = [ "0.0.0.0/0" "::/0" ];
+      endpoint = "217.138.216.162:51820";
+      publicKey = "C+u+eQw5yWI2APCfVJwW6Ovj3g4IrTOfe+tMZnNz43s=";
+    }];
+    privateKeyFile = config.age.secrets.protonvpn-pennykettle1.path;
+    listenPort = 51820;
+    table = "957851094"; # randomly generated
   };
 
-  age.secrets.protonvpn-pennykettle = {
+  networking.localCommands = ''
+    ip rule add from 10.2.0.2/32 table 957851094
+  '';
+  networking.firewall.checkReversePath = "loose";
+
+  age.secrets.protonvpn-pennykettle1 = {
     file = ../../../secrets/protonvpn-pennykettle1.age;
     owner = "root";
     group = "systemd-network";
     mode = "640";
   };
 
-  # TODO: password-protect the proxy instead of relying on only listening over Tailscale
-  services.microsocks = {
+  services.dante = {
     enable = true;
-    port = 1080;
-    ip = "::";
-    outgoingBindIp = "fc00::2";
-    # authUsername = "testusername123";
-    # authPasswordFile = pkgs.writeText "testpassword" "testpassworddonotuse";
-    # execWrapper = "${lib.getExe pkgs.strace}";
+    config = ''
+      debug: 2
+      internal: tailscale0
+      external: wg-protonvpn
+
+      # auth/tls handled by tailscale
+      clientmethod: none
+      socksmethod: none
+
+      # allow connections from tailscale
+      # "0/0" matches any v4 or v6 address
+      client pass {
+        from: 100.64.0.0/10 to: 0/0
+        log: error connect disconnect
+      }
+      client pass {
+        from: fd7a:115c:a1e0::/48 to: 0/0
+        log: error connect disconnect
+      }
+
+      socks pass {
+        from: 0/0 to: 0/0
+        protocol: tcp udp
+        log: error connect disconnect iooperation
+      }
+    '';
   };
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1080 ];
+
+  systemd.services.dante = {
+    wants = [ "tailscaled-autoconnect.service" ];
+    after = [ "tailscaled-autoconnect.service" ];
+  };
 }
