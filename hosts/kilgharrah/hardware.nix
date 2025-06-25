@@ -38,6 +38,7 @@
         withBDplus = true;
       });
     }).overrideAttrs (originalAttrs: {
+      buildInputs = originalAttrs.buildInputs ++ [ pkgs.libdvdcss ];
       # TODO: nixpkgs bug: libbluray needs patching to look at the nix store path of jdk17 when searching for a jdk
       # as a workaround, wrap vlc and set JAVA_HOME, which it uses instead of searching when specified
       nativeBuildInputs = originalAttrs.nativeBuildInputs ++ [ pkgs.makeWrapper ];
