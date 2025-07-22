@@ -9,13 +9,45 @@ in
     enable = true;
     languagePacks = [ "en-GB" ];
 
-    profiles.default = {
-      extensions.packages = with inputs.firefox-addons.packages.${pkgs.hostPlatform.system}; [
-        onepassword-password-manager
-        bitwarden
-        ublock-origin
-      ];
+    policies = {
+      ExtensionSettings = {
+        # uBlock Origin
+        "uBlock0@raymondhill.net" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          installation_mode = "force_installed";
+          private_browsing = true;
+        };
+        # Bitwarden
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "navbar";
+        };
+        # 1Password
+        "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/1password-x-password-manager/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "navbar";
+        };
+        # Disqus Auto-Expander
+        "disqus-auto-expander@john30013.com" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/disqus-auto-expander/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        # Indie Wiki Buddy
+        "{cb31ec5d-c49a-4e5a-b240-16c767444f62}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/indie-wiki-buddy/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        # SteamDB
+        "firefox-extension@steamdb.info" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/steam-database/latest.xpi";
+          installation_mode = "force_installed";
+        };
+      };
+    };
 
+    profiles.default = {
       settings = {
         "browser.startup.page" = 3; # resume previous session
         "browser.newtabpage.activity-stream.showSponsored" = false;
