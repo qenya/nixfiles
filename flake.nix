@@ -55,11 +55,6 @@
       flake = false;
     };
 
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?ref=master&dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     scoutshonour = {
       url = "git+https://git.qenya.tel/qenya/nix-scoutshonour?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
