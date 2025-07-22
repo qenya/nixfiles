@@ -22,7 +22,6 @@ in
     lolcat
   ] ++ optionals isGraphical [
     _1password-gui
-    bitwarden
     discord
     # https://github.com/NixOS/nixpkgs/issues/427155
     # gimp-with-plugins
