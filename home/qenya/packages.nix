@@ -21,6 +21,7 @@ in
     cowsay
     lolcat
   ] ++ optionals isGraphical [
+    _1password-gui
     bitwarden
     discord
     gimp-with-plugins
