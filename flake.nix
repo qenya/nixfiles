@@ -7,14 +7,8 @@
 
     lix-module = {
       # lix haven't figured out automatic updates yet: https://git.lix.systems/lix-project/nixos-module/issues/39
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
-      # Temporary: use 2.93 release branch until 2.93.3 is released
-      # see bug: https://git.lix.systems/lix-project/lix/issues/917
-      inputs.lix = {
-        url = "git+https://git.lix.systems/lix-project/lix?ref=release-2.93";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
     };
 
     home-manager = {
