@@ -4,11 +4,18 @@
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    
+    lix = {
+      # use unreleased 2.93 branch due to https://git.lix.systems/lix-project/lix/issues/943 until lix cuts a new 2.93.x release
+      url = "https://git.lix.systems/lix-project/lix/archive/release-2.93.tar.gz";
+      flake = false;
+    };
 
     lix-module = {
       # lix haven't figured out automatic updates yet: https://git.lix.systems/lix-project/nixos-module/issues/39
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.lix.follows = "lix";
     };
 
     home-manager = {
