@@ -4,7 +4,7 @@ let
   inherit (lib) optionals;
   isGraphical = osConfig.services.xserver.enable;
   isGnome = osConfig.services.xserver.desktopManager.gnome.enable;
-  isPlasma = osConfig.services.desktopManager.plasma6.enable || osConfig.services.xserver.desktopManager.plasma5.enable;
+  isPlasma = osConfig.services.desktopManager.plasma6.enable;
 in
 {
   home.packages = with pkgs; [
