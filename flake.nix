@@ -4,19 +4,6 @@
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    
-    lix = {
-      # use unreleased 2.93 branch due to https://git.lix.systems/lix-project/lix/issues/943 until lix cuts a new 2.93.x release
-      url = "https://git.lix.systems/lix-project/lix/archive/release-2.93.tar.gz";
-      flake = false;
-    };
-
-    lix-module = {
-      # lix haven't figured out automatic updates yet: https://git.lix.systems/lix-project/nixos-module/issues/39
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.lix.follows = "lix";
-    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -71,7 +58,7 @@
       perSystem = { pkgs, system, ... }: {
         devShells.default = pkgs.mkShell {
           packages = [
-            inputs.colmena.packages.${system}.colmena
+            pkgs.colmena
             inputs.agenix.packages.${system}.default
             inputs.plasma-manager.packages.${system}.rc2nix
           ];
@@ -121,12 +108,7 @@
         in
         {
           meta = {
-            nixpkgs = import nixpkgs-unstable {
-              system = "x86_64-linux";
-              overlays = [
-                inputs.lix-module.overlays.default
-              ];
-            };
+            nixpkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
             nodeNixpkgs = {
               kilgharrah = import nixpkgs-unstable { system = "x86_64-linux"; };
               tohru = import nixpkgs { system = "x86_64-linux"; };
@@ -147,7 +129,6 @@
             deployment.buildOnTarget = lib.mkDefault true;
 
             imports = [
-              inputs.lix-module.nixosModules.default
               inputs.agenix.nixosModules.default
               ./common
               ./services
