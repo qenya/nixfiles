@@ -58,7 +58,10 @@
       perSystem = { pkgs, system, ... }: {
         devShells.default = pkgs.mkShell {
           packages = [
-            pkgs.colmena
+            # TODO: improve the way this override works
+            (inputs.colmena.packages.${system}.colmena.override {
+              nix-eval-jobs = pkgs.lixPackageSets.stable.nix-eval-jobs;
+            })
             inputs.agenix.packages.${system}.default
             inputs.plasma-manager.packages.${system}.rc2nix
           ];
