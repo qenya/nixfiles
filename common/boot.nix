@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf optionals;
 in
 {
   boot.loader = {
@@ -11,7 +11,7 @@ in
     efi.canTouchEfiVariables = true;
   };
 
-  boot.kernelPatches = [
+  boot.kernelPatches = optionals config.nixpkgs.hostPlatform.isx86 [
     # Fix the /proc/net/tcp seek issue
     # Impacts tailscale: https://github.com/tailscale/tailscale/issues/16966
     {
