@@ -22,7 +22,10 @@ in
         ${cfg.domain} = {
           forceSSL = true;
           enableACME = true;
-          locations."/".proxyPass = "http://127.0.0.1:32769/";
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:32769/";
+            proxyWebsockets = true;
+          };
         };
       };
     };
