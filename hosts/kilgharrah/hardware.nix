@@ -7,6 +7,12 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = false;
+  nixpkgs.config.cudaSupport = true;
+  nix.settings = {
+    # Community cache with prebuilt packages with cudaSupport enabled
+    substituters = [ "https://nix-community.cachix.org" ];
+    trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+  };
 
   # # Downgrade to driver version 535 as 550 has problems with Wayland
   # hardware.nvidia.package =
