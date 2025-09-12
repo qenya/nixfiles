@@ -13,18 +13,19 @@ in
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
       extensions = with pkgs.vscode-extensions; [
-        charliermarsh.ruff
-        dbaeumer.vscode-eslint
-        eamodio.gitlens
-        golang.go
-        jdinhlife.gruvbox
-        jnoortheen.nix-ide
-        matangover.mypy
-        mkhl.direnv
         ms-python.black-formatter
-        ms-python.python
-        rust-lang.rust-analyzer
+        mkhl.direnv
+        dbaeumer.vscode-eslint
+        golang.go
+        eamodio.gitlens
+        jdinhlife.gruvbox
         vadimcn.vscode-lldb
+        matangover.mypy
+        jnoortheen.nix-ide
+        ms-python.python
+        shopify.ruby-lsp
+        charliermarsh.ruff
+        rust-lang.rust-analyzer
       ];
       userSettings = {
         "css.format.spaceAroundSelectorSeparator" = true;
@@ -81,6 +82,11 @@ in
         "ruff.nativeServer" = "on";
         "ruff.path" = [ "${pkgs.ruff}/bin/ruff" ];
         "mypy.dmypyExecutable" = "${pkgs.mypy}/bin/dmypy";
+
+        "[ruby]" = {
+          "editor.formatOnSave" = true;
+          "editor.formatOnType" = true;
+        };
       };
     };
   };
