@@ -135,7 +135,6 @@
               inputs.agenix.nixosModules.default
               ./common
               ./services
-              (builtins.toPath "${inputs.randomcat}/services/default.nix")
             ];
           };
 
