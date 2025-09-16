@@ -13,18 +13,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.nginx = {
-      enable = true;
-      virtualHosts = {
-        ${cfg.domain} = {
-          forceSSL = true;
-          enableACME = true;
-          locations."/".proxyPass = "http://127.0.0.1:5006/";
-        };
-      };
-    };
-
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    fountain.services.reverse-proxy.enable = true;
+    fountain.services.reverse-proxy.domains.${cfg.domain} = "http://127.0.0.1:5006/";
 
     services.actual = {
       enable = true;

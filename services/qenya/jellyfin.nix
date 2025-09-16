@@ -13,19 +13,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.nginx = {
-      enable = true;
-      virtualHosts = {
-        ${cfg.domain} = {
-          forceSSL = true;
-          enableACME = true;
-          locations."/".proxyPass = "http://127.0.0.1:8096/";
-        };
-      };
-    };
-
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
-
+    fountain.services.reverse-proxy.enable = true;
+    fountain.services.reverse-proxy.domains.${cfg.domain} = "http://127.0.0.1:8096/";
     services.jellyfin.enable = true;
   };
 }

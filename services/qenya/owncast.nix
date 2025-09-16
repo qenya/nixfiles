@@ -16,21 +16,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.nginx = {
-      enable = true;
-      virtualHosts = {
-        ${cfg.domain} = {
-          forceSSL = true;
-          enableACME = true;
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:32769/";
-            proxyWebsockets = true;
-          };
-        };
-      };
-    };
+    fountain.services.reverse-proxy.enable = true;
+    fountain.services.reverse-proxy.domains.${cfg.domain} = "http://127.0.0.1:32769/";
 
-    networking.firewall.allowedTCPPorts = [ 80 443 1935 ]; # 1935 for rtmp
+    networking.firewall.allowedTCPPorts = [ 1935 ]; # for rtmp
 
     services.owncast.enable = true;
     services.owncast.port = 32769;
