@@ -25,24 +25,11 @@
 
   randomcat.services.zfs.datasets = {
     "rpool/state" = { mountpoint = "none"; };
-    "rpool/state/forgejo" = { mountpoint = "/var/lib/forgejo"; };
   };
 
   services.sanoid.datasets."rpool/state" = {
     useTemplate = [ "production" ];
     recursive = "zfs";
-  };
-
-  qenya.services.forgejo = {
-    enable = true;
-    domain = "git.unspecified.systems";
-  };
-  fountain.services.web-redirect = {
-    enable = true;
-    domains = {
-      "git.katherina.rocks" = "git.unspecified.systems";
-      "git.qenya.tel" = "git.unspecified.systems";
-    };
   };
 
   system.stateVersion = "23.11";

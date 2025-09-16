@@ -29,6 +29,7 @@ in
     "rpool_kalessin/state" = { mountpoint = "none"; };
     "rpool_kalessin/state/headscale" = { mountpoint = "/var/lib/headscale"; };
     "rpool_kalessin/state/owncast" = { mountpoint = "/var/lib/owncast"; };
+    "rpool_kalessin/state/forgejo" = { mountpoint = "/var/lib/forgejo"; };
   };
 
   services.sanoid.datasets."rpool_kalessin/state" = {
@@ -46,6 +47,18 @@ in
     enable = true;
     domain = "headscale.unspecified.systems";
     dataDir = "/var/lib/headscale";
+  };
+
+  qenya.services.forgejo = {
+    enable = true;
+    domain = "git.unspecified.systems";
+  };
+  fountain.services.web-redirect = {
+    enable = true;
+    domains = {
+      "git.katherina.rocks" = "git.unspecified.systems";
+      "git.qenya.tel" = "git.unspecified.systems";
+    };
   };
 
   system.stateVersion = "23.11";
