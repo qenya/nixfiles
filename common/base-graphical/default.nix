@@ -24,6 +24,8 @@ in
 
     fonts.packages = with pkgs; [
       corefonts
+      caladea
+      carlito
     ];
   };
 }
