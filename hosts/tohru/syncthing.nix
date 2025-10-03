@@ -2,7 +2,7 @@
 
 {
   services.syncthing = {
-    enable = true;
+    # enable = true;
     user = "qenya";
     dataDir = "/data/syncthing";
     openDefaultPorts = true;
