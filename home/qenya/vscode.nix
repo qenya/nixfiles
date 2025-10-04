@@ -14,6 +14,7 @@ in
       enableUpdateCheck = false;
       extensions = with pkgs.vscode-extensions; [
         ms-python.black-formatter
+        ms-azuretools.vscode-docker
         mkhl.direnv
         dbaeumer.vscode-eslint
         golang.go
