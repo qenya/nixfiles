@@ -3,7 +3,9 @@
     ./base-graphical
     ./base-server
     ./users
+
     ./boot.nix
+    ./docker.nix
     ./gpg.nix
     ./home-manager.nix
     ./misc.nix
