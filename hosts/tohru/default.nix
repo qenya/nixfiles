@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  inherit (lib) mkForce;
+  inherit (lib) mkIf mkForce;
 in
 {
   imports = [
@@ -37,6 +37,7 @@ in
   users.users.qenya.extraGroups = [
     "networkmanager" # UI wifi configuration
     "dialout" # access to serial ports
+    "docker"
   ];
 
   nixpkgs.overlays = [ inputs.scoutshonour.overlays.default ];
@@ -64,6 +65,7 @@ in
 
   programs.evolution.enable = true; # not in home-manager yet; not declaratively configurable yet
   programs.steam.enable = true;
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "23.11";
 }
