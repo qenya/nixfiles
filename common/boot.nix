@@ -29,7 +29,7 @@ in
     fallbackDns = [ ];
     dnsovertls = "true";
     extraConfig = ''
-      DNS=2a07:e340::4#base.dns.mullvad.net 194.242.2.4#base.dns.mullvad.net 2606:1a40::11#p2.freedns.controld.com 76.76.2.11#p2.freedns.controld.com
+      DNS=2a07:e340::4#base.dns.mullvad.net 194.242.2.4#base.dns.mullvad.net
     '';
   };
 }
