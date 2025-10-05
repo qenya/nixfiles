@@ -1,0 +1,30 @@
+- name: Initial setup
+  hosts: ovh
+  tasks:
+  - name: Ensure hostname is correct
+    ansible.builtin.hostname:
+      name: '{{ inventory_hostname }}'
+    become: yes
+  - name: Ensure password authentication for SSH is disabled
+    ansible.builtin.lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: '^#?PasswordAuthentication'
+      line: "PasswordAuthentication no"
+      state: present
+      backup: yes
+    become: yes
+    notify:
+      - restart ssh
+  - name: Update authorized SSH keys for Ansible user
+    ansible.builtin.copy:
+      dest: '/home/{{ ansible_user }}/.ssh/authorized_keys'
+      # TODO: template this from a separate config file
+      content: |
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjBuuxo+w3yED0aPnsNb8S90p/GgBqFEG9K4ETZ5Wkq qenya@kilgharrah
+
+  handlers:
+  - name: restart ssh
+    service:
+      name: sshd
+      state: restarted
