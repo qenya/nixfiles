@@ -42,6 +42,33 @@ in
     };
 
     profiles.default = {
+      search = {
+        force = true;
+        default = "leta";
+        privateDefault = "leta";
+        order = [ "leta" "searxng" ];
+        engines = {
+          searxng = {
+            name = "SearXNG metasearch";
+            description = "SearXNG is a metasearch engine that respects your privacy.";
+            urls = [{
+              method = "POST";
+              template = "https://sx.catgirl.cloud/search";
+              params = [{ name = "q"; value = "{searchTerms}"; }];
+            }];
+            icon = "https://sx.catgirl.cloud/static/themes/simple/img/favicon.png";
+            definedAliases = [ "@sx" ];
+          };
+          leta = {
+            name = "Mullvad Leta";
+            description = "A privacy focused search engine provided by Mullvad.";
+            urls = [{ template = "https://leta.mullvad.net/search?q={searchTerms}&engine=google"; }];
+            iconMapObj."16" = "https://mullvad.net/favicon.ico";
+            definedAliases = [ "@leta" ];
+          };
+        };
+      };
+
       settings = {
         "browser.startup.page" = 3; # resume previous session
         "browser.newtabpage.activity-stream.showSponsored" = false;
