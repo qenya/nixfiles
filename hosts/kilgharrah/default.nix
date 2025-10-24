@@ -33,7 +33,10 @@ in
   users.users.qenya.hashedPasswordFile = config.age.secrets.user-password-kilgharrah-qenya.path;
   fountain.admins = [ "qenya" ];
   home-manager.users.qenya = { pkgs, ... }: {
-    home.packages = with pkgs; [ obs-studio ];
+    home.packages = with pkgs; [
+      heroic
+      obs-studio
+    ];
   };
 
   qenya.services.remote-builder = {
