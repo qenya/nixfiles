@@ -66,6 +66,13 @@ in
             iconMapObj."16" = "https://mullvad.net/favicon.ico";
             definedAliases = [ "@leta" ];
           };
+          netrunnerdb = {
+            name = "NetrunnerDB";
+            urls = [{ template = "https://netrunnerdb.com/find/?q={searchTerms}"; }];
+            iconMapObj."16" = "https://netrunnerdb.com/favicon.png";
+            iconMapObj."196" = "https://netrunnerdb.com/icon.png";
+            definedAliases = [ "@nrdb" ];
+          };
         };
       };
 
