@@ -26,7 +26,7 @@ in
     # https://github.com/NixOS/nixpkgs/issues/427155
     # gimp-with-plugins
     jellyfin-media-player
-    tor-browser-bundle-bin
+    tor-browser
     zoom-us
 
     # libreoffice
