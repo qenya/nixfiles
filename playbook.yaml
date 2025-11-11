@@ -22,9 +22,28 @@
       content: |
         ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru
         ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjBuuxo+w3yED0aPnsNb8S90p/GgBqFEG9K4ETZ5Wkq qenya@kilgharrah
+- name: Enable automatic upgrades
+  hosts: ovh
+  tasks:
+  - ansible.builtin.dnf:
+      name: dnf-automatic
+      state: latest
+    become: yes
+  - ansible.builtin.copy:
+      dest: '/etc/dnf/automatic.conf'
+      content: |
+        [commands]
+        apply_updates=True
+        reboot=when-needed
+    become: yes
+  - ansible.builtin.service:
+      name: 'dnf-automatic.timer'
+      enabled: yes
+      state: started
+    become: yes
 
   handlers:
-  - name: restart ssh
-    service:
+  - name: Restart SSH
+    ansible.builtin.service:
       name: sshd
       state: restarted
