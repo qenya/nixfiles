@@ -1,49 +1,54 @@
 - name: Initial setup
   hosts: ovh
   tasks:
-  - name: Ensure hostname is correct
-    ansible.builtin.hostname:
-      name: '{{ inventory_hostname }}'
-    become: yes
-  - name: Ensure password authentication for SSH is disabled
-    ansible.builtin.lineinfile:
-      dest: /etc/ssh/sshd_config
-      regexp: '^#?PasswordAuthentication'
-      line: "PasswordAuthentication no"
-      state: present
-      backup: yes
-    become: yes
-    notify:
-      - restart ssh
-  - name: Update authorized SSH keys for Ansible user
-    ansible.builtin.copy:
-      dest: '/home/{{ ansible_user }}/.ssh/authorized_keys'
-      # TODO: template this from a separate config file
-      content: |
-        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru
-        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjBuuxo+w3yED0aPnsNb8S90p/GgBqFEG9K4ETZ5Wkq qenya@kilgharrah
+    - name: Ensure hostname is correct
+      ansible.builtin.hostname:
+        name: '{{ inventory_hostname }}'
+      become: true
+    - name: Ensure password authentication for SSH is disabled
+      ansible.builtin.lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^#?PasswordAuthentication'
+        line: "PasswordAuthentication no"
+        state: present
+        backup: true
+      become: true
+      notify:
+        - restart ssh
+    - name: Update authorized SSH keys for Ansible user
+      ansible.builtin.copy:
+        dest: '/home/{{ ansible_user }}/.ssh/authorized_keys'
+        # TODO: template this from a separate config file
+        content: |
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjBuuxo+w3yED0aPnsNb8S90p/GgBqFEG9K4ETZ5Wkq qenya@kilgharrah
+        mode: "0600"
 - name: Enable automatic upgrades
   hosts: ovh
   tasks:
-  - ansible.builtin.dnf:
-      name: dnf-automatic
-      state: latest
-    become: yes
-  - ansible.builtin.copy:
-      dest: '/etc/dnf/automatic.conf'
-      content: |
-        [commands]
-        apply_updates=True
-        reboot=when-needed
-    become: yes
-  - ansible.builtin.service:
-      name: 'dnf-automatic.timer'
-      enabled: yes
-      state: started
-    become: yes
+    - name: Install dnf-automatic
+      ansible.builtin.dnf:
+        name: dnf-automatic
+        state: present
+      become: true
+    - name: Configure dnf-automatic
+      ansible.builtin.copy:
+        dest: '/etc/dnf/automatic.conf'
+        content: |
+          [commands]
+          apply_updates=True
+          reboot=when-needed
+        mode: "0644"
+      become: true
+    - name: Enable a timer unit for dnf-automatic
+      ansible.builtin.service:
+        name: 'dnf-automatic.timer'
+        enabled: true
+        state: started
+      become: true
 
   handlers:
-  - name: Restart SSH
-    ansible.builtin.service:
-      name: sshd
-      state: restarted
+    - name: Restart SSH
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
