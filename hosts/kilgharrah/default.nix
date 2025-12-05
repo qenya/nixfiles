@@ -56,12 +56,18 @@ in
   };
   qenya.services.jellyfin = {
     enable = true;
-    domain = "jellyfin.qenya.tel";
+    domain = "tv.qenya.tel";
   };
   qenya.services.navidrome = {
     enable = true;
     domain = "music.qenya.tel";
     dataDir = "/srv/music";
+  };
+  fountain.services.web-redirect = {
+    enable = true;
+    domains = {
+      "jellyfin.qenya.tel" = "tv.qenya.tel";
+    };
   };
 
   system.stateVersion = "24.05";
