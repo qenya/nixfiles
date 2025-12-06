@@ -3,9 +3,9 @@
 {
   programs.git = {
     enable = true;
-    userName = "Katherina Walshe-Grey";
-    userEmail = "git@qenya.tel";
-    extraConfig = {
+    settings = {
+      user.email = "git@qenya.tel";
+      user.name = "Katherina Walshe-Grey";
       init.defaultBranch = "main";
       pull.rebase = true;
       push.autoSetupRemote = true;
