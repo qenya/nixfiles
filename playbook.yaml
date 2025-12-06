@@ -14,7 +14,7 @@
         backup: true
       become: true
       notify:
-        - restart ssh
+        - Restart SSH
     - name: Update authorized SSH keys for Ansible user
       ansible.builtin.copy:
         dest: '/home/{{ ansible_user }}/.ssh/authorized_keys'
@@ -23,6 +23,13 @@
           ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru
           ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjBuuxo+w3yED0aPnsNb8S90p/GgBqFEG9K4ETZ5Wkq qenya@kilgharrah
         mode: "0600"
+
+  handlers:
+    - name: Restart SSH
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
+
 - name: Enable automatic upgrades
   hosts: ovh
   tasks:
@@ -46,9 +53,3 @@
         enabled: true
         state: started
       become: true
-
-  handlers:
-    - name: Restart SSH
-      ansible.builtin.service:
-        name: sshd
-        state: restarted
