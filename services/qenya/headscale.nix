@@ -29,6 +29,7 @@ in
         dns = {
           magic_dns = true;
           base_domain = "birdsong.network";
+          override_local_dns = false;
         };
 
         # disable built-in ACME client
