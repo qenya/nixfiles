@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.11-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -114,7 +114,7 @@
           meta = {
             nixpkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
             nodeNixpkgs = {
-              kilgharrah = import nixpkgs-unstable { system = "x86_64-linux"; };
+              kilgharrah = import nixpkgs { system = "x86_64-linux"; };
               tohru = import nixpkgs { system = "x86_64-linux"; };
               elucredassa = import nixpkgs-small { system = "x86_64-linux"; };
               yevaud = import nixpkgs-small { system = "x86_64-linux"; };
@@ -143,7 +143,7 @@
           tohru.deployment.targetHost = null; # disable remote deployment
           elucredassa.deployment.targetHost = "100.73.34.182"; # TODO: no fqdn yet
 
-          kilgharrah.imports = [ ./hosts/kilgharrah home-manager-unstable ];
+          kilgharrah.imports = [ ./hosts/kilgharrah home-manager ];
           tohru.imports = [ ./hosts/tohru home-manager ];
           elucredassa.imports = [ ./hosts/elucredassa home-manager ];
           yevaud.imports = [ ./hosts/yevaud home-manager ];
