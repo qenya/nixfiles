@@ -31,11 +31,8 @@ in
         redhat.vscode-yaml
       ];
       userSettings = {
-        "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
         "ansible.validation.lint.enabled" = true;
-        "ansible.validation.lint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
-        "ansible.ansibleNavigator.path" = "${pkgs.ansible-navigator}/bin/ansible-navigator";
-        "ansible.python.interpreterPath" = "${pkgs.python3}/bin/python";
+        "ansible.python.interpreterPath" = "\${workspaceFolder}/.venv/bin/python"; # needs some manual one-time setup per repo, but it's better than fucking with FHS
         "ansible.lightspeed.enabled" = false;
         "css.format.spaceAroundSelectorSeparator" = true;
         "css.format.newlineBetweenSelectors" = false;

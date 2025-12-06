@@ -5,3 +5,6 @@ result-*
 
 # ---> Ansible
 *.retry
+
+# https://github.com/ansible/ansible-lint/issues/4533
+.ansible/
