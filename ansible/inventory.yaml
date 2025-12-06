@@ -1,6 +1,0 @@
-ovh:
-  hosts:
-    siberys:
-      ansible_host: siberys.qenya.tel
-  vars:
-    ansible_user: fedora

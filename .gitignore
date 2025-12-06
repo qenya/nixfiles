@@ -2,9 +2,3 @@
 # Ignore build outputs from performing a nix-build or `nix build` command
 result
 result-*
-
-# ---> Ansible
-*.retry
-
-# https://github.com/ansible/ansible-lint/issues/4533
-.ansible/
