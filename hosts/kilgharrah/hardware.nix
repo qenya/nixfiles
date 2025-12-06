@@ -10,8 +10,8 @@
   nixpkgs.config.cudaSupport = true;
   nix.settings = {
     # Community cache with prebuilt packages with cudaSupport enabled
-    substituters = [ "https://nix-community.cachix.org" ];
-    trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+    substituters = [ "https://cache.nixos-cuda.org" ];
+    trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
   };
 
   # # Downgrade to driver version 535 as 550 has problems with Wayland
