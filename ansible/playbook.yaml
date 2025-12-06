@@ -62,3 +62,9 @@
         name: podman
         state: present
       become: true
+    - name: Enable a Podman socket to receive remote client commands
+      ansible.builtin.systemd_service:
+        name: 'podman.socket'
+        enabled: true
+        state: started
+        scope: user
