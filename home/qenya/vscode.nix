@@ -13,6 +13,7 @@ in
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
       extensions = with pkgs.vscode-extensions; [
+        redhat.ansible
         ms-python.black-formatter
         ms-azuretools.vscode-docker
         mkhl.direnv
@@ -27,8 +28,15 @@ in
         shopify.ruby-lsp
         charliermarsh.ruff
         rust-lang.rust-analyzer
+        redhat.vscode-yaml
       ];
       userSettings = {
+        "ansible.ansible.path" = "${pkgs.ansible}/bin/ansible";
+        "ansible.validation.lint.enabled" = true;
+        "ansible.validation.lint.path" = "${pkgs.ansible-lint}/bin/ansible-lint";
+        "ansible.ansibleNavigator.path" = "${pkgs.ansible-navigator}/bin/ansible-navigator";
+        "ansible.python.interpreterPath" = "${pkgs.python3}/bin/python";
+        "ansible.lightspeed.enabled" = false;
         "css.format.spaceAroundSelectorSeparator" = true;
         "css.format.newlineBetweenSelectors" = false;
         "debug.allowBreakpointsEverywhere" = true;
@@ -47,6 +55,7 @@ in
           formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
           nix.flake.autoArchive = true;
         };
+        "redhat.telemetry.enabled" = false;
         "rust-analyzer.check.command" = "clippy";
         "terminal.integrated.allowChords" = false;
         "terminal.integrated.defaultProfile.linux" = "zsh";

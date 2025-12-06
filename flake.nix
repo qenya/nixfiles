@@ -64,7 +64,6 @@
             })
             inputs.agenix.packages.${system}.default
             inputs.plasma-manager.packages.${system}.rc2nix
-            pkgs.ansible
           ];
         };
       };
