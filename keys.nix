@@ -12,6 +12,7 @@
     kilgharrah = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOgGF3gzzlMbxxk3UAAgHJ7sDdjqtrw7UW16M1XhXtz2 root@kilgharrah";
     elucredassa = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA+Y/vqGNc1wXUAg4XMAAcLupkggywj2LpYDwA16ONbH root@elucredassa";
     carter = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEHHHYG6A995Po05+JXQsvB79ZoIiSOJnW6AiJgVYPic root@carter";
+    siberys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICF9p2X9Mph+PYV1YZHuMXXBevJatecqx3yr/B8znQud root@vps-9fd2f351.vps.ovh.net";
   };
 
   users = {
