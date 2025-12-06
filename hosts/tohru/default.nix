@@ -55,6 +55,8 @@ in
       scoutshonour.digital-a-love-story
       scoutshonour.dont-take-it-personally-babe
     ];
+
+    services.podman.enable = true;
   };
 
   qenya.services.distributed-builds = {
