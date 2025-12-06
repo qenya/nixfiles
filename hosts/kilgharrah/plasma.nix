@@ -4,8 +4,8 @@ let
   inherit (lib) mkForce;
 in
 {
-  services.xserver.displayManager.gdm.enable = mkForce false;
-  services.xserver.desktopManager.gnome.enable = mkForce false;
+  services.displayManager.gdm.enable = mkForce false;
+  services.desktopManager.gnome.enable = mkForce false;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;

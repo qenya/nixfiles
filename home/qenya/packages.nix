@@ -3,7 +3,7 @@
 let
   inherit (lib) optionals;
   isGraphical = osConfig.services.xserver.enable;
-  isGnome = osConfig.services.xserver.desktopManager.gnome.enable;
+  isGnome = osConfig.services.desktopManager.gnome.enable;
   isPlasma = osConfig.services.desktopManager.plasma6.enable;
 in
 {

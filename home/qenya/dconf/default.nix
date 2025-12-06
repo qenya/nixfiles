@@ -3,7 +3,7 @@
 # dconf is the configuration manager for GNOME.
 
 let
-  isGnome = osConfig.services.xserver.desktopManager.gnome.enable;
+  isGnome = osConfig.services.desktopManager.gnome.enable;
 in
 {
   dconf.enable = isGnome;

@@ -6,8 +6,8 @@ let
 in
 {
   config = mkIf cfg.enable {
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
+    services.displayManager.gdm.enable = true;
+    services.desktopManager.gnome.enable = true;
     # TODO: agree on this with randomcat as it affects her too, since for some reason this is system-wide
     # environment.gnome.excludePackages = with pkgs.gnome; [
     #   pkgs.gnome-tour
