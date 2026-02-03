@@ -20,7 +20,6 @@ in
     ./keyboard.nix
     ./mouse-touchpad.nix
     ./multitasking.nix
-    ./shell.nix
     ./wellbeing.nix
   ];
 }
