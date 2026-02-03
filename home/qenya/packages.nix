@@ -25,6 +25,8 @@ in
     discord
     # https://github.com/NixOS/nixpkgs/issues/427155
     # gimp-with-plugins
+    jellyfin-desktop
+    keepassxc
     tor-browser
     zoom-us
 
@@ -32,9 +34,5 @@ in
     libreoffice
     hunspell
     hunspellDicts.en_GB-ise
-  ] ++ optionals isGnome [
-    celluloid
-  ] ++ optionals isPlasma [
-    haruna
   ];
 }

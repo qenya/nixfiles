@@ -43,11 +43,16 @@ in
   nixpkgs.overlays = [ inputs.scoutshonour.overlays.default ];
   home-manager.users.qenya = { pkgs, ... }: {
     home.packages = with pkgs; [
-      keepassxc
-      apostrophe
       foliate
       nicotine-plus
+
+      apostrophe
+      blanket
+      gnome-podcasts
+      resources
       tuba
+      wike
+      wordbook
 
       # games
       openttd
