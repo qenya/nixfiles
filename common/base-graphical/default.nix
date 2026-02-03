@@ -14,6 +14,7 @@ in
 
   config = mkIf cfg.enable {
     services.xserver.enable = true;
+    services.xserver.excludePackages = [ pkgs.xterm ];
     services.libinput.enable = true;
     services.printing.enable = true;
     services.avahi = {
