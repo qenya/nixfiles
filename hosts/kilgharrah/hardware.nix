@@ -5,7 +5,7 @@
   hardware.cpu.intel.updateMicrocode = true;
   services.fwupd.enable = true;
 
-  # services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "modesetting" ];
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
