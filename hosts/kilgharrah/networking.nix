@@ -5,7 +5,7 @@
   networking.useDHCP = false;
   
   systemd.network.networks."10-wan" = {
-    matchConfig.Name = "enp2s0";
+    matchConfig.Name = "enp*s0";
     networkConfig = {
       DHCP = "ipv4";
       IPv6AcceptRA = true;
