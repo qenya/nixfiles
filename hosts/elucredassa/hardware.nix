@@ -6,6 +6,6 @@
   services.fwupd.enable = true;
 
   # this is an old laptop
-  services.logind.lidSwitch = "ignore";
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
 }
 
