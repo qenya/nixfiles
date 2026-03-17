@@ -5,6 +5,7 @@
   hardware.cpu.intel.updateMicrocode = true;
   services.fwupd.enable = true;
 
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18; # 6.12 (current default for 25.11) seems to make the xe module crash on load? needs more investigation
   services.xserver.videoDrivers = [ "modesetting" ];
   hardware.graphics = {
     enable = true;
