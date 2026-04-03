@@ -59,7 +59,7 @@ in
     domain = "tv.qenya.tel";
   };
   qenya.services.navidrome = {
-    enable = false; # awaiting https://github.com/NixOS/nixpkgs/pull/493362
+    enable = true;
     domain = "music.qenya.tel";
     dataDir = "/srv/music";
   };
