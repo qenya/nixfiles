@@ -15,6 +15,8 @@ in
       jack.enable = true;
     };
     services.pulseaudio.enable = false; # this theoretically defaults to false but something else seems to be flipping it
-    environment.systemPackages = with pkgs; [ helvum ]; # patchbay
+    # FIXME: Temporarily disabled as nixpkgs removed helvum for a bit while it was unmaintained.
+    # PR #524423 readding it should be in stable soon.
+    # environment.systemPackages = with pkgs; [ helvum ]; # patchbay
   };
 }

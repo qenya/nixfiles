@@ -13,10 +13,13 @@ in
 
   services.resolved = {
     enable = true;
-    fallbackDns = [ ];
-    dnsovertls = "true";
-    extraConfig = ''
-      DNS=2a07:e340::4#base.dns.mullvad.net 194.242.2.4#base.dns.mullvad.net
-    '';
+    settings.Resolve = {
+      DNS = [
+        "2a07:e340::4#base.dns.mullvad.net"
+        "194.242.2.4#base.dns.mullvad.net"
+      ];
+      DNSOverTLS = true;
+      FallbackDNS = [ ];
+    };
   };
 }

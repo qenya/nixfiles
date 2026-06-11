@@ -5,9 +5,8 @@ let
   isGraphical = osConfig.services.xserver.enable;
 in
 {
-  programs.vscode = mkIf isGraphical {
+  programs.vscodium = mkIf isGraphical {
     enable = true;
-    package = pkgs.vscodium;
     mutableExtensionsDir = false;
     profiles.default = {
       enableExtensionUpdateCheck = false;
