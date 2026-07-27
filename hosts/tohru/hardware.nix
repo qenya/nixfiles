@@ -15,6 +15,10 @@
     ];
   };
 
-  services.printing.drivers = [ pkgs.hplip ];
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
+  users.users.qenya.extraGroups = [ "scanner" "lp" ];
 }
 
