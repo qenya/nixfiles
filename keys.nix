@@ -13,12 +13,14 @@
     elucredassa = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA+Y/vqGNc1wXUAg4XMAAcLupkggywj2LpYDwA16ONbH root@elucredassa";
     carter = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEHHHYG6A995Po05+JXQsvB79ZoIiSOJnW6AiJgVYPic root@carter";
     siberys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICF9p2X9Mph+PYV1YZHuMXXBevJatecqx3yr/B8znQud root@vps-9fd2f351.vps.ovh.net";
+    aithusa = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE/TIX8RaT2ETv7AWy/akz+HvlhjowxjvL29KnjtzPaL root@aithusa";
   };
 
   users = {
     qenya = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjBuuxo+w3yED0aPnsNb8S90p/GgBqFEG9K4ETZ5Wkq qenya@kilgharrah"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEmkV9arotms79lJPsLHkdzAac4eu3pYS08ym0sB/on qenya@tohru"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKuFicd2cbexm3+Zd8lddQRnpk+p5TO5RroCZkS/1Wui qenya@aithusa"
     ];
     randomcat = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHagOaeTR+/7FL9sErciMw30cmV/VW8HU7J3ZFU5nj9 janet@randomcat.org"
