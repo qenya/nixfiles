@@ -26,8 +26,6 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "";
-      inputs.home-manager.follows = "";
     };
 
     colmena = {
@@ -35,7 +33,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.stable.follows = "";
       inputs.nix-github-actions.follows = "";
-      inputs.flake-compat.follows = "";
     };
 
     randomcat = {
