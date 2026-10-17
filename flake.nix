@@ -135,7 +135,6 @@
             ];
           };
 
-          kilgharrah.deployment.targetHost = null; # disable remote deployment
           tohru.deployment.targetHost = null; # disable remote deployment
           elucredassa.deployment.targetHost = "100.73.34.182"; # TODO: no fqdn yet
 

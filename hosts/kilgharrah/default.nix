@@ -22,8 +22,9 @@ in
   boot.kernelModules = [ "kvm-intel" ];
 
   qenya.base-graphical.enable = true;
+  qenya.base-server.enable = true;
 
-  time.timeZone = "Europe/London";
+  time.timeZone = lib.mkForce "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
   console.keyMap = "uk";
   services.xserver.xkb.layout = "gb";
