@@ -89,10 +89,11 @@ in
         # disable prefetch?
 
         # DNS over HTTPS
-        "network.trr.custom_uri" = "https://base.dns.mullvad.net/dns-query";
-        "network.trr.excluded-domains" = "detectportal.firefox.com";
-        "network.trr.mode" = 3;
-        "network.trr.uri" = "https://base.dns.mullvad.net/dns-query";
+        # "network.trr.custom_uri" = "https://base.dns.mullvad.net/dns-query";
+        # "network.trr.excluded-domains" = "detectportal.firefox.com";
+        # "network.trr.mode" = 3;
+        # "network.trr.uri" = "https://base.dns.mullvad.net/dns-query";
+        "network.trr.mode" = 5; # "Off" - intentionally fall back to system resolver as this is already configured to use DoH
 
         "browser.search.suggest.enabled" = false;
         "browser.urlbar.suggest.searches" = false;
