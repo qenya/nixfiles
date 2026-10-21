@@ -15,8 +15,8 @@ in
     enable = true;
     settings.Resolve = {
       DNS = [
-        "2a07:e340::4#base.dns.mullvad.net"
-        "194.242.2.4#base.dns.mullvad.net"
+        "2001:67c:930::1#wikimedia-dns.org"
+        "185.71.138.138#wikimedia-dns.org"
       ];
       DNSOverTLS = true;
       FallbackDNS = [ ];
