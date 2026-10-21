@@ -7,12 +7,12 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh"; # default with home.stateVersion >= 26.05, but I don't want to be faffed incrementing that
 
     shellAliases = {
       ll = "ls -l";
 
-      # don't clobber 
+      # don't clobber
       mv = "mv -i";
       rename = "rename -i";
 
