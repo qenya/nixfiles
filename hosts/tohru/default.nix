@@ -49,6 +49,7 @@ in
       apostrophe
       blanket
       gnome-podcasts
+      iotas
       resources
       tuba
       wike
